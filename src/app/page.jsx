@@ -249,19 +249,19 @@ const logosPerScreen = getLogosPerScreen(width);
   {
     name: "Business Phone Systems",
     icon: <Phone />,
-    link: "/Technology-main/Business-phone-systems",
+    link: "/Technology/Business-phone-systems",
     image: "/images/BPS.webp",
   },
   {
     name: "GPS Fleet Management Software",
     icon: <MapPin />,
-    link: "/Technology-main/Gps-fleet-management-software",
+    link: "/Technology/Gps-fleet-management-software",
     image: "/images/gps-system.webp",
   },
   {
     name: "Best Employee Management Software",
     icon: <Users />,
-    link: "/Technology-main/Best-employee-management-software",
+    link: "/Technology/Best-employee-management-software",
     image: "/images/bestemploye.webp",
   },
   {
@@ -273,7 +273,7 @@ const logosPerScreen = getLogosPerScreen(width);
   {
     name: "Best Payroll System",
     icon: <DollarSign />,
-    link: "/Technology-main/Best-payroll-system",
+    link: "/Technology/Best-payroll-system",
     image: "/images/payroll.webp",
   },
   {

@@ -308,10 +308,10 @@ const Navbar = () => {
                 <div className="mobile-dropdown-content">
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
-                      <li><a href="/Technology-main/Business-phone-systems" className="category-item-link">Business Phone System</a></li>
-                      <li><a href="/Technology-main/Gps-fleet-management-software" className="category-item-link">GPS Fleet Management Software</a></li>
-                      <li><a href="/Technology-main/Best-employee-management-software" className="category-item-link">Best Employee Management Software</a></li>
-                      <li><a href="/Technology-main/Best-payroll-system" className="category-item-link">Best Payroll System</a></li>
+                      {/* <li><a href="/Technology/Business-phone-systems" className="category-item-link">Business Phone System</a></li> */}
+                      <li><a href="/Technology/Gps-fleet-management-software" className="category-item-link">GPS Fleet Management Software</a></li>
+                      <li><a href="/Technology/Best-employee-management-software" className="category-item-link">Best Employee Management Software</a></li>
+                      <li><a href="/Technology/Best-payroll-system" className="category-item-link">Best Payroll System</a></li>
                     </ul>
                   </div>
                 </div>
@@ -361,7 +361,7 @@ const Navbar = () => {
                 <div className="mobile-dropdown-content">
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
-                      <li><a href="#" className="category-item-link">WhitePaper</a></li>
+                      {/* <li><a href="#" className="category-item-link">WhitePaper</a></li> */}
                       <li><a href="https://blogs.compare-bazaar.com/" className="category-item-link">Blogs</a></li>
                     </ul>
                   </div>
@@ -386,9 +386,9 @@ const Navbar = () => {
                 <div className="mobile-dropdown-content">
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
-                      <li><a href="#" className="category-item-link">Contact</a></li>
-                      <li><a href="#" className="category-item-link">About</a></li>
-                      <li><a href="#" className="category-item-link">Career</a></li>
+                      <li><Link href="/Contact-us/Contact" className="category-item-link" onClick={() => setMobileMenuOpen(false)}>Contact</Link></li>
+                      <li><Link href="/Contact-us/About-us" className="category-item-link" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
+                      <li><Link href="/Contact-us/Careers" className="category-item-link" onClick={() => setMobileMenuOpen(false)}>Career</Link></li>
                     </ul>
                   </div>
                 </div>

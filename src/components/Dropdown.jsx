@@ -18,10 +18,10 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
       id: 'technology',
       title: "Technology",
       items: [
-        { name: "Business Phone Systems", link: "/Technology-main/Business-phone-systems" },
-        { name: "GPS Fleet Management Software", link: "/Technology-main/Gps-fleet-management-software" },
-        { name: "Best Employee Management Software", link: "/Technology-main/Best-employee-management-software" },
-        { name: "Best Payroll System", link: "/Technology-main/Best-payroll-system" }
+        // { name: "Business Phone Systems", link: "/Technology/Business-phone-systems" },
+        { name: "GPS Fleet Management Software", link: "/Technology/Gps-fleet-management-software" },
+        { name: "Best Employee Management Software", link: "/Technology/Best-employee-management-software" },
+        { name: "Best Payroll System", link: "/Technology/Best-payroll-system" }
       ]
     },
     
@@ -38,17 +38,17 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
       id: 'blog',
       title: "Resources",
       items: [
-        { name: "WhitePaper", link: "#" },
-        { name: "Blogs", link: "#" }
+        // { name: "WhitePaper", link: "#" },
+        { name: "Blogs", link: "https://blogs.compare-bazaar.com/" }
       ]
     },
     {
       id: 'contact',
       title: "Contact Us",
       items: [
-        { name: "Contact", link: "#" },
-        { name: "About us", link: "#" },
-        { name: "Careers", link: "#" }
+        { name: "Contact", link: "/Contact-us/Contact" },
+        { name: "About us", link: "/Contact-us/About-us" },
+        { name: "Careers", link: "/Contact-us/Careers" }
       ]
     }
   ];

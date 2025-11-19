@@ -65,21 +65,21 @@ const Technology = () => {
           description: "Modern VoIP solutions that provide crystal-clear call quality, advanced features, and seamless integration with your business applications.",
           features: ["Cloud-based PBX", "Auto-attendant", "Call routing", "Conference calling", "Mobile integration"],
           icon: Smartphone,
-          link: "/Technology-main/Business-phone-systems"
+          link: "/Technology/Business-phone-systems"
         },
         {
           title: "GPS Fleet Management",
           description: "Real-time tracking and analytics to optimize your fleet operations, reduce costs, and improve customer service with precise location data.",
           features: ["Real-time tracking", "Route optimization", "Driver behavior monitoring", "Maintenance alerts", "Fuel management"],
           icon: Wifi,
-          link: "/Technology-main/Gps-fleet-management-software"
+          link: "/Technology/Gps-fleet-management-software"
         },
         {
           title: "Employee Management Software",
           description: "Comprehensive workforce solutions that streamline scheduling, time tracking, and performance management for businesses of all sizes.",
           features: ["Time & attendance", "Scheduling", "Task management", "Performance tracking", "Payroll integration"],
           icon: HardDrive,
-          link: "/Technology-main/Best-employee-management-software"
+          link: "/Technology/Best-employee-management-software"
         },
         {
           "title": "Best CRM Software",
