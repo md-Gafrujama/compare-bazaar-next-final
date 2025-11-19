@@ -1697,8 +1697,9 @@ return (
                     </p>
 
                     <p className="text-gray-700 leading-relaxed mb-6">
-                     Several types of businesses can benefit from GPS fleet management:{" "}
-                    <ul className="space-y-3 text-gray-700">
+                     Several types of businesses can benefit from GPS fleet management:
+                    </p>
+                    <ul className="space-y-3 text-gray-700 mb-6">
         <li className="flex items-start">
           <span className="text-black font-bold mr-2 mt-1">•</span>
           <span className="text-lg">
@@ -1734,7 +1735,6 @@ return (
           </span>
         </li>
       </ul>
-                 </p>
 
                   
 
