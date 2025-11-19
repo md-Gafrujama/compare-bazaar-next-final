@@ -168,14 +168,16 @@ const Home = () => {
 
   // Number of logos to show at once
   const getLogosPerScreen = (screenWidth) => {
-    if (!screenWidth) screenWidth = width || window.innerWidth;
+    if (!screenWidth) {
+      screenWidth = width || (typeof window !== 'undefined' ? window.innerWidth : 1024);
+    }
     
     if (screenWidth < 640) return 1;
     if (screenWidth < 1024) return 3;
     return 6;
   };
 
-  const logosPerScreen = getLogosPerScreen();
+  const logosPerScreen = isMounted ? getLogosPerScreen() : 3; // Default to 3 during SSR
   
   const getVisibleLogos = () => {
     return clients.slice(activeIndex, activeIndex + logosPerScreen);
@@ -429,12 +431,12 @@ const Home = () => {
                         transform: 'perspective(1800px) rotateX(8deg) rotateY(-8deg)'
                       }}
                       onMouseEnter={e => {
-                        if (window.innerWidth >= 1024) {
+                        if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
                           e.currentTarget.style.transform = 'perspective(1800px) rotateX(0deg) rotateY(0deg) scale(1.05)';
                         }
                       }}
                       onMouseLeave={e => {
-                        if (window.innerWidth >= 1024) {
+                        if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
                           e.currentTarget.style.transform = 'perspective(1800px) rotateX(8deg) rotateY(-8deg)';
                         }
                       }}
