@@ -15,7 +15,7 @@ const CRMProductCard = ({ product }) => {
             <div className="flex-shrink-0">
               <Image
                 src={product.image}
-                alt={product.alt}
+                alt={product.alt || `${product.title} Logo`}
                 width={80}
                 height={80}
                 className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
@@ -47,7 +47,7 @@ const CRMProductCard = ({ product }) => {
         </div>
 
         {/* Good For Section */}
-        {product.goodFor && (
+        {product.goodFor && product.goodFor.length > 0 && (
           <div className="mb-6 sm:mb-8">
             <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-sm sm:text-base md:text-lg">
               <span className="font-semibold text-gray-700">Good for:</span>
@@ -64,20 +64,24 @@ const CRMProductCard = ({ product }) => {
         )}
 
         {/* Description Section */}
-        <div className="mb-6 sm:mb-8">
-          <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
-            {product.description}
-          </p>
+        {product.description && (
+          <div className="mb-6 sm:mb-8">
+            <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+              {product.description}
+            </p>
+          </div>
+        )}
 
-          {product.learnMoreLink && (
+        {product.learnMoreLink && (
+          <div className="mb-6 sm:mb-8">
             <Link
               href={product.learnMoreLink}
               className="text-sm sm:text-base md:text-lg text-orange-600 hover:text-orange-800 hover:underline transition-colors duration-200 font-semibold"
             >
               Learn More About {product.title}
             </Link>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Visit Website Button */}
         <div className="flex justify-end">

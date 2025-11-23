@@ -1,0 +1,141 @@
+export const crmProducts = [
+  {
+    id: "1crm",
+    title: "1CRM",
+    image: "/images/1CRM.png",
+    alt: "1CRM Logo",
+    goodFor: [
+      "Medium (250-999 Employees)",
+      "Enterprise (5,000+ Employees)",
+      "Large (1,000-4,999 Employees)",
+    ],
+    description:
+      "Founded in 1997 and headquartered in Victoria, Canada, 1CRM develops an eponymous customer relationship management (CRM) tool. The 1CRM system helps its clients provide better online information to their customers while streamlining internal business processes and improving their cost model. 1CRM offers both an on-premise solution and a cloud-based service",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.1crm.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "4degrees",
+    title: "4Degrees",
+    image: "/images/4Degrees.png",
+    alt: "4Degrees Logo",
+    goodFor: ["Any company size"],
+    description:
+      "4Degrees is a cloud-based customer relationship management (CRM) solution, which helps businesses leverage their relationships. 4Degrees integrates into email, calendar, and a number of third party data sources to automatically populate a team's relationship network, minimize data entry about the people and companies in that network, and suggests ways to engage that network over time.",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.4degrees.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "aarialife",
+    title: "Aarialife Technologies - A Zoho CRM Provider",
+    image: "/images/Aarialife.png",
+    alt: "Aarialife Technologies Logo",
+    goodFor: [
+      "Medium (250-999 Employees)",
+      "Large (1,000-4,999 Employees)",
+    ],
+    description:
+      "Aarialife is a Zoho Premium Partner and has the knowledge, skills, and competency to consult and help implement a highly-customized solution to meet various customer's business and sales automation needs, while suggesting leading practices.",
+    learnMoreLink: "/learn-more/24SevenOffice",
+    websiteUrl: "https://www.aarialife.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "accelo",
+    title: "Accelo",
+    image: "/images/accelo.png",
+    alt: "Accelo Logo",
+    goodFor: [
+      "Medium (250-999 Employees)",
+      "Large (1,000-4,999 Employees)",
+      "Small (50-249 Employees)",
+    ],
+    description:
+      "Accelo is a comprehensive Professional Services Automation (PSA) platform designed to help service organizations streamline operations, manage projects, and improve profitability. By centralizing business processes, it provides full visibility, real-time insights, and automation, helping teams deliver work more efficiently and detect issues early. Accelo supports scalability and enables growth with integrated solutions for project, client, and financial management from quote-to-cash.",
+    learnMoreLink: "/learn-more/4castplus",
+    websiteUrl: "https://www.accelo.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "affinaquest",
+    title: "5day.io",
+    image: "/images/Affinaquest.png",
+    alt: "Affinaquest Logo",
+    goodFor: [
+      "Medium (250-999 Employees)",
+      "Enterprise (5,000+ Employees)",
+      "Large (1,000-4,999 Employees)",
+    ],
+    description:
+      "Affinaquest is a full-featured customer relationship management (CRM) system built specifically for nonprofit organizations.",
+    learnMoreLink: "/learn-more/5day-io",
+    websiteUrl: "https://www.affinaquest.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "affinity",
+    title: "Affinity",
+    image: "/images/Affinity.jpg",
+    alt: "Affinity Logo",
+    goodFor: ["Any company size"],
+    description:
+      "Affinity is a relationship intelligence platform enabling teams to leverage their network and close deals. Using patent-pending technology, Affinity allows teams to manage relationships by auto-populating the pipeline and allowing introductions to decision makers.",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.affinity.co/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "agencybloc",
+    title: "AgencyBloc",
+    image: "/images/AgencyBloc.png",
+    alt: "AgencyBloc Logo",
+    goodFor: ["Any company size"],
+    description:
+      "AgencyBloc is an agency management system that helps life and health insurance agencies grow their business by organizing and automating their operations using a combination of an industry-specific CRM, commissions processing, and integrated marketing automation. AgencyBloc's mission is to provide powerful solutions by making the convoluted straightforward.",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.agencybloc.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "agentcubed",
+    title: "AgentCubed",
+    image: "/images/AgentCubed.jpg",
+    alt: "AgentCubed Logo",
+    goodFor: [
+      "Medium (250-999 Employees)",
+      "Enterprise (5,000+ Employees)",
+      "Large (1,000-4,999 Employees)",
+    ],
+    description:
+      "AgentCubed was developed as a lead management tool as well as a customer relationship management (CRM) solution for the insurance industry. It offers three different cloud-based products that cater to the needs of either agents, agencies, or call centers. AgentCubed provides free product demos, and its agency and call center solutions can be customized to the specific needs of the client depending on how many individuals will be using the system.",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.agentcubed.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "agilecrm",
+    title: "Agile CRM",
+    image: "/images/AgileCRM.png",
+    alt: "Agile CRM Logo",
+    goodFor: ["Any company size"],
+    description:
+      "With Agile CRM, it is possible to engage your sales force like never before by treating sales like a game. Features include custom leader boards, real-time alerts and advanced sales metrics. Track each and every key performance indicator (KPI) with cohort analysis, conversion reports and advanced analytics. Know your customer's profile, social presence, web activity and track every interaction through a neatly arranged timeline tracking the customer's journey",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.agilecrm.com/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+  {
+    id: "amity",
+    title: "Amity",
+    image: "/images/Amity.jpg",
+    alt: "Amity Logo",
+    goodFor: [],
+    description: "",
+    learnMoreLink: "/learn-more/zoho-projects",
+    websiteUrl: "https://www.amity.co/",
+    reviewLink: "/reviews/zoho-projects",
+  },
+];
+
