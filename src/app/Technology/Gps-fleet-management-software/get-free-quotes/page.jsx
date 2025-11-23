@@ -189,7 +189,7 @@ const GPSFleetGetQuotesForm = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-stretch">
             
             {/* Left Side - Form */}
             <div className="order-1 lg:order-1 flex">
@@ -568,20 +568,22 @@ const GPSFleetGetQuotesForm = () => {
 
                   {/* reCAPTCHA */}
                   <div className="pt-2">
-                    <div className="flex justify-start transform transition-all duration-300 hover:scale-105">
-                      <ReCAPTCHA
-                        ref={captchaRef}
-                        sitekey="6LfrmSgrAAAAAGhs0-kgqJkRnFECkHTvrRY-4dMQ"
-                        onChange={(value) => {
-                          setCaptchaValue(value);
-                          if (errors.captcha) {
-                            setErrors({
-                              ...errors,
-                              captcha: ''
-                            });
-                          }
-                        }}
-                      />
+                    <div className="flex justify-start transform transition-all duration-300 hover:scale-105 overflow-hidden">
+                      <div className="scale-90 sm:scale-100 origin-left">
+                        <ReCAPTCHA
+                          ref={captchaRef}
+                          sitekey="6LfrmSgrAAAAAGhs0-kgqJkRnFECkHTvrRY-4dMQ"
+                          onChange={(value) => {
+                            setCaptchaValue(value);
+                            if (errors.captcha) {
+                              setErrors({
+                                ...errors,
+                                captcha: ''
+                              });
+                            }
+                          }}
+                        />
+                      </div>
                     </div>
                     {errors.captcha && (
                       <p className="mt-2 text-sm text-red-600 font-medium animate-slideDown flex items-center">
@@ -639,7 +641,7 @@ const GPSFleetGetQuotesForm = () => {
 
             {/* Right Side - Product Demo/Content */}
             <div className="order-2 lg:order-2 flex">
-              <div className="sticky top-4 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col border border-gray-700 relative overflow-hidden w-full h-full custom-scrollbar">
+              <div className="lg:sticky lg:top-4 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col border border-gray-700 relative overflow-hidden w-full lg:h-full custom-scrollbar">
                 {/* Background Image with Overlay - Responsive Form/Dashboard Related */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 md:opacity-15 transition-opacity duration-300"
@@ -676,90 +678,90 @@ const GPSFleetGetQuotesForm = () => {
                         Get Free Quotes
                       </span>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-white mb-1">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">
                       Experience GPS Fleet Management
                     </h2>
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-gray-300 text-xs sm:text-sm">
                       See how our platform simplifies fleet tracking
                     </p>
                   </div>
 
                   {/* Professional Dashboard Design */}
-                  <div className="mb-4 bg-gray-900 rounded-xl p-3 shadow-2xl border border-gray-700 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl flex-1">
+                  <div className="mb-4 bg-gray-900 rounded-xl p-2 sm:p-3 shadow-2xl border border-gray-700 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl lg:flex-1">
                     {/* Browser Window Frame */}
-                    <div className="bg-gray-800 rounded-t-lg px-3 py-2 flex items-center space-x-2 border-b border-gray-700">
-                      <div className="flex space-x-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
+                    <div className="bg-gray-800 rounded-t-lg px-2 sm:px-3 py-1.5 sm:py-2 flex items-center space-x-1 sm:space-x-2 border-b border-gray-700">
+                      <div className="flex space-x-1 sm:space-x-1.5 flex-shrink-0">
+                        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500 shadow-sm"></div>
+                        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500 shadow-sm"></div>
+                        <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500 shadow-sm"></div>
                       </div>
-                      <div className="flex-1 bg-gray-700 h-6 rounded-lg border border-gray-600 ml-2 flex items-center px-3">
-                        <span className="text-[10px] text-gray-400 font-mono">fleet.compare-bazaar.com/dashboard</span>
+                      <div className="flex-1 bg-gray-700 h-5 sm:h-6 rounded-lg border border-gray-600 ml-1 sm:ml-2 flex items-center px-2 sm:px-3 min-w-0">
+                        <span className="text-[8px] sm:text-[10px] text-gray-400 font-mono truncate">fleet.compare-bazaar.com/dashboard</span>
                       </div>
                     </div>
                     
-                    <div className="bg-white rounded-b-lg overflow-hidden shadow-inner h-[calc(100%-45px)] flex flex-col">
+                    <div className="bg-white rounded-b-lg overflow-hidden shadow-inner lg:h-[calc(100%-45px)] min-h-[400px] sm:min-h-[500px] lg:min-h-0 flex flex-col">
                       {/* Professional Header */}
-                      <div className="bg-gradient-to-r from-gray-50 to-white px-4 py-3 border-b border-gray-200">
+                      <div className="bg-gradient-to-r from-gray-50 to-white px-3 sm:px-4 py-2 sm:py-3 border-b border-gray-200">
                         <div className="flex items-center justify-between">
-                          <div>
-                            <h3 className="text-xs font-bold text-gray-900 mb-0.5">GPS Fleet Management</h3>
-                            <p className="text-[10px] text-gray-500">Real-time tracking & analytics</p>
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-[10px] sm:text-xs font-bold text-gray-900 mb-0.5 truncate">GPS Fleet Management</h3>
+                            <p className="text-[9px] sm:text-[10px] text-gray-500 truncate">Real-time tracking & analytics</p>
                           </div>
-                          <div className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-[10px] font-medium text-gray-600">Live</span>
+                          <div className="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0 ml-2">
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span className="text-[9px] sm:text-[10px] font-medium text-gray-600">Live</span>
                           </div>
                         </div>
                       </div>
                       
                       {/* Main Content Area */}
-                      <div className="p-4 bg-white flex-1 flex flex-col">
+                      <div className="p-2 sm:p-3 md:p-4 bg-white flex-1 flex flex-col">
                         {/* Professional KPI Cards */}
-                        <div className="grid grid-cols-3 gap-3 mb-4">
+                        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 mb-3 sm:mb-4">
                           {/* Active Fleet Card */}
-                          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-blue-400">
-                            <div className="flex items-center justify-between mb-2">
-                              <Activity className="w-4 h-4 text-blue-100" />
-                              <span className="text-[9px] font-semibold text-blue-100 bg-blue-700/30 px-1.5 py-0.5 rounded">+3.2%</span>
+                          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-1.5 sm:p-2 md:p-3 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-blue-400">
+                            <div className="flex items-center justify-between mb-1 sm:mb-2">
+                              <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-blue-100" />
+                              <span className="text-[7px] sm:text-[8px] md:text-[9px] font-semibold text-blue-100 bg-blue-700/30 px-1 sm:px-1.5 py-0.5 rounded">+3.2%</span>
                             </div>
-                            <p className="text-lg font-bold text-white mb-0.5">98.5%</p>
-                            <p className="text-[10px] font-medium text-blue-100">Active Vehicles</p>
+                            <p className="text-sm sm:text-base md:text-lg font-bold text-white mb-0.5 leading-tight">98.5%</p>
+                            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-medium text-blue-100 leading-tight">Active Vehicles</p>
                           </div>
                           
                           {/* Efficiency Card */}
-                          <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 p-3 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-emerald-400">
-                            <div className="flex items-center justify-between mb-2">
-                              <TrendingUp className="w-4 h-4 text-emerald-100" />
-                              <span className="text-[9px] font-semibold text-emerald-100 bg-emerald-700/30 px-1.5 py-0.5 rounded">+5.8%</span>
+                          <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 p-1.5 sm:p-2 md:p-3 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-emerald-400">
+                            <div className="flex items-center justify-between mb-1 sm:mb-2">
+                              <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-100" />
+                              <span className="text-[7px] sm:text-[8px] md:text-[9px] font-semibold text-emerald-100 bg-emerald-700/30 px-1 sm:px-1.5 py-0.5 rounded">+5.8%</span>
                             </div>
-                            <p className="text-lg font-bold text-white mb-0.5">96.2%</p>
-                            <p className="text-[10px] font-medium text-emerald-100">Route Efficiency</p>
+                            <p className="text-sm sm:text-base md:text-lg font-bold text-white mb-0.5 leading-tight">96.2%</p>
+                            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-medium text-emerald-100 leading-tight">Route Efficiency</p>
                           </div>
                           
                           {/* Savings Card */}
-                          <div className="bg-gradient-to-br from-[#ff8633] to-orange-600 p-3 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-orange-400">
-                            <div className="flex items-center justify-between mb-2">
-                              <DollarSign className="w-4 h-4 text-orange-100" />
-                              <span className="text-[9px] font-semibold text-orange-100 bg-orange-700/30 px-1.5 py-0.5 rounded">+18.5%</span>
+                          <div className="bg-gradient-to-br from-[#ff8633] to-orange-600 p-1.5 sm:p-2 md:p-3 rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-orange-400">
+                            <div className="flex items-center justify-between mb-1 sm:mb-2">
+                              <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 text-orange-100" />
+                              <span className="text-[7px] sm:text-[8px] md:text-[9px] font-semibold text-orange-100 bg-orange-700/30 px-1 sm:px-1.5 py-0.5 rounded">+18.5%</span>
                             </div>
-                            <p className="text-lg font-bold text-white mb-0.5">$3.2K</p>
-                            <p className="text-[10px] font-medium text-orange-100">Monthly Savings</p>
+                            <p className="text-sm sm:text-base md:text-lg font-bold text-white mb-0.5 leading-tight">$3.2K</p>
+                            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-medium text-orange-100 leading-tight">Monthly Savings</p>
                           </div>
                         </div>
 
                         {/* Professional Map/Chart Section */}
-                        <div className="bg-gradient-to-br from-slate-50 to-gray-50 rounded-xl p-4 mb-4 border border-gray-200 shadow-inner flex-1 relative min-h-[120px] overflow-hidden">
+                        <div className="bg-gradient-to-br from-slate-50 to-gray-50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 mb-3 sm:mb-4 border border-gray-200 shadow-inner flex-1 relative min-h-[100px] sm:min-h-[120px] md:min-h-[150px] overflow-hidden">
                           {/* Map Header */}
-                          <div className="absolute top-3 left-3 right-3 z-10">
-                            <div className="flex items-center justify-between bg-white/90 backdrop-blur-sm rounded-lg px-2.5 py-1.5 border border-gray-200 shadow-sm">
-                              <div>
-                                <p className="text-[11px] font-bold text-gray-800">Live Fleet Tracking</p>
-                                <p className="text-[9px] text-gray-500">48 vehicles • 15 routes active</p>
+                          <div className="absolute top-2 sm:top-3 left-2 sm:left-3 right-2 sm:right-3 z-10">
+                            <div className="flex items-center justify-between bg-white/90 backdrop-blur-sm rounded-lg px-2 sm:px-2.5 py-1 sm:py-1.5 border border-gray-200 shadow-sm">
+                              <div className="min-w-0 flex-1">
+                                <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-gray-800 truncate">Live Fleet Tracking</p>
+                                <p className="text-[8px] sm:text-[9px] text-gray-500 truncate">48 vehicles • 15 routes active</p>
                               </div>
-                              <div className="flex items-center space-x-1.5">
-                                <div className="w-6 h-6 bg-[#ff8633] rounded-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer">
-                                  <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div className="flex items-center space-x-1 sm:space-x-1.5 flex-shrink-0 ml-2">
+                                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-[#ff8633] rounded-lg flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer">
+                                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                                   </svg>
                                 </div>
@@ -768,10 +770,10 @@ const GPSFleetGetQuotesForm = () => {
                           </div>
                           
                           {/* Map Visualization */}
-                          <div className="absolute inset-0 flex items-center justify-center pt-12">
+                          <div className="absolute inset-0 flex items-center justify-center pt-10 sm:pt-12">
                             <div className="relative w-full h-full">
                               {/* Route Lines */}
-                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150">
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid meet">
                                 <path d="M20 75 Q50 50, 80 75 T140 75" stroke="#ff8633" strokeWidth="2" fill="none" opacity="0.6" />
                                 <path d="M30 100 Q60 80, 90 100 T150 100" stroke="#3b82f6" strokeWidth="2" fill="none" opacity="0.6" />
                                 <path d="M40 50 Q70 70, 100 50 T160 50" stroke="#10b981" strokeWidth="2" fill="none" opacity="0.6" />
@@ -779,80 +781,80 @@ const GPSFleetGetQuotesForm = () => {
                               
                               {/* Vehicle Markers */}
                               <div className="absolute top-1/3 left-1/4">
-                                <div className="w-3 h-3 bg-[#ff8633] rounded-full border-2 border-white shadow-lg animate-pulse"></div>
-                                <div className="absolute -top-1 -left-1 w-5 h-5 bg-[#ff8633]/20 rounded-full animate-ping"></div>
+                                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-[#ff8633] rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                                <div className="absolute -top-0.5 -left-0.5 sm:-top-1 sm:-left-1 w-4 h-4 sm:w-5 sm:h-5 bg-[#ff8633]/20 rounded-full animate-ping"></div>
                               </div>
                               <div className="absolute top-1/2 left-1/2">
-                                <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
-                                <div className="absolute -top-1 -left-1 w-5 h-5 bg-blue-500/20 rounded-full animate-ping"></div>
+                                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                                <div className="absolute -top-0.5 -left-0.5 sm:-top-1 sm:-left-1 w-4 h-4 sm:w-5 sm:h-5 bg-blue-500/20 rounded-full animate-ping"></div>
                               </div>
                               <div className="absolute top-2/3 left-3/4">
-                                <div className="w-3 h-3 bg-emerald-500 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
-                                <div className="absolute -top-1 -left-1 w-5 h-5 bg-emerald-500/20 rounded-full animate-ping"></div>
+                                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-emerald-500 rounded-full border-2 border-white shadow-lg animate-pulse"></div>
+                                <div className="absolute -top-0.5 -left-0.5 sm:-top-1 sm:-left-1 w-4 h-4 sm:w-5 sm:h-5 bg-emerald-500/20 rounded-full animate-ping"></div>
                               </div>
                               
                               {/* Center Navigation Icon */}
                               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                <Navigation className="w-8 h-8 text-gray-300" />
+                                <Navigation className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-gray-300" />
                               </div>
                             </div>
                           </div>
                           
                           {/* Bottom Stats */}
-                          <div className="absolute bottom-3 left-3 right-3 z-10">
-                            <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-gray-200 shadow-sm">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center space-x-3">
-                                  <div className="flex items-center space-x-1.5">
-                                    <Route className="w-4 h-4 text-gray-500" />
-                                    <span className="text-[10px] font-semibold text-gray-700">15 Routes</span>
+                          <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 z-10">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-200 shadow-sm">
+                              <div className="flex items-center justify-between flex-wrap gap-1 sm:gap-0">
+                                <div className="flex items-center space-x-2 sm:space-x-3 flex-wrap">
+                                  <div className="flex items-center space-x-1 sm:space-x-1.5">
+                                    <Route className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
+                                    <span className="text-[8px] sm:text-[9px] md:text-[10px] font-semibold text-gray-700 whitespace-nowrap">15 Routes</span>
                                   </div>
-                                  <div className="w-px h-4 bg-gray-300"></div>
-                                  <div className="flex items-center space-x-1.5">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-[10px] font-semibold text-gray-700">All Active</span>
+                                  <div className="w-px h-3 sm:h-4 bg-gray-300"></div>
+                                  <div className="flex items-center space-x-1 sm:space-x-1.5">
+                                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                    <span className="text-[8px] sm:text-[9px] md:text-[10px] font-semibold text-gray-700 whitespace-nowrap">All Active</span>
                                   </div>
                                 </div>
-                                <span className="text-[10px] font-bold text-[#ff8633]">99.8% Uptime</span>
+                                <span className="text-[8px] sm:text-[9px] md:text-[10px] font-bold text-[#ff8633] whitespace-nowrap">99.8% Uptime</span>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         {/* Professional Activity Feed */}
-                        <div className="bg-white rounded-xl p-3 border border-gray-200 shadow-sm">
-                          <div className="flex items-center justify-between mb-2.5">
-                            <div className="flex items-center space-x-2">
-                              <div className="w-1 h-4 bg-[#ff8633] rounded-full"></div>
-                              <p className="text-[11px] font-bold text-gray-800">Recent Activity</p>
+                        <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 border border-gray-200 shadow-sm">
+                          <div className="flex items-center justify-between mb-2 sm:mb-2.5">
+                            <div className="flex items-center space-x-1.5 sm:space-x-2">
+                              <div className="w-0.5 sm:w-1 h-3 sm:h-4 bg-[#ff8633] rounded-full"></div>
+                              <p className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-gray-800">Recent Activity</p>
                             </div>
-                            <button className="text-[10px] font-semibold text-[#ff8633] hover:text-orange-600 transition-colors">
+                            <button className="text-[8px] sm:text-[9px] md:text-[10px] font-semibold text-[#ff8633] hover:text-orange-600 transition-colors whitespace-nowrap">
                               View All →
                             </button>
                           </div>
-                          <div className="space-y-2">
-                            <div className="flex items-start space-x-2.5 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                          <div className="space-y-1.5 sm:space-y-2">
+                            <div className="flex items-start space-x-1.5 sm:space-x-2.5 p-1.5 sm:p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full mt-1 sm:mt-1.5 flex-shrink-0"></div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-[10px] font-semibold text-gray-800">Route Completed</p>
-                                <p className="text-[9px] text-gray-600">Vehicle #12 finished delivery route in 2.3 hours</p>
-                                <p className="text-[8px] text-gray-400 mt-0.5">2 minutes ago</p>
+                                <p className="text-[9px] sm:text-[10px] font-semibold text-gray-800">Route Completed</p>
+                                <p className="text-[8px] sm:text-[9px] text-gray-600 line-clamp-2">Vehicle #12 finished delivery route in 2.3 hours</p>
+                                <p className="text-[7px] sm:text-[8px] text-gray-400 mt-0.5">2 minutes ago</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2.5 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                              <div className="w-2 h-2 bg-emerald-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <div className="flex items-start space-x-1.5 sm:space-x-2.5 p-1.5 sm:p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full mt-1 sm:mt-1.5 flex-shrink-0"></div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-[10px] font-semibold text-gray-800">Driver Assigned</p>
-                                <p className="text-[9px] text-gray-600">New driver John D. assigned to Fleet Unit #8</p>
-                                <p className="text-[8px] text-gray-400 mt-0.5">5 minutes ago</p>
+                                <p className="text-[9px] sm:text-[10px] font-semibold text-gray-800">Driver Assigned</p>
+                                <p className="text-[8px] sm:text-[9px] text-gray-600 line-clamp-2">New driver John D. assigned to Fleet Unit #8</p>
+                                <p className="text-[7px] sm:text-[8px] text-gray-400 mt-0.5">5 minutes ago</p>
                               </div>
                             </div>
-                            <div className="flex items-start space-x-2.5 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                              <div className="w-2 h-2 bg-[#ff8633] rounded-full mt-1.5 flex-shrink-0"></div>
+                            <div className="flex items-start space-x-1.5 sm:space-x-2.5 p-1.5 sm:p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#ff8633] rounded-full mt-1 sm:mt-1.5 flex-shrink-0"></div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-[10px] font-semibold text-gray-800">Maintenance Alert</p>
-                                <p className="text-[9px] text-gray-600">Scheduled maintenance completed for Vehicle #5</p>
-                                <p className="text-[8px] text-gray-400 mt-0.5">10 minutes ago</p>
+                                <p className="text-[9px] sm:text-[10px] font-semibold text-gray-800">Maintenance Alert</p>
+                                <p className="text-[8px] sm:text-[9px] text-gray-600 line-clamp-2">Scheduled maintenance completed for Vehicle #5</p>
+                                <p className="text-[7px] sm:text-[8px] text-gray-400 mt-0.5">10 minutes ago</p>
                               </div>
                             </div>
                           </div>
@@ -862,12 +864,12 @@ const GPSFleetGetQuotesForm = () => {
                   </div>
 
                   {/* Key Features - Compact */}
-                  <div className="mt-4 space-y-2">
-                    <h3 className="text-base font-semibold text-white mb-3 flex items-center">
-                      <Zap className="w-4 h-4 text-[#ff8633] mr-2" />
+                  <div className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
+                    <h3 className="text-sm sm:text-base font-semibold text-white mb-2 sm:mb-3 flex items-center">
+                      <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-[#ff8633] mr-1.5 sm:mr-2" />
                       Key Features
                     </h3>
-                    <div className="space-y-2">
+                    <div className="space-y-1.5 sm:space-y-2">
                       {[
                         { icon: Navigation, text: 'Real-time GPS tracking' },
                         { icon: Route, text: 'Route optimization' },
@@ -877,10 +879,10 @@ const GPSFleetGetQuotesForm = () => {
                       ].map((feature, index) => (
                         <div 
                           key={index}
-                          className="flex items-center text-gray-300 group cursor-pointer active:scale-95 hover:text-white transition-all duration-300 hover:translate-x-2 active:translate-x-1 bg-gray-800/50 rounded-lg p-2.5 hover:bg-gray-800 hover:shadow-lg hover:shadow-[#ff8633]/20 active:bg-gray-700 touch-manipulation"
+                          className="flex items-center text-gray-300 group cursor-pointer active:scale-95 hover:text-white transition-all duration-300 hover:translate-x-1 sm:hover:translate-x-2 active:translate-x-1 bg-gray-800/50 rounded-lg p-2 sm:p-2.5 hover:bg-gray-800 hover:shadow-lg hover:shadow-[#ff8633]/20 active:bg-gray-700 touch-manipulation"
                         >
-                          <feature.icon className="w-4 h-4 text-[#ff8633] mr-2 flex-shrink-0 group-hover:scale-125 group-hover:rotate-3 transition-all duration-300" />
-                          <span className="text-xs font-medium group-hover:font-semibold transition-all duration-300">{feature.text}</span>
+                          <feature.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff8633] mr-1.5 sm:mr-2 flex-shrink-0 group-hover:scale-125 group-hover:rotate-3 transition-all duration-300" />
+                          <span className="text-[10px] sm:text-xs font-medium group-hover:font-semibold transition-all duration-300">{feature.text}</span>
                         </div>
                       ))}
                     </div>
