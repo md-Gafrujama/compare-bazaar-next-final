@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { sendFormData } from './emailService';
