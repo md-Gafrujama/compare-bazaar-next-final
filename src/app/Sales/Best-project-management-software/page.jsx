@@ -668,24 +668,24 @@ const primaryColor = "#ff8633"; // Orange
       
     </div>
 
-    <div className="relative h-auto min-h-96 max-w-6xl mx-auto bg-gradient-to-br from-blue-50 to-orange-50 rounded-xl shadow-xl overflow-hidden p-3 sm:p-6 mb-6 sm:mb-10">
-  {/* Decorative elements - smaller on mobile */}
-  <div className="absolute -top-10 sm:-top-16 -right-10 sm:-right-16 w-32 sm:w-64 h-32 sm:h-64 rounded-full opacity-20" style={{ backgroundColor: secondaryColor }}></div>
-  <div className="absolute -bottom-10 sm:-bottom-20 -left-10 sm:-left-20 w-40 sm:w-80 h-40 sm:h-80 rounded-full opacity-20" style={{ backgroundColor: primaryColor }}></div>
+    <div className="relative h-auto min-h-96 w-full max-w-7xl mx-auto bg-gradient-to-br from-blue-50 to-orange-50 rounded-xl shadow-xl overflow-hidden p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 mb-6 sm:mb-10">
+  {/* Decorative elements - responsive sizes */}
+  <div className="absolute -top-10 sm:-top-16 md:-top-20 lg:-top-24 xl:-top-28 -right-10 sm:-right-16 md:-right-20 lg:-right-24 xl:-right-28 w-32 sm:w-64 md:w-80 lg:w-96 xl:w-[450px] h-32 sm:h-64 md:h-80 lg:h-96 xl:h-[450px] rounded-full opacity-20" style={{ backgroundColor: secondaryColor }}></div>
+  <div className="absolute -bottom-10 sm:-bottom-20 md:-bottom-24 lg:-bottom-32 xl:-bottom-40 -left-10 sm:-left-20 md:-left-24 lg:-left-32 xl:-left-40 w-40 sm:w-80 md:w-96 lg:w-[500px] xl:w-[600px] h-40 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-full opacity-20" style={{ backgroundColor: primaryColor }}></div>
   
-  {/* Title - smaller on mobile */}
-  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center relative z-10 mb-4 sm:mb-8" style={{ color: secondaryColor }}>
+  {/* Title - responsive sizes */}
+  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-center relative z-10 mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12 px-2 sm:px-4" style={{ color: secondaryColor }}>
     Best Project Management Software
   </h2>
   
   {/* Main content container */}
-  <div className="relative z-10 flex justify-center">
-    <div className="w-full max-w-4xl">
+  <div className="relative z-10 flex justify-center w-full">
+    <div className="w-full max-w-full md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-2 sm:px-4 md:px-6 lg:px-8">
       
       {/* Moving timeline - fully responsive */}
-      <div className="relative mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-2 sm:px-4">
+      <div className="relative mb-8 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 px-2 sm:px-4 md:px-6 lg:px-8">
         {/* Timeline bar */}
-        <div className="h-2 sm:h-3 md:h-4 bg-white bg-opacity-60 rounded-full w-full">
+        <div className="h-2 sm:h-3 md:h-4 lg:h-5 bg-white bg-opacity-60 rounded-full w-full">
           <div 
             className="h-full rounded-full transition-all duration-300"
             style={{ width: `${progress}%`, backgroundColor: primaryColor }}
@@ -693,7 +693,7 @@ const primaryColor = "#ff8633"; // Orange
         </div>
         
         {/* Timeline milestones - responsive spacing */}
-        <div className="flex justify-between mt-2 sm:mt-3 md:mt-4 px-1">
+        <div className="flex justify-between mt-2 sm:mt-3 md:mt-4 lg:mt-5 px-0 sm:px-1 md:px-2">
           {['Plan', 'Design', 'Dev', 'Test', 'Launch'].map((phase, index) => (
             <div 
               key={index} 
@@ -704,7 +704,7 @@ const primaryColor = "#ff8633"; // Orange
                 opacity: progress >= index * 25 ? 1 : 0.5
               }}
             >
-              <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md"
+              <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 rounded-full flex items-center justify-center text-white shadow-lg"
                 style={{ 
                   backgroundColor: progress >= index * 25 ? primaryColor : '#CBD5E0'
                 }}
@@ -718,68 +718,118 @@ const primaryColor = "#ff8633"; // Orange
                   <span className="text-xs font-bold hidden sm:block md:hidden">{index + 1}</span>
                 }
                 {progress >= index * 25 ? 
-                  <CheckCircle size={20} className="hidden md:block" /> :
-                  <span className="text-sm font-bold hidden md:block">{index + 1}</span>
+                  <CheckCircle size={22} className="hidden md:block lg:hidden" /> :
+                  <span className="text-sm font-bold hidden md:block lg:hidden">{index + 1}</span>
+                }
+                {progress >= index * 25 ? 
+                  <CheckCircle size={26} className="hidden lg:block xl:hidden" /> :
+                  <span className="text-base font-bold hidden lg:block xl:hidden">{index + 1}</span>
+                }
+                {progress >= index * 25 ? 
+                  <CheckCircle size={30} className="hidden xl:block" /> :
+                  <span className="text-lg font-bold hidden xl:block">{index + 1}</span>
                 }
               </div>
-              <span className="text-[10px] sm:text-xs md:text-sm font-medium mt-1.5 sm:mt-2 text-center" style={{ color: secondaryColor }}>
+              <span className="text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-medium mt-1.5 sm:mt-2 md:mt-2.5 lg:mt-3 text-center" style={{ color: secondaryColor }}>
                 {phase}
               </span>
             </div>
           ))}
         </div>
         
-        {/* Desktop/Tablet floating task cards - visible on md and larger */}
-        <div className="hidden md:block relative mt-8 lg:mt-12">
-          {[
-            { 
-              left: '2%', top: '2rem', delay: '0s', 
-              title: 'Task Planning', 
-              icon: <Calendar size={16} style={{ color: primaryColor }} />,
-              description: "Plan your project roadmap"
-            },
-            { 
-              left: '22%', top: '5rem', delay: '0.3s', 
-              title: 'Time Tracking', 
-              icon: <Clock size={16} style={{ color: primaryColor }} />,
-              description: "Track hours & deadlines"
-            },
-            { 
-              left: '52%', top: '2rem', delay: '0.6s', 
-              title: 'Team Collaboration', 
-              icon: <Users size={16} style={{ color: primaryColor }} />,
-              description: "Work together seamlessly"
-            },
-            { 
-              left: '78%', top: '5rem', delay: '0.9s', 
-              title: 'Analytics', 
-              icon: <BarChart2 size={16} style={{ color: primaryColor }} />,
-              description: "Track project metrics"
-            }
-          ].map((card, index) => (
-            <div 
-              key={index}
-              className="absolute bg-white p-3 md:p-4 rounded-lg shadow-lg border w-36 md:w-40 lg:w-44"
-              style={{
-                left: card.left,
-                top: card.top,
-                animation: `float 3s ease-in-out infinite ${card.delay}`,
-                animationFillMode: 'both',
-                borderColor: primaryColor,
-                borderWidth: '2px',
-                zIndex: 20 - index
-              }}
-            >
-              <div className="flex items-center mb-2">
-                {card.icon}
-                <span className="ml-2 text-xs md:text-sm font-bold" style={{ color: secondaryColor }}>{card.title}</span>
-              </div>
-              <div className="h-1 w-14 md:w-16 rounded mb-2" style={{ backgroundColor: primaryColor }}></div>
-              <p className="text-xs md:text-sm leading-relaxed" style={{ color: secondaryColor }}>
-                {card.description}
-              </p>
+        {/* Desktop/Tablet floating task cards - visible on md and larger with responsive positioning */}
+        <div className="hidden md:block relative mt-8 lg:mt-12 xl:mt-16 min-h-[200px] lg:min-h-[250px] xl:min-h-[300px]">
+          {/* Card 1 - Task Planning */}
+          <div 
+            className="absolute timeline-card-1 bg-white p-3 md:p-4 lg:p-5 xl:p-6 rounded-lg lg:rounded-xl shadow-lg border w-36 md:w-40 lg:w-48 xl:w-52"
+            style={{
+              animation: 'float 3s ease-in-out infinite 0s',
+              animationFillMode: 'both',
+              borderColor: primaryColor,
+              borderWidth: '2px',
+              zIndex: 20
+            }}
+          >
+            <div className="flex items-center mb-2 lg:mb-3">
+              <Calendar size={14} className="md:block lg:hidden" style={{ color: primaryColor }} />
+              <Calendar size={18} className="hidden lg:block xl:hidden" style={{ color: primaryColor }} />
+              <Calendar size={20} className="hidden xl:block" style={{ color: primaryColor }} />
+              <span className="ml-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold" style={{ color: secondaryColor }}>Task Planning</span>
             </div>
-          ))}
+            <div className="h-1 lg:h-1.5 w-14 md:w-16 lg:w-20 xl:w-24 rounded mb-2 lg:mb-3" style={{ backgroundColor: primaryColor }}></div>
+            <p className="text-xs md:text-sm lg:text-base leading-relaxed" style={{ color: secondaryColor }}>
+              Plan your project roadmap
+            </p>
+          </div>
+
+          {/* Card 2 - Time Tracking */}
+          <div 
+            className="absolute timeline-card-2 bg-white p-3 md:p-4 lg:p-5 xl:p-6 rounded-lg lg:rounded-xl shadow-lg border w-36 md:w-40 lg:w-48 xl:w-52"
+            style={{
+              animation: 'float 3s ease-in-out infinite 0.3s',
+              animationFillMode: 'both',
+              borderColor: primaryColor,
+              borderWidth: '2px',
+              zIndex: 19
+            }}
+          >
+            <div className="flex items-center mb-2 lg:mb-3">
+              <Clock size={14} className="md:block lg:hidden" style={{ color: primaryColor }} />
+              <Clock size={18} className="hidden lg:block xl:hidden" style={{ color: primaryColor }} />
+              <Clock size={20} className="hidden xl:block" style={{ color: primaryColor }} />
+              <span className="ml-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold" style={{ color: secondaryColor }}>Time Tracking</span>
+            </div>
+            <div className="h-1 lg:h-1.5 w-14 md:w-16 lg:w-20 xl:w-24 rounded mb-2 lg:mb-3" style={{ backgroundColor: primaryColor }}></div>
+            <p className="text-xs md:text-sm lg:text-base leading-relaxed" style={{ color: secondaryColor }}>
+              Track hours & deadlines
+            </p>
+          </div>
+
+          {/* Card 3 - Team Collaboration */}
+          <div 
+            className="absolute timeline-card-3 bg-white p-3 md:p-4 lg:p-5 xl:p-6 rounded-lg lg:rounded-xl shadow-lg border w-36 md:w-40 lg:w-48 xl:w-52"
+            style={{
+              animation: 'float 3s ease-in-out infinite 0.6s',
+              animationFillMode: 'both',
+              borderColor: primaryColor,
+              borderWidth: '2px',
+              zIndex: 18
+            }}
+          >
+            <div className="flex items-center mb-2 lg:mb-3">
+              <Users size={14} className="md:block lg:hidden" style={{ color: primaryColor }} />
+              <Users size={18} className="hidden lg:block xl:hidden" style={{ color: primaryColor }} />
+              <Users size={20} className="hidden xl:block" style={{ color: primaryColor }} />
+              <span className="ml-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold" style={{ color: secondaryColor }}>Team Collaboration</span>
+            </div>
+            <div className="h-1 lg:h-1.5 w-14 md:w-16 lg:w-20 xl:w-24 rounded mb-2 lg:mb-3" style={{ backgroundColor: primaryColor }}></div>
+            <p className="text-xs md:text-sm lg:text-base leading-relaxed" style={{ color: secondaryColor }}>
+              Work together seamlessly
+            </p>
+          </div>
+
+          {/* Card 4 - Analytics */}
+          <div 
+            className="absolute timeline-card-4 bg-white p-3 md:p-4 lg:p-5 xl:p-6 rounded-lg lg:rounded-xl shadow-lg border w-36 md:w-40 lg:w-48 xl:w-52"
+            style={{
+              animation: 'float 3s ease-in-out infinite 0.9s',
+              animationFillMode: 'both',
+              borderColor: primaryColor,
+              borderWidth: '2px',
+              zIndex: 17
+            }}
+          >
+            <div className="flex items-center mb-2 lg:mb-3">
+              <BarChart2 size={14} className="md:block lg:hidden" style={{ color: primaryColor }} />
+              <BarChart2 size={18} className="hidden lg:block xl:hidden" style={{ color: primaryColor }} />
+              <BarChart2 size={20} className="hidden xl:block" style={{ color: primaryColor }} />
+              <span className="ml-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold" style={{ color: secondaryColor }}>Analytics</span>
+            </div>
+            <div className="h-1 lg:h-1.5 w-14 md:w-16 lg:w-20 xl:w-24 rounded mb-2 lg:mb-3" style={{ backgroundColor: primaryColor }}></div>
+            <p className="text-xs md:text-sm lg:text-base leading-relaxed" style={{ color: secondaryColor }}>
+              Track project metrics
+            </p>
+          </div>
         </div>
         
         {/* Mobile/Tablet task cards - visible on sm and below */}
@@ -830,8 +880,8 @@ const primaryColor = "#ff8633"; // Orange
       </div>
 
      {/* Features row - fully responsive */}
-<div className="flex justify-center w-full mt-6 sm:mt-8 md:mt-10 lg:mt-12 px-2 sm:px-4">
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto">
+<div className="flex justify-center w-full mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-16 px-2 sm:px-4 md:px-6 lg:px-8">
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 w-full max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
     {[
       { percent: '85%', label: 'Productivity Increase' },
       { percent: '60%', label: 'Time Saved' },
@@ -839,15 +889,15 @@ const primaryColor = "#ff8633"; // Orange
     ].map((stat, index) => (
       <div 
         key={index} 
-        className="bg-white bg-opacity-90 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 w-full"
+        className="bg-white bg-opacity-90 backdrop-blur-sm rounded-lg sm:rounded-xl lg:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 xl:p-10 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 w-full"
         style={{
           animation: `slideUp 0.5s ease-out ${index * 0.2}s`,
           animationFillMode: 'both',
           border: `2px solid ${primaryColor}`
         }}
       >
-        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2" style={{ color: primaryColor }}>{stat.percent}</div>
-        <div className="text-xs sm:text-sm md:text-base font-medium" style={{ color: secondaryColor }}>{stat.label}</div>
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 lg:mb-3" style={{ color: primaryColor }}>{stat.percent}</div>
+        <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium" style={{ color: secondaryColor }}>{stat.label}</div>
       </div>
     ))}
   </div>
@@ -855,7 +905,7 @@ const primaryColor = "#ff8633"; // Orange
     </div>
   </div>
         
-  {/* CSS Animations */}
+  {/* CSS Animations and Responsive Positioning */}
   <style jsx>{`
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
@@ -871,6 +921,62 @@ const primaryColor = "#ff8633"; // Orange
     .text-xxs {
       font-size: 0.65rem;
       line-height: 0.75rem;
+    }
+    
+    /* Responsive card positioning for desktop/laptop */
+    .timeline-card-1 {
+      left: 0% !important;
+      top: 1.5rem !important;
+    }
+    .timeline-card-2 {
+      left: 18% !important;
+      top: 4.5rem !important;
+    }
+    .timeline-card-3 {
+      left: 48% !important;
+      top: 1.5rem !important;
+    }
+    .timeline-card-4 {
+      left: 74% !important;
+      top: 4.5rem !important;
+    }
+    
+    @media (min-width: 1024px) {
+      .timeline-card-1 {
+        left: 2% !important;
+        top: 2rem !important;
+      }
+      .timeline-card-2 {
+        left: 22% !important;
+        top: 5rem !important;
+      }
+      .timeline-card-3 {
+        left: 52% !important;
+        top: 2rem !important;
+      }
+      .timeline-card-4 {
+        left: 78% !important;
+        top: 5rem !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .timeline-card-1 {
+        left: 3% !important;
+        top: 2.5rem !important;
+      }
+      .timeline-card-2 {
+        left: 24% !important;
+        top: 6rem !important;
+      }
+      .timeline-card-3 {
+        left: 54% !important;
+        top: 2.5rem !important;
+      }
+      .timeline-card-4 {
+        left: 80% !important;
+        top: 6rem !important;
+      }
     }
   `}</style>
 </div>
