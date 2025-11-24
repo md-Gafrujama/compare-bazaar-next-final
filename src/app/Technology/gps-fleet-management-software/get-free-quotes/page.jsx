@@ -35,6 +35,11 @@ const GPSFleetGetQuotesForm = () => {
     return () => clearTimeout(timer);
   }, [showSuccess]);
 
+  // Update document title
+  useEffect(() => {
+    document.title = "Get GPS Fleet Management Quotes | Compare-Bazaar";
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({

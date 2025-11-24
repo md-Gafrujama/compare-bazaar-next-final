@@ -100,6 +100,11 @@ const BestEmail = () => {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Update document title
+  useEffect(() => {
+    document.title = "Best Email Marketing Services | Compare-Bazaar";
+  }, []);
  const toolsContent = {
   OomaOffice: {
     title: "Campaign Monitor - Best for Deliverability",
@@ -715,7 +720,7 @@ const createRipple = (event) => {
     <>
       <Head>
         <title>
-          Best Email Marketing Services | Compare Top Email Marketing Platforms | Compare-Bazaar
+          Best Email Marketing Services | Compare-Bazaar
         </title>
         <meta
           name="description"

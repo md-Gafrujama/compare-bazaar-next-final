@@ -86,6 +86,11 @@ const BestCallSoftware = () => {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Update document title
+  useEffect(() => {
+    document.title = "Best Call Center Management Software | Compare-Bazaar";
+  }, []);
  const toolsContent = {
   GoTo: {
     title: "GoTo Contact Center – Best for small businesses",
@@ -582,7 +587,7 @@ const BestCallSoftware = () => {
   return (
     <>
           <Head>
-              <title>Best Call Center Management Software | Compare Top Call Center Solutions | Compare-Bazaar</title>
+              <title>Best Call Center Management Software | Compare-Bazaar</title>
               <meta name="description" content="Find the best call center management software for your team. Compare top solutions side-by-side, explore key features, and get free, no-obligation quotes—fast, accurate, and tailored to your needs." />
               <link rel="canonical" href="https://www.compare-bazaar.com/Callcenter" />
             </Head>

@@ -84,6 +84,11 @@ const BestPayrollSystem = () => {
        }, 3000);
        return () => clearTimeout(timer);
      }, []);
+
+     // Update document title
+     useEffect(() => {
+       document.title = "Best Payroll System | Compare-Bazaar";
+     }, []);
       const toolsContent = {
   ADP: {
     title: "ADP – Best Overall Payroll Solution",
@@ -729,7 +734,7 @@ const BestPayrollSystem = () => {
   return (
     <>
     <Head>
-                  <title>Best Payroll System | Compare Top Payroll & HR Software | Compare-Bazaar</title>
+                  <title>Best Payroll System | Compare-Bazaar</title>
                   <meta name="description" content="Simplify your payroll and HR management with the right software. Compare top solutions side-by-side, get free quotes, and find a system that fits your business—no pressure, no guesswork." />
                   <link rel="canonical" href="https://www.compare-bazaar.com/BestPayrollSystem" />
                 </Head>

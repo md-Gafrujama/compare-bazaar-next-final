@@ -108,6 +108,11 @@ useEffect(() => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Update document title
+  useEffect(() => {
+    document.title = "Best Project Management Software | Compare-Bazaar";
+  }, []);
     const features = [
         {
           title: "Task and workflow management",
@@ -635,7 +640,7 @@ const primaryColor = "#ff8633"; // Orange
   return (
     <>
           <Head>
-              <title>Best Project Management Software | Compare Top Project Management Tools | Compare-Bazaar</title>
+              <title>Best Project Management Software | Compare-Bazaar</title>
               <meta name="description" content="Find the best call center management software for your team. Compare top solutions side-by-side, explore key features, and get free, no-obligation quotes—fast, accurate, and tailored to your needs." />
               <link rel="canonical" href="https://www.compare-bazaar.com/Callcenter" />
             </Head>

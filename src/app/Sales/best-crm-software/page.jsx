@@ -92,6 +92,11 @@ const BestCRMSoftware = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Update document title
+  useEffect(() => {
+    document.title = "Best CRM Software | Compare-Bazaar";
+  }, []);
+
   // Auto-open modal after 3 seconds when page loads
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -1137,7 +1142,7 @@ Pipedrive’s visual sales pipeline breathes life into deal progression, streaml
     <>
       <Head>
         <title>
-          Best CRM Software for Sales | Compare Top CRM Solutions | Compare-Bazaar
+          Best CRM Software | Compare-Bazaar
         </title>
         <meta
           name="description"

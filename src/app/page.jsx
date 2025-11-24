@@ -143,6 +143,11 @@ const Home = () => {
   ];
 
   // Handle component mounting and resizing
+  // Update document title
+  useEffect(() => {
+    document.title = "Compare-Bazaar | Compare Quotes from Top Vendors";
+  }, []);
+
   useEffect(() => {
     setIsMounted(true);
     setWidth(window.innerWidth);
@@ -277,7 +282,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Compare Bazaar : Compare Quotes from Top Vendors & Make Smarter Buying Decisions</title>
+        <title>Compare-Bazaar | Compare Quotes from Top Vendors</title>
         <meta name="description" content="Compare quotes from verified vendors with confidence at Compare-Bazaar. Save time, money, and stress with transparent comparisons you can trust." />
         <link rel="canonical" href="https://www.compare-bazaar.com/" />
       </Head>

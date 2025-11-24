@@ -158,6 +158,11 @@ const BestWebsiteBuildingPlatform= () => {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Update document title
+  useEffect(() => {
+    document.title = "Best Website Building Platform | Compare-Bazaar";
+  }, []);
   const toolsContent = {
     Wix: {
       title: "Wix – Best for beginners and small businesses",
@@ -1541,7 +1546,7 @@ const valueProps = [
 return (
   <>
     <Head>
-      <title>Best Website Building Platform | Compare Top Website Builders | Compare-Bazaar</title>
+      <title>Best Website Building Platform | Compare-Bazaar</title>
       <meta name="description" content="Compare the best website building platforms. Find the perfect website builder for your business with free quotes and side-by-side comparisons." />
       <link rel="canonical" href="https://www.compare-bazaar.com/Marketing/best-website-building-platform" />
     </Head>

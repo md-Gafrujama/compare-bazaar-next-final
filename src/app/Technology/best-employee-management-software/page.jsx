@@ -87,6 +87,11 @@ const BestEmployeeMangementSoftware = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Update document title
+  useEffect(() => {
+    document.title = "Best Employee Management Software | Compare-Bazaar";
+  }, []);
+
   const toolsContent = {
     Teramind: {
       title: "Teramind – Best for comprehensive employee monitoring",
@@ -1217,7 +1222,7 @@ const BestEmployeeMangementSoftware = () => {
   return (
     <>
       <Head>
-        <title>Best Employee Management Software | Compare Top HR Solutions | Compare-Bazaar</title>
+        <title>Best Employee Management Software | Compare-Bazaar</title>
         <meta name="description" content="Compare the best employee management software. Find HR solutions for time tracking, scheduling, and workforce management with free quotes." />
         <link rel="canonical" href="https://www.compare-bazaar.com/Technology/best-employee-management-software" />
       </Head>

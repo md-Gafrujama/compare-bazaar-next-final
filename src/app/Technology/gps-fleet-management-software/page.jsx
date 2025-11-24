@@ -44,6 +44,11 @@ const GpsFleetManagementSoftware = () => {
   const [activeTab, setActiveTab] = useState("features");
   const [showMore, setShowMore] = useState(false);
 const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Update document title
+  useEffect(() => {
+    document.title = "GPS Fleet Management Software | Compare-Bazaar";
+  }, []);
   const systems = [
     {
       name: "Azuga",
@@ -1632,7 +1637,7 @@ const additionalText = " The modern fleet management landscape has evolved signi
 return (
   <>
    <Head>
-              <title>GPS Fleet Management Software | Compare Top Fleet Tracking Solutions | Compare-Bazaar</title>
+              <title>GPS Fleet Management Software | Compare-Bazaar</title>
               <meta name="description" content="Compare top GPS fleet tracking systems side-by-side. Get free, no-obligation quotes, explore real-time tracking features, and find the best solution for your business—fast, easy, and reliable." />
               <link rel="canonical" href="https://www.compare-bazaar.com/GpsFleetMangement" />
             </Head>

@@ -91,6 +91,11 @@ const PhoneSystemsPage = () => {
      }, 3000);
      return () => clearTimeout(timer);
    }, []);
+
+   // Update document title
+   useEffect(() => {
+     document.title = "Business Phone Systems | Compare-Bazaar";
+   }, []);
    const toolsContent = {
      
  RingCentral: {
@@ -1132,7 +1137,7 @@ const PhoneSystemsPage = () => {
   return (
     <>
       <Head>
-        <title>Compare Bazaar : Compare Quotes from Top Vendors & Make Smarter Buying Decisions</title>
+        <title>Business Phone Systems | Compare-Bazaar</title>
         <meta
           name="description"
           content="Compare quotes from verified vendors with confidence at Compare-Bazaar. Save time, money, and stress with transparent comparisons you can trust."
