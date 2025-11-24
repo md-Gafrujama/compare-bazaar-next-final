@@ -735,7 +735,7 @@ const LimitTheUse = () => {
     <div className="order-2 sm:order-none transform sm:scale-100 scale-90 origin-left">
       <ReCAPTCHA
         ref={captchaRef}
-        sitekey="6LfO4RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanl2n"
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
         onChange={(value) => setCaptchaValue(value)}
       />
     </div>

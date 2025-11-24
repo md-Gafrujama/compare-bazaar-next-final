@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { sendFormData } from './emailService';
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 const WebsiteBuildingForm = ({ onClose }) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -564,7 +567,7 @@ const WebsiteBuildingForm = ({ onClose }) => {
                         <h2 className="text-base font-semibold mb-3">Please verify that you're not a robot</h2>
                         <ReCAPTCHA
                             ref={captchaRef}
-                            sitekey="6LfO4RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanl2n"
+                            siteKey={RECAPTCHA_SITE_KEY}
                             onChange={(value) => setCaptchaValue(value)}
                         />
                     </div>

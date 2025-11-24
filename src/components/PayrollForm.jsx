@@ -291,7 +291,7 @@ const PayrollForm = ({ onClose }) => {
                         <h2 className="text-base font-semibold mb-3">Please verify that you're not a robot</h2>
                         <ReCAPTCHA
                             ref={captchaRef}
-                            sitekey="6LfO4RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanl2n"
+                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             onChange={(value) => setCaptchaValue(value)}
                         />
                     </div>
