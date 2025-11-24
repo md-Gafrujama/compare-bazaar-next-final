@@ -335,20 +335,20 @@ const Home = () => {
                 
                 {/* Hero Title */}
                 <div className="relative space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 max-w-4xl">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-[1.2] sm:leading-[1.1] md:leading-[1.0] lg:leading-[0.9] tracking-tight text-left">
+                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-[1.2] sm:leading-[1.1] md:leading-[1.0] lg:leading-[0.9] tracking-tight text-left pr-16 sm:pr-0">
                     <span className="block">Empowering Decisions</span>
                     <span className="block relative">
                       Through Price & Insight.
                       <div className="absolute -bottom-1.5 sm:-bottom-2 md:-bottom-3 lg:-bottom-4 left-0 w-full h-1 sm:h-1.5 md:h-2 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 rounded-full transform origin-left scale-x-0 animate-[slideIn_1.5s_ease-out_0.5s_forwards]"></div>
                     </span>
                   </h1>
-                  <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-orange-50 font-medium sm:font-semibold max-w-4xl text-left leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-orange-50 font-medium sm:font-semibold max-w-4xl text-left leading-relaxed pr-16 sm:pr-0">
                     Compare Bazaar simplifies complex buying decisions by offering clear, side-by-side price
                     quotes from top vendors. Whether you're upgrading tech, scaling systems, or exploring new solutions, we help you compare smarter—faster, easier, and with confidence.
                   </p>
                   
                   {/* Circle animation - positioned absolutely above and on the right side above the "Empowering Decisions" text - now visible on mobile */}
-                  <div className="absolute right-2 top-[-50px] sm:right-4 sm:top-[-60px] md:right-[10px] md:top-[-90px] lg:right-0 lg:top-[-100px] xl:right-[-10px] xl:top-[-110px] 2xl:right-[-20px] 2xl:top-[-120px]">
+                  <div className="absolute right-2 top-[120px] sm:right-4 sm:top-[-60px] md:right-[10px] md:top-[-90px] lg:right-0 lg:top-[-100px] xl:right-[-10px] xl:top-[-110px] 2xl:right-[-20px] 2xl:top-[-120px] z-50">
                     {/* Outer glow ring */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-300 via-orange-400 to-amber-300 opacity-50 sm:opacity-60 blur-lg sm:blur-xl animate-pulse scale-125 sm:scale-150"></div>
                     
@@ -363,7 +363,7 @@ const Home = () => {
                     <div className="absolute top-1/2 -right-1.5 sm:-right-2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-300 rounded-full animate-ping opacity-70 sm:opacity-80" style={{ animationDelay: '1.5s' }}></div>
                     
                     {/* Main circle - responsive size */}
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 relative group cursor-pointer transform hover:rotate-[360deg] transition-transform duration-1000 mx-auto">
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20 2xl:w-24 2xl:h-24 relative group cursor-pointer transform hover:rotate-[360deg] transition-transform duration-1000 mx-auto">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 animate-spin-slow opacity-80 group-hover:opacity-100 group-hover:animate-spin-medium shadow-lg"></div>
                       <div className="absolute inset-1 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex flex-col items-center justify-center text-white shadow-inner group-hover:shadow-lg transition-all duration-300">
                         <div className="absolute top-0 left-1/4 w-1/2 h-1/3 bg-white/30 rounded-full blur-[4px] sm:blur-[6px] transform -rotate-12"></div>
