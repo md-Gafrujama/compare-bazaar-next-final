@@ -715,8 +715,7 @@ const createRipple = (event) => {
     <>
       <Head>
         <title>
-         The Best Business Email Marketing Platforms of 2025 | Free Quotes on
-          Compare-Bazaar
+          Best Email Marketing Services | Compare Top Email Marketing Platforms | Compare-Bazaar
         </title>
         <meta
           name="description"

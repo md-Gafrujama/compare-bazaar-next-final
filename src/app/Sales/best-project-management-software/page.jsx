@@ -635,7 +635,7 @@ const primaryColor = "#ff8633"; // Orange
   return (
     <>
           <Head>
-              <title>Best Call Center Management Software | Compare Features & Free Quotes – Compare-Bazaar</title>
+              <title>Best Project Management Software | Compare Top Project Management Tools | Compare-Bazaar</title>
               <meta name="description" content="Find the best call center management software for your team. Compare top solutions side-by-side, explore key features, and get free, no-obligation quotes—fast, accurate, and tailored to your needs." />
               <link rel="canonical" href="https://www.compare-bazaar.com/Callcenter" />
             </Head>

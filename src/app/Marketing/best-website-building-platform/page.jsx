@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 import PhoneSystemCardCommon from '../../../components/PhoneSystemCardCommon';
 //  import Feedback from './Feedback';
 import WebsiteBuildingForm from '../../../components/WebsiteBuildingForm';
@@ -1539,6 +1540,11 @@ const valueProps = [
 
 return (
   <>
+    <Head>
+      <title>Best Website Building Platform | Compare Top Website Builders | Compare-Bazaar</title>
+      <meta name="description" content="Compare the best website building platforms. Find the perfect website builder for your business with free quotes and side-by-side comparisons." />
+      <link rel="canonical" href="https://www.compare-bazaar.com/Marketing/best-website-building-platform" />
+    </Head>
     <div className="max-w-6xl mx-auto p-4 py-12">
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Best Website Building Platforms of 2025</h1>
