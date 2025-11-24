@@ -221,19 +221,19 @@ const Home = () => {
     { 
       name: "Best CRM Software", 
       icon: <Users />, 
-      link: "/Sales/Best-crm-software",
+      link: "/Sales/best-crm-software",
       image: "/images/crm.webp"
     },
     { 
       name: "Best Email Marketing Services", 
       icon: <Mail />, 
-      link: "/Marketing/Best-email-marketing-services",
+      link: "/Marketing/best-email-marketing-services",
       image: "/images/emailsystem.png"
     },
     { 
       name: "Best Website Building and Management Platforms", 
       icon: <Globe />, 
-      link: "/Marketing/Best-website-building-platform",
+      link: "/Marketing/best-website-building-platform",
       image: "/images/bestwebsite.webp"
     },
     { 
@@ -245,31 +245,31 @@ const Home = () => {
     { 
       name: "GPS Fleet Management Software", 
       icon: <MapPin />, 
-      link: "/Technology/Gps-fleet-management-software",
+      link: "/Technology/gps-fleet-management-software",
       image: "/images/gps-system.webp"
     },
     { 
       name: "Best Employee Management Software", 
       icon: <Users />, 
-      link: "/Technology/Best-employee-management-software",
+      link: "/Technology/best-employee-management-software",
       image: "/images/bestemploye.webp"
     },
     { 
       name: "Best Call Center Management Software", 
       icon: <Headphones />, 
-      link: "/Sales/Best-call-center-management-software",
+      link: "/Sales/best-call-center-management-software",
       image: "/images/call.webp"
     },
     { 
       name: "Best Payroll System", 
       icon: <DollarSign/>, 
-      link: "/Technology/Best-payroll-system",
+      link: "/Technology/best-payroll-system",
       image: "/images/payroll.webp"
     },
     { 
       name: "Best Project Management Software", 
       icon: <Clipboard />, 
-      link: "/Sales/Best-project-management-software",
+      link: "/Sales/best-project-management-software",
       image: "/images/bestproject.webp"
     },
   ];

@@ -32,21 +32,21 @@ const Marketing = () => {
           description: "Optimize your customer relationships with our state-of-the-art CRM software that integrates seamlessly with your existing systems. Track interactions, manage leads, and increase conversions.",
           features: ["Customer data management", "Lead tracking", "Sales forecasting", "Analytics and reporting"],
           icon: Users,
-          link: "/Marketing/Best-crm-software"
+          link: "/Marketing/best-crm-software"
         },
         {
           title: "Email Marketing Services",
           description: "Reach your audience with targeted email campaigns that drive engagement and conversions. Our email marketing services include template design, audience segmentation, and performance analytics.",
           features: ["Campaign automation", "A/B testing", "Audience segmentation", "Detailed analytics"],
           icon: Mail,
-          link: "/Marketing/Best-email-marketing-services"
+          link: "/Marketing/best-email-marketing-services"
         },
         {
           title: "Website Building Platforms",
           description: "Create a professional online presence with our intuitive website building platforms. No coding experience required - design a responsive website that converts visitors into customers.",
           features: ["Drag-and-drop editor", "Mobile optimization", "SEO tools", "Integrated analytics"],
           icon: BarChart,
-          link: "/Marketing/Best-website-building-platform"
+          link: "/Marketing/best-website-building-platform"
         },
         {
           title: "Digital Advertising Management",

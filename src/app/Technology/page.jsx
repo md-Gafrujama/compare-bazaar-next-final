@@ -72,14 +72,14 @@ const Technology = () => {
           description: "Real-time tracking and analytics to optimize your fleet operations, reduce costs, and improve customer service with precise location data.",
           features: ["Real-time tracking", "Route optimization", "Driver behavior monitoring", "Maintenance alerts", "Fuel management"],
           icon: Wifi,
-          link: "/Technology/Gps-fleet-management-software"
+          link: "/Technology/gps-fleet-management-software"
         },
         {
           title: "Employee Management Software",
           description: "Comprehensive workforce solutions that streamline scheduling, time tracking, and performance management for businesses of all sizes.",
           features: ["Time & attendance", "Scheduling", "Task management", "Performance tracking", "Payroll integration"],
           icon: HardDrive,
-          link: "/Technology/Best-employee-management-software"
+          link: "/Technology/best-employee-management-software"
         },
         {
           "title": "Best CRM Software",
@@ -92,7 +92,7 @@ const Technology = () => {
             "Integration with third-party tools (e.g., email, social media)"
           ],
           "icon": Users,
-          "link": "Marketing/Best-crm-software"
+          "link": "Marketing/best-crm-software"
         },
       ];
     

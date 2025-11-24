@@ -282,9 +282,9 @@ const Navbar = () => {
                 <div className="mobile-dropdown-content">
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
-                      <li><a href="/Marketing/Best-crm-software" className="category-item-link">Best CRM Software</a></li>
-                      <li><a href="/Marketing/Best-email-marketing-services" className="category-item-link">Best Email Marketing Services</a></li>
-                      <li><a href="/Marketing/Best-website-building-platform" className="category-item-link">Best Website Building Platform</a></li>
+                      <li><a href="/Marketing/best-crm-software" className="category-item-link">Best CRM Software</a></li>
+                      <li><a href="/Marketing/best-email-marketing-services" className="category-item-link">Best Email Marketing Services</a></li>
+                      <li><a href="/Marketing/best-website-building-platform" className="category-item-link">Best Website Building Platform</a></li>
                     </ul>
                   </div>
                 </div>
@@ -309,9 +309,9 @@ const Navbar = () => {
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
                       {/* <li><a href="/Technology/Business-phone-systems" className="category-item-link">Business Phone System</a></li> */}
-                      <li><a href="/Technology/Gps-fleet-management-software" className="category-item-link">GPS Fleet Management Software</a></li>
-                      <li><a href="/Technology/Best-employee-management-software" className="category-item-link">Best Employee Management Software</a></li>
-                      <li><a href="/Technology/Best-payroll-system" className="category-item-link">Best Payroll System</a></li>
+                      <li><a href="/Technology/gps-fleet-management-software" className="category-item-link">GPS Fleet Management Software</a></li>
+                      <li><a href="/Technology/best-employee-management-software" className="category-item-link">Best Employee Management Software</a></li>
+                      <li><a href="/Technology/best-payroll-system" className="category-item-link">Best Payroll System</a></li>
                     </ul>
                   </div>
                 </div>
@@ -335,9 +335,9 @@ const Navbar = () => {
                 <div className="mobile-dropdown-content">
                   <div className="mobile-dropdown-category">
                     <ul className="category-items">
-                      <li><a href="/Sales/Best-crm-software" className="category-item-link">Best CRM Software</a></li>
-                      <li><a href="/Sales/Best-call-center-management-software" className="category-item-link">Best Call Center Management Software</a></li>
-                      <li><a href="/Sales/Best-project-management-software" className="category-item-link">Best Project Management Software</a></li>
+                      <li><a href="/Sales/best-crm-software" className="category-item-link">Best CRM Software</a></li>
+                      <li><a href="/Sales/best-call-center-management-software" className="category-item-link">Best Call Center Management Software</a></li>
+                      <li><a href="/Sales/best-project-management-software" className="category-item-link">Best Project Management Software</a></li>
                     </ul>
                   </div>
                 </div>

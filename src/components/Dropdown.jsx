@@ -9,9 +9,9 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
       id: 'marketing',
       title: "Marketing",
       items: [
-        { name: "Best CRM Software", link: "/Marketing/Best-crm-software" },
-        { name: "Best Email Marketing Services", link: "/Marketing/Best-email-marketing-services" },
-        { name: "Best Website Building Platforms", link: "/Marketing/Best-website-building-platform" }
+        { name: "Best CRM Software", link: "/Marketing/best-crm-software" },
+        { name: "Best Email Marketing Services", link: "/Marketing/best-email-marketing-services" },
+        { name: "Best Website Building Platforms", link: "/Marketing/best-website-building-platform" }
       ]
     },
     {
@@ -19,9 +19,9 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
       title: "Technology",
       items: [
         // { name: "Business Phone Systems", link: "/Technology/Business-phone-systems" },
-        { name: "GPS Fleet Management Software", link: "/Technology/Gps-fleet-management-software" },
-        { name: "Best Employee Management Software", link: "/Technology/Best-employee-management-software" },
-        { name: "Best Payroll System", link: "/Technology/Best-payroll-system" }
+        { name: "GPS Fleet Management Software", link: "/Technology/gps-fleet-management-software" },
+        { name: "Best Employee Management Software", link: "/Technology/best-employee-management-software" },
+        { name: "Best Payroll System", link: "/Technology/best-payroll-system" }
       ]
     },
     
@@ -29,9 +29,9 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
       id: 'sales',
       title: "Sales",
       items: [
-        { name: "Best CRM Software", link: "/Sales/Best-crm-software" },
-        { name: "Best Call Center Management Software", link: "/Sales/Best-call-center-management-software" },
-        { name: "Best Project Management Software", link: "/Sales/Best-project-management-software" }
+        { name: "Best CRM Software", link: "/Sales/best-crm-software" },
+        { name: "Best Call Center Management Software", link: "/Sales/best-call-center-management-software" },
+        { name: "Best Project Management Software", link: "/Sales/best-project-management-software" }
       ]
     },
     {
