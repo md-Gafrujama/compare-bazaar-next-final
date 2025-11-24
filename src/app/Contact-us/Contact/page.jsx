@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import FAQ from '../../../components/FAQ';
 
 import NewPage from "../../../components/NewPage";
 
 const ContactPage = () => {
+    // Update document title
+    useEffect(() => {
+        document.title = "Contact Us | Compare-Bazaar";
+    }, []);
+
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
         name: '',

@@ -29,6 +29,11 @@ function CareersPage() {
   const [valuesRef, valuesInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [applicationRef, applicationInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
+  // Update document title
+  useEffect(() => {
+    document.title = "Careers | Compare-Bazaar";
+  }, []);
+
   // Job descriptions data
   const jobDescriptions = {
     "B2B Sales Executive": {

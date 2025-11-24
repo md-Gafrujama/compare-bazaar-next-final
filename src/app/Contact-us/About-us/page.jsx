@@ -121,6 +121,11 @@ const CompareBazaarHomepage = () => {
   const valuesRef = useRef(null);
   const [valuesInView, setValuesInView] = useState(false);
 
+  // Update document title
+  React.useEffect(() => {
+    document.title = "About Us | Compare-Bazaar";
+  }, []);
+
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
