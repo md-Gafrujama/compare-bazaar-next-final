@@ -225,7 +225,7 @@ const GPSFleetForm = ({ onClose }) => {
             <h2 className="text-lg font-semibold mb-3 text-gray-800">Please verify that you're not a robot</h2>
             <ReCAPTCHA
               ref={captchaRef}
-              sitekey="6Lf04RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanI2n"
+              sitekey="6LfO4RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanl2n"
               onChange={(value) => setCaptchaValue(value)}
             />
           </div>

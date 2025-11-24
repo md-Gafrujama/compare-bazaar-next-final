@@ -517,7 +517,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
     <h2 className="text-base font-semibold mb-3">Please verify that you're not a robot</h2>
     <ReCAPTCHA
       ref={captchaRef}
-      sitekey="6Lf04RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanI2n"
+      sitekey="6LfO4RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanl2n"
       onChange={(value) => setCaptchaValue(value)}
     />
   </div>
