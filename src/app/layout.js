@@ -27,9 +27,9 @@ const quicksand = Quicksand({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={quicksand.variable}>
-      <body>
+      <body className="overflow-x-hidden">
         <Navbar />
-        <main>{children}</main>
+        <main className="overflow-x-hidden max-w-full">{children}</main>
         <WideDiv />
         <Footer />
       </body>

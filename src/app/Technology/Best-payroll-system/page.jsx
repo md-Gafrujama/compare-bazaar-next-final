@@ -4,7 +4,7 @@
 import PhoneSystemCardCommon from "../../../components/PhoneSystemCardCommon";
 import Advice from "../../../components/Advice ";
 import Modal from "../../../components/Modal";
-import CRMForm from "../../../components/CRMForm";
+import PayrollForm from "../../../components/PayrollForm";
 import Article from "../../../components/ArticleLayoutCommon";
 import Head from "next/head";
 // import Feedback from './Feedback';
@@ -75,6 +75,14 @@ const BestPayrollSystem = () => {
        checkMobile();
        window.addEventListener("resize", checkMobile);
        return () => window.removeEventListener("resize", checkMobile);
+     }, []);
+
+     // Auto-open modal after 3 seconds when page loads
+     useEffect(() => {
+       const timer = setTimeout(() => {
+         setIsModalOpen(true);
+       }, 3000);
+       return () => clearTimeout(timer);
      }, []);
       const toolsContent = {
   ADP: {
@@ -1425,7 +1433,7 @@ const BestPayrollSystem = () => {
     
     
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        
+      <PayrollForm />
     </Modal>
     </>
   );

@@ -53,6 +53,13 @@ const BestEmail = () => {
   const [openItems, setOpenItems] = useState({});
   const [showMore, setShowMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const handleCompareQuotes = () => {
+    setTimeout(() => {
+      setIsModalOpen(true);
+    }, 3000);
+  };
+  
   const toggleSection = (sectionKey, labelKey = null) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -84,6 +91,14 @@ const BestEmail = () => {
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Auto-open modal after 3 seconds when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
  const toolsContent = {
   OomaOffice: {
@@ -746,7 +761,7 @@ const createRipple = (event) => {
             key={index}  
             system={system} 
             createRipple={createRipple} 
-            onCompareQuotesClick={() => setIsModalOpen(true)}
+            onCompareQuotesClick={handleCompareQuotes}
           />
         ))}
       </div>

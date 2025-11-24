@@ -8,7 +8,7 @@ import ArrowNavigation from './ArrowNavigation';
 
 const WideDiv = () => {
   return (
-    <div className="bg-white text-gray-800 py-20 font-sans">
+    <div className="bg-white text-gray-800 py-20 font-sans overflow-x-hidden w-full">
       <div className="max-w-7xl mx-auto custom-padding-margin">
         <div className="grid px-10 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5 lg:px-4 custom-padding3 custom-padding-medium">
           

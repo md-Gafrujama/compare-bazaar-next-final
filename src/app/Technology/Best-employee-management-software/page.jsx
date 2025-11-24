@@ -78,6 +78,14 @@ const BestEmployeeMangementSoftware = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Auto-open modal after 3 seconds when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const toolsContent = {
     Teramind: {
       title: "Teramind – Best for comprehensive employee monitoring",

@@ -40,7 +40,6 @@ import CRMHeroSection from "../../../components/CRM/CRMHeroSection";
 import CRMWhatIsSection from "../../../components/CRM/CRMWhatIsSection";
 import CRMRecommendationsSection from "../../../components/CRM/CRMRecommendationsSection";
 import CRMToolsDetailSection from "../../../components/CRM/CRMToolsDetailSection";
-import CRMFindNewSoftwareSection from "../../../components/CRM/CRMFindNewSoftwareSection";
 import CRMProductListSection from "../../../components/CRM/CRMProductListSection";
 import CRMKeyFeaturesSection from "../../../components/CRM/CRMKeyFeaturesSection";
 import CRMHowToChooseSection from "../../../components/CRM/CRMHowToChooseSection";
@@ -54,11 +53,6 @@ import crmData from "../../../data/crmData";
 import articles from "../../../data/crmArticles";
 
 const BestCRMSoftware = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [productSearch, setProductSearch] = useState("");
-  const [filterBy, setFilterBy] = useState("Reviews");
-  const [sortBy, setSortBy] = useState("Featured");
-  const [itemsPerPage, setItemsPerPage] = useState("10 per page");
   const [expandedSections, setExpandedSections] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
@@ -96,6 +90,14 @@ const BestCRMSoftware = () => {
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Auto-open modal after 3 seconds when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
   const toolsContent = {
     Zoho: {
@@ -1168,19 +1170,6 @@ Pipedrive’s visual sales pipeline breathes life into deal progression, streaml
               <CRMRecommendationsSection crmData={crmData} renderStars={renderStars} />
               
               <CRMToolsDetailSection toolsArray={toolsArray} openSections={openSections} toggleSection={toggleSection} />
-              
-              <CRMFindNewSoftwareSection
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                productSearch={productSearch}
-                setProductSearch={setProductSearch}
-                filterBy={filterBy}
-                setFilterBy={setFilterBy}
-                sortBy={sortBy}
-                setSortBy={setSortBy}
-                itemsPerPage={itemsPerPage}
-                setItemsPerPage={setItemsPerPage}
-              />
               
               {/* Product List Section */}
               <CRMProductListSection />

@@ -682,76 +682,84 @@ const primaryColor = "#ff8633"; // Orange
   <div className="relative z-10 flex justify-center">
     <div className="w-full max-w-4xl">
       
-      {/* Moving timeline - simplified on mobile */}
-      <div className="relative mb-12 sm:mb-20">
+      {/* Moving timeline - fully responsive */}
+      <div className="relative mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-2 sm:px-4">
         {/* Timeline bar */}
-        <div className="h-2 sm:h-3 bg-white bg-opacity-60 rounded-full w-full">
+        <div className="h-2 sm:h-3 md:h-4 bg-white bg-opacity-60 rounded-full w-full">
           <div 
             className="h-full rounded-full transition-all duration-300"
             style={{ width: `${progress}%`, backgroundColor: primaryColor }}
           ></div>
         </div>
         
-        {/* Timeline milestones - compressed on mobile */}
-        <div className="flex justify-between mt-1 sm:mt-2">
+        {/* Timeline milestones - responsive spacing */}
+        <div className="flex justify-between mt-2 sm:mt-3 md:mt-4 px-1">
           {['Plan', 'Design', 'Dev', 'Test', 'Launch'].map((phase, index) => (
             <div 
               key={index} 
-              className="flex flex-col items-center"
+              className="flex flex-col items-center flex-1"
               style={{
                 transition: 'all 0.3s ease',
                 transform: progress >= index * 25 ? 'translateY(0)' : 'translateY(5px)',
                 opacity: progress >= index * 25 ? 1 : 0.5
               }}
             >
-              <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white"
+              <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md"
                 style={{ 
                   backgroundColor: progress >= index * 25 ? primaryColor : '#CBD5E0'
                 }}
               >
                 {progress >= index * 25 ? 
-                  <CheckCircle size={10} className="sm:hidden" /> :
-                  <span className="text-xxs sm:text-xs font-bold sm:hidden">{index + 1}</span>
+                  <CheckCircle size={12} className="sm:hidden" /> :
+                  <span className="text-[10px] sm:text-xs font-bold sm:hidden">{index + 1}</span>
                 }
                 {progress >= index * 25 ? 
-                  <CheckCircle size={16} className="hidden sm:block" /> :
-                  <span className="text-xs font-bold hidden sm:block">{index + 1}</span>
+                  <CheckCircle size={18} className="hidden sm:block md:hidden" /> :
+                  <span className="text-xs font-bold hidden sm:block md:hidden">{index + 1}</span>
+                }
+                {progress >= index * 25 ? 
+                  <CheckCircle size={20} className="hidden md:block" /> :
+                  <span className="text-sm font-bold hidden md:block">{index + 1}</span>
                 }
               </div>
-              <span className="text-xxs sm:text-xs font-medium mt-1" style={{ color: secondaryColor }}>
-                {index === 2 && windowWidth < 360 ? 'Dev' : phase}
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium mt-1.5 sm:mt-2 text-center" style={{ color: secondaryColor }}>
+                {phase}
               </span>
             </div>
           ))}
         </div>
         
-        {/* Desktop floating task cards - visible only on larger screens */}
-        <div className="hidden sm:block">
+        {/* Desktop/Tablet floating task cards - visible on md and larger */}
+        <div className="hidden md:block relative mt-8 lg:mt-12">
           {[
             { 
-              left: '5%', top: '4rem', delay: '0s', 
+              left: '2%', top: '2rem', delay: '0s', 
               title: 'Task Planning', 
-              icon: <Calendar size={14} style={{ color: primaryColor }} />
+              icon: <Calendar size={16} style={{ color: primaryColor }} />,
+              description: "Plan your project roadmap"
             },
             { 
-              left: '25%', top: '7rem', delay: '0.3s', 
+              left: '22%', top: '5rem', delay: '0.3s', 
               title: 'Time Tracking', 
-              icon: <Clock size={14} style={{ color: primaryColor }} />
+              icon: <Clock size={16} style={{ color: primaryColor }} />,
+              description: "Track hours & deadlines"
             },
             { 
-              left: '55%', top: '4rem', delay: '0.6s', 
+              left: '52%', top: '2rem', delay: '0.6s', 
               title: 'Team Collaboration', 
-              icon: <Users size={14} style={{ color: primaryColor }} />
+              icon: <Users size={16} style={{ color: primaryColor }} />,
+              description: "Work together seamlessly"
             },
             { 
-              left: '80%', top: '7rem', delay: '0.9s', 
+              left: '78%', top: '5rem', delay: '0.9s', 
               title: 'Analytics', 
-              icon: <BarChart2 size={14} style={{ color: primaryColor }} />
+              icon: <BarChart2 size={16} style={{ color: primaryColor }} />,
+              description: "Track project metrics"
             }
           ].map((card, index) => (
             <div 
               key={index}
-              className="absolute bg-white p-3 rounded-lg shadow-md border w-32 sm:w-40"
+              className="absolute bg-white p-3 md:p-4 rounded-lg shadow-lg border w-36 md:w-40 lg:w-44"
               style={{
                 left: card.left,
                 top: card.top,
@@ -762,70 +770,68 @@ const primaryColor = "#ff8633"; // Orange
                 zIndex: 20 - index
               }}
             >
-              <div className="flex items-center mb-1">
+              <div className="flex items-center mb-2">
                 {card.icon}
-                <span className="ml-1 text-xs font-bold" style={{ color: secondaryColor }}>{card.title}</span>
+                <span className="ml-2 text-xs md:text-sm font-bold" style={{ color: secondaryColor }}>{card.title}</span>
               </div>
-              <div className="h-1 w-12 rounded mb-1" style={{ backgroundColor: primaryColor }}></div>
-              <p className="text-xs" style={{ color: secondaryColor }}>
-                {index === 0 && "Plan your project roadmap"}
-                {index === 1 && "Track hours & deadlines"}
-                {index === 2 && "Work together seamlessly"}
-                {index === 3 && "Track project metrics"}
+              <div className="h-1 w-14 md:w-16 rounded mb-2" style={{ backgroundColor: primaryColor }}></div>
+              <p className="text-xs md:text-sm leading-relaxed" style={{ color: secondaryColor }}>
+                {card.description}
               </p>
             </div>
           ))}
         </div>
         
-        {/* Mobile task cards - extremely compact for iPhone */}
-        <div className="sm:hidden mt-4 space-y-2 mb-6 ml-43 w-full">
+        {/* Mobile/Tablet task cards - visible on sm and below */}
+        <div className="md:hidden mt-6 sm:mt-8 space-y-3 sm:space-y-4 mb-6">
           {[
             { 
               title: 'Task Planning', 
-              icon: <Calendar size={12} style={{ color: primaryColor }} />,
+              icon: <Calendar size={16} style={{ color: primaryColor }} />,
               text: "Plan your project roadmap"
             },
             { 
               title: 'Time Tracking', 
-              icon: <Clock size={12} style={{ color: primaryColor }} />,
+              icon: <Clock size={16} style={{ color: primaryColor }} />,
               text: "Track hours & deadlines"
             },
             { 
-              title: 'Team Collab', 
-              icon: <Users size={12} style={{ color: primaryColor }} />,
+              title: 'Team Collaboration', 
+              icon: <Users size={16} style={{ color: primaryColor }} />,
               text: "Work together seamlessly"
             },
             { 
               title: 'Analytics', 
-              icon: <BarChart2 size={12} style={{ color: primaryColor }} />,
+              icon: <BarChart2 size={16} style={{ color: primaryColor }} />,
               text: "Track project metrics"
             }
           ].map((card, index) => (
             <div 
               key={index}
-              className="bg-white p-2 rounded-lg shadow-md border flex items-center"
+              className="bg-white p-3 sm:p-4 rounded-lg shadow-md border flex items-start sm:items-center"
               style={{
                 borderColor: primaryColor,
-                borderWidth: '1px',
+                borderWidth: '2px',
                 animation: `slideUp 0.5s ease-out ${index * 0.15}s`,
                 animationFillMode: 'both'
               }}
             >
-              <div className="mr-2 p-1 rounded flex-shrink-0">
+              <div className="mr-3 sm:mr-4 p-2 rounded-lg flex-shrink-0 bg-orange-50">
                 {card.icon}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-xs font-bold truncate" style={{ color: secondaryColor }}>{card.title}</div>
-                <p className="text-xs truncate" style={{ color: secondaryColor }}>{card.text}</p>
+                <div className="text-sm sm:text-base font-bold mb-1" style={{ color: secondaryColor }}>{card.title}</div>
+                <div className="h-0.5 w-12 sm:w-16 rounded mb-2" style={{ backgroundColor: primaryColor }}></div>
+                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: secondaryColor }}>{card.text}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-     {/* Features row - properly centered */}
-<div className="flex justify-center w-full mt-25 ml-43">
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-8 w-full max-w-md sm:max-w-2xl mx-auto">
+     {/* Features row - fully responsive */}
+<div className="flex justify-center w-full mt-6 sm:mt-8 md:mt-10 lg:mt-12 px-2 sm:px-4">
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto">
     {[
       { percent: '85%', label: 'Productivity Increase' },
       { percent: '60%', label: 'Time Saved' },
@@ -833,14 +839,15 @@ const primaryColor = "#ff8633"; // Orange
     ].map((stat, index) => (
       <div 
         key={index} 
-        className="bg-white bg-opacity-80 backdrop-blur-sm rounded-lg p-2 sm:p-3 text-center shadow-md w-full"
+        className="bg-white bg-opacity-90 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 w-full"
         style={{
           animation: `slideUp 0.5s ease-out ${index * 0.2}s`,
-          animationFillMode: 'both'
+          animationFillMode: 'both',
+          border: `2px solid ${primaryColor}`
         }}
       >
-        <div className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: primaryColor }}>{stat.percent}</div>
-        <div className="text-xs" style={{ color: secondaryColor }}>{stat.label}</div>
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2" style={{ color: primaryColor }}>{stat.percent}</div>
+        <div className="text-xs sm:text-sm md:text-base font-medium" style={{ color: secondaryColor }}>{stat.label}</div>
       </div>
     ))}
   </div>
