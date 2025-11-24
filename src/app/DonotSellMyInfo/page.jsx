@@ -646,7 +646,7 @@ const DonotSellMyInfo = () => {
     <div className="order-2 sm:order-none transform sm:scale-100 scale-90 origin-left">
       <ReCAPTCHA
         ref={captchaRef}
-        sitekey="6LfrmSgrAAAAAGhs0-kgqJkRnFECkHTvrRY-4dMQ"
+        sitekey="6Lf04RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanI2n"
         onChange={(value) => setCaptchaValue(value)}
       />
     </div>

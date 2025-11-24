@@ -572,7 +572,7 @@ const GPSFleetGetQuotesForm = () => {
                       <div className="scale-90 sm:scale-100 origin-left">
                         <ReCAPTCHA
                           ref={captchaRef}
-                          sitekey="6LfrmSgrAAAAAGhs0-kgqJkRnFECkHTvrRY-4dMQ"
+                          sitekey="6Lf04RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanI2n"
                           onChange={(value) => {
                             setCaptchaValue(value);
                             if (errors.captcha) {

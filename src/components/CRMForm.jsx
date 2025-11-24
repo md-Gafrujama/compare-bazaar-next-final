@@ -584,7 +584,7 @@ const CRMForm = ({ onClose }) => {
             <div className="flex justify-center mb-4">
               <ReCAPTCHA
                 ref={captchaRef}
-                sitekey="6LfrmSgrAAAAAGhs0-kgqJkRnFECkHTvrRY-4dMQ"
+                sitekey="6Lf04RYsAAAAAGXRJZNMGHbdW2MOxBCBaRRanI2n"
                 onChange={(value) => setCaptchaValue(value)}
               />
             </div>
