@@ -1275,9 +1275,9 @@ const BestEmployeeMangementSoftware = () => {
             {showMore && (
               <span className="block mt-3">
                 {additionalText} Additionally, the{" "}
-                <span className="text-orange-500 font-semibold">
+                <span className="text-orange-500 font-semibold"> <Link href="/EmployeeManagementTracking" className="hover:underline">
                   best business employee management platforms
-                </span>{" "}
+                </Link></span>{" "}
                 provide advanced capabilities such as AI-driven hiring tools,
                 employee lifecycle management, and predictive analytics to
                 optimize your workforce performance. With{" "}
