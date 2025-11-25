@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Phone, Star, CheckCircle, ArrowRight, Award } from 'lucide-react';
+import { Phone, Star, CheckCircle, ArrowRight, Award, ExternalLink } from 'lucide-react';
 
 const PhoneSystemCard = ({ system, onCompareQuotesClick }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -78,7 +78,7 @@ const PhoneSystemCard = ({ system, onCompareQuotesClick }) => {
       </div>
       
       {/* Button Section with enhanced interactivity */}
-      <div className="mt-auto flex justify-center relative z-10">
+      <div className="mt-auto flex flex-col gap-2 relative z-10">
         <button
           onClick={onCompareQuotesClick}
           onMouseEnter={() => setIsButtonHovered(true)}
@@ -96,6 +96,20 @@ const PhoneSystemCard = ({ system, onCompareQuotesClick }) => {
           <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 transform scale-x-0 group-hover/btn:scale-x-100 transition-transform origin-left duration-300"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-orange-500 to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
         </button>
+        
+        {/* Visit Site Button - Always show */}
+        <a
+          href={system.link || system.website || system.url || '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-4/5 mx-auto py-2 px-6 rounded-lg font-semibold bg-gradient-to-r from-[#ff8633] to-orange-600 hover:from-orange-600 hover:to-[#ff8633] text-white transition-all duration-300 flex items-center justify-center gap-2 group/visit shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <span className="text-sm">Visit Site</span>
+          <ExternalLink 
+            size={16} 
+            className="transition-transform duration-300 group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5" 
+          />
+        </a>
       </div>
       
       {/* Rating Indicator with enhanced styling */}

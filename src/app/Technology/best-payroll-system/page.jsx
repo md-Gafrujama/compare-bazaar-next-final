@@ -30,8 +30,10 @@ import Link from "next/link";
 import Image from "next/image";
 import TableOfContents from "../../../components/TableOfContents";
 import FAQ from "../../../components/FAQ";
+import { useRouter } from 'next/navigation';
 
 const BestPayrollSystem = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
      const [productSearch, setProductSearch] = useState("");
      const [filterBy, setFilterBy] = useState("Reviews");
@@ -773,7 +775,7 @@ const BestPayrollSystem = () => {
               key={index} 
               system={system} 
               createRipple={createRipple} 
-              onCompareQuotesClick={() => setIsModalOpen(true)}
+              onCompareQuotesClick={() => router.push('/Technology/best-payroll-system/get-free-quotes')}
             />
           ))}
         </div>

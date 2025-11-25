@@ -30,8 +30,10 @@ import Article from '../../../components/ArticleLayoutCommon';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useRouter } from 'next/navigation';
 const GpsFleetManagementSoftware = () => {
-     const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [filterBy, setFilterBy] = useState("Reviews");
   const [sortBy, setSortBy] = useState("Featured");
@@ -43,7 +45,7 @@ const GpsFleetManagementSoftware = () => {
   const [openItems, setOpenItems] = useState({});
   const [activeTab, setActiveTab] = useState("features");
   const [showMore, setShowMore] = useState(false);
-const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Update document title
   useEffect(() => {
@@ -1677,7 +1679,7 @@ return (
               key={index} 
               system={system} 
               createRipple={createRipple} 
-              onCompareQuotesClick={() => setIsModalOpen(true)}
+              onCompareQuotesClick={() => router.push('/Technology/gps-fleet-management-software/get-free-quotes')}
             />
           ))}
         </div>

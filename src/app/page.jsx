@@ -628,10 +628,12 @@ const Home = () => {
                   <div className="mt-auto">
                     <a 
                       href={tool.link}
-                      className="inline-flex items-center justify-center px-4 py-2 bg-[#ff8633] hover:bg-[#e67420] text-white font-semibold rounded-xl transition-all duration-300 shadow-sm hover:shadow gap-2 text-base"
+                      className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-gradient-to-r from-[#ff8633] to-orange-600 hover:from-orange-600 hover:to-[#ff8633] text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg gap-2 text-base transform hover:scale-[1.02] active:scale-[0.98] group/visit"
                     >
-                      Learn More
-                      <ArrowRight size={18} />
+                      <span>Visit Site</span>
+                      <svg className="w-4 h-4 transition-transform duration-300 group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                      </svg>
                     </a>
                   </div>
                 </div>

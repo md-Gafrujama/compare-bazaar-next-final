@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { useRouter } from 'next/navigation';
 
 import Employeeform from "../../../components/Employeeform";
 import Modal from "../../../components/Modal";
@@ -33,6 +34,7 @@ import Article from "../../../components/ArticleLayoutCommon";
 import TableOfContents from "../../../components/TableOfContents";
 
 const BestEmployeeMangementSoftware = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [filterBy, setFilterBy] = useState("Reviews");
@@ -1306,7 +1308,7 @@ const BestEmployeeMangementSoftware = () => {
               key={index}
               system={system}
               createRipple={createRipple}
-              onCompareQuotesClick={() => setIsModalOpen(true)}
+              onCompareQuotesClick={() => router.push('/Technology/best-employee-management-software/get-free-quotes')}
             />
           ))}
         </div>
