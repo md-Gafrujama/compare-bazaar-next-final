@@ -92,7 +92,7 @@ const BestPayrollSystem = () => {
       const toolsContent = {
   ADP: {
     title: "ADP – Best Overall Payroll Solution",
-    logo: "/images/adp.jpg",
+    logo: "/images/paylocity.png",
     button: {
       text: "Visit Website",
       link: "#",
