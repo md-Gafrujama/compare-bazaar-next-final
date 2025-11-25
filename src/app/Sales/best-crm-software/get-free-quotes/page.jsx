@@ -696,8 +696,8 @@ const CRMGetQuotesForm = () => {
                   </div>
 
                   {/* CAPTCHA */}
-                  <div className="pt-1 flex flex-col items-center justify-center w-full">
-                    <div className="flex justify-center w-full">
+                  <div className="pt-1 flex flex-col items-start w-full">
+                    <div className="flex justify-start w-full">
                       <ReCAPTCHA
                         ref={captchaRef}
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
@@ -705,7 +705,7 @@ const CRMGetQuotesForm = () => {
                       />
                     </div>
                     {errors.captcha && (
-                      <p className="mt-2 text-sm text-red-600 font-medium text-center w-full">{errors.captcha}</p>
+                      <p className="mt-2 text-sm text-red-600 font-medium text-left w-full">{errors.captcha}</p>
                     )}
                   </div>
 

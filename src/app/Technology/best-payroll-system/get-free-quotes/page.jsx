@@ -616,22 +616,34 @@ const PayrollGetQuotesForm = () => {
 
                   {/* CAPTCHA */}
                   <div className="pt-2">
-                    <ReCAPTCHA
-                      ref={captchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
-                      onChange={(value) => setCaptchaValue(value)}
-                      className="flex justify-center"
-                    />
+                    <div className="flex justify-start">
+                      <ReCAPTCHA
+                        ref={captchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                        onChange={(value) => setCaptchaValue(value)}
+                      />
+                    </div>
                     {errors.captcha && (
-                      <p className="mt-2 text-sm text-red-600 font-medium text-center">{errors.captcha}</p>
+                      <p className="mt-2 text-sm text-red-600 font-medium text-left">{errors.captcha}</p>
                     )}
+                  </div>
+
+                  {/* Consent Text */}
+                  <div className="pt-2">
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      By clicking "Get Free Quotes" below, I consent to receive from compare-bazaar.com at any time SMS text messages and I also consent to receive from compare-bazaar.com and up to five service providers at any time emails, telemarketing calls using auto-dialer, artificial voices or pre-recordings, which could result in wireless charges, at the number provided above. I understand that consent is not a condition of purchase. I also agree to the{' '}
+                      <Link href="/terms" className="text-[#ff8633] hover:underline font-semibold">Terms & Conditions</Link>
+                      {' '}and{' '}
+                      <Link href="/privacy" className="text-[#ff8633] hover:underline font-semibold">Privacy Policy</Link>
+                      , which are also linked at the bottom of the page.
+                    </p>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-6 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-bold text-lg rounded-xl hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                    className="w-full py-3 px-6 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-bold text-base rounded-xl hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 mt-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -651,90 +663,165 @@ const PayrollGetQuotesForm = () => {
 
             {/* Right Side - Dashboard/Info Panel */}
             <div className="order-2 lg:order-2 flex">
-              <div className="bg-gradient-to-br from-[#000e54] via-blue-900 to-[#000e54] rounded-3xl shadow-2xl p-6 md:p-8 lg:p-10 border border-blue-800/30 backdrop-blur-sm w-full flex flex-col h-full text-white relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#000e54] via-blue-900 to-[#000e54] rounded-3xl shadow-2xl p-4 md:p-6 lg:p-7 border border-blue-800/30 backdrop-blur-sm w-full flex flex-col h-full text-white relative overflow-hidden">
                 {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff8633]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+                <div className="absolute top-0 right-0 w-80 h-80 bg-[#ff8633]/20 rounded-full blur-3xl -mr-40 -mt-40 animate-pulse"></div>
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl -ml-40 -mb-40 animate-pulse delay-1000"></div>
+                <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-purple-500/15 rounded-full blur-2xl animate-pulse delay-500"></div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Header */}
-                  <div className="mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#ff8633] to-orange-600 rounded-2xl mb-6 shadow-lg">
-                      <DollarSign className="w-8 h-8" />
+                  <div className="mb-4">
+                    <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#ff8633] to-orange-600 rounded-2xl mb-3 shadow-lg">
+                      <DollarSign className="w-7 h-7" />
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                    <h2 className="text-xl md:text-2xl font-bold mb-2 leading-tight">
                       Why Choose Our Payroll Solutions?
                     </h2>
-                    <p className="text-blue-200 text-base leading-relaxed">
+                    <p className="text-blue-200 text-xs leading-relaxed">
                       Get matched with top-rated payroll providers that fit your business needs.
                     </p>
                   </div>
 
                   {/* Stats/Features Grid */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                      <div className="text-3xl font-bold text-[#ff8633] mb-1">500+</div>
-                      <div className="text-sm text-blue-200">Companies Served</div>
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-xl font-bold text-[#ff8633] mb-0.5">500+</div>
+                      <div className="text-xs text-blue-200">Companies Served</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                      <div className="text-3xl font-bold text-[#ff8633] mb-1">24/7</div>
-                      <div className="text-sm text-blue-200">Support Available</div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-xl font-bold text-[#ff8633] mb-0.5">24/7</div>
+                      <div className="text-xs text-blue-200">Support Available</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                      <div className="text-3xl font-bold text-[#ff8633] mb-1">99.9%</div>
-                      <div className="text-sm text-blue-200">Uptime Guarantee</div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-xl font-bold text-[#ff8633] mb-0.5">99.9%</div>
+                      <div className="text-xs text-blue-200">Uptime Guarantee</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                      <div className="text-3xl font-bold text-[#ff8633] mb-1">$50K+</div>
-                      <div className="text-sm text-blue-200">Average Savings</div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-xl font-bold text-[#ff8633] mb-0.5">$50K+</div>
+                      <div className="text-xs text-blue-200">Average Savings</div>
+                    </div>
+                  </div>
+
+                  {/* Key Benefits Section */}
+                  <div className="bg-gradient-to-r from-[#ff8633]/20 to-orange-600/20 rounded-xl p-3 mb-4 border border-[#ff8633]/30">
+                    <h3 className="text-base font-bold mb-2 text-white">Why Choose Compare Bazaar?</h3>
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ff8633]"></div>
+                        <p className="text-xs text-blue-100">Compare 30+ top payroll providers side-by-side</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ff8633]"></div>
+                        <p className="text-xs text-blue-100">Get personalized recommendations for your business size</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ff8633]"></div>
+                        <p className="text-xs text-blue-100">Free quotes with no obligation to purchase</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ff8633]"></div>
+                        <p className="text-xs text-blue-100">Expert guidance from payroll specialists</p>
+                      </div>
                     </div>
                   </div>
 
                   {/* Features List */}
-                  <div className="space-y-4 mb-8 flex-1">
+                  <div className="space-y-2 mb-4">
                     {[
-                      { icon: <Shield className="w-6 h-6" />, text: 'Tax Compliance & Filing Automated', color: 'from-green-400 to-green-600' },
-                      { icon: <Zap className="w-6 h-6" />, text: 'Automated Payroll Processing', color: 'from-yellow-400 to-orange-500' },
-                      { icon: <BarChart3 className="w-6 h-6" />, text: 'Real-time Reporting & Analytics', color: 'from-blue-400 to-blue-600' },
-                      { icon: <Clock className="w-6 h-6" />, text: 'Time & Attendance Integration', color: 'from-purple-400 to-purple-600' },
-                      { icon: <CreditCard className="w-6 h-6" />, text: 'Direct Deposit & Payment Options', color: 'from-pink-400 to-pink-600' },
-                      { icon: <FileText className="w-6 h-6" />, text: 'Comprehensive Employee Records', color: 'from-indigo-400 to-indigo-600' }
+                      { icon: <Shield className="w-4 h-4" />, text: 'Tax Compliance & Filing Automated', benefit: 'Never miss a deadline', color: 'from-green-400 to-green-600' },
+                      { icon: <Zap className="w-4 h-4" />, text: 'Automated Payroll Processing', benefit: 'Save 10+ hours weekly', color: 'from-yellow-400 to-orange-500' },
+                      { icon: <BarChart3 className="w-4 h-4" />, text: 'Real-time Reporting & Analytics', benefit: 'Live insights', color: 'from-blue-400 to-blue-600' },
+                      { icon: <Clock className="w-4 h-4" />, text: 'Time & Attendance Integration', benefit: 'Seamless tracking', color: 'from-purple-400 to-purple-600' },
+                      { icon: <CreditCard className="w-4 h-4" />, text: 'Direct Deposit Options', benefit: 'Fast payments', color: 'from-pink-400 to-pink-600' },
+                      { icon: <FileText className="w-4 h-4" />, text: 'Employee Records Management', benefit: 'All-in-one solution', color: 'from-indigo-400 to-indigo-600' }
                     ].map((feature, index) => (
                       <div 
                         key={index}
-                        className="flex items-start gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+                        className="flex items-center gap-2.5 p-2 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300"
                       >
-                        <div className={`flex-shrink-0 p-2 rounded-lg bg-gradient-to-r ${feature.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <div className={`flex-shrink-0 p-1.5 rounded-lg bg-gradient-to-r ${feature.color} shadow-lg`}>
                           {feature.icon}
                         </div>
-                        <p className="text-sm text-blue-100 leading-relaxed pt-1">{feature.text}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs text-blue-100 font-medium truncate">{feature.text}</p>
+                          <p className="text-xs text-blue-300">{feature.benefit}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Trust Badge */}
-                  <div className="mt-auto pt-6 border-t border-white/20">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex -space-x-2">
-                        {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff8633] to-orange-600 border-2 border-[#000e54] flex items-center justify-center text-sm font-bold">
-                            {String.fromCharCode(64 + i)}
-                          </div>
-                        ))}
+                  {/* Success Stories */}
+                  <div className="mb-4">
+                    <h3 className="text-base font-bold mb-2 text-white">Success Stories</h3>
+                    <div className="space-y-2">
+                      <div className="bg-white/5 rounded-lg p-2.5 border border-white/10">
+                        <p className="text-xs text-blue-200 italic mb-1">"Switched to a new payroll system in just 48 hours. The tax filing automation alone saves us 5 hours every month!"</p>
+                        <p className="text-xs text-[#ff8633] font-semibold">- Jennifer L., HR Director</p>
                       </div>
-                      <div>
-                        <div className="flex items-center gap-1 mb-1">
-                          {[1, 2, 3, 4, 5].map((i) => (
-                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          ))}
-                        </div>
-                        <p className="text-xs text-blue-300">4.9/5 from 500+ reviews</p>
+                      <div className="bg-white/5 rounded-lg p-2.5 border border-white/10">
+                        <p className="text-xs text-blue-200 italic mb-1">"The comparison tool helped us find the perfect solution for our growing team. Highly recommend Compare Bazaar!"</p>
+                        <p className="text-xs text-[#ff8633] font-semibold">- Robert K., CEO</p>
                       </div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
-                      <p className="text-xs text-blue-200 leading-relaxed">
-                        <span className="font-semibold text-white">Secure & Confidential:</span> Your information is encrypted and never shared with third parties.
-                      </p>
+                  </div>
+
+                  {/* Quick Tips */}
+                  <div className="mb-4">
+                    <h3 className="text-base font-bold mb-2 text-white">Quick Tips</h3>
+                    <div className="bg-white/5 rounded-lg p-3 border border-white/10">
+                      <div className="space-y-2">
+                        <div className="flex items-start gap-2">
+                          <Award className="w-4 h-4 text-[#ff8633] flex-shrink-0 mt-0.5" />
+                          <p className="text-xs text-blue-100">Choose a system that scales with your business growth</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <TrendingUp className="w-4 h-4 text-[#ff8633] flex-shrink-0 mt-0.5" />
+                          <p className="text-xs text-blue-100">Look for automation features to reduce manual work</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <Shield className="w-4 h-4 text-[#ff8633] flex-shrink-0 mt-0.5" />
+                          <p className="text-xs text-blue-100">Ensure tax compliance features are included</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Trust Badge */}
+                  <div className="mt-auto pt-3 border-t border-white/20">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex -space-x-2">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <div key={i} className="w-7 h-7 rounded-full bg-gradient-to-br from-[#ff8633] to-orange-600 border-2 border-[#000e54] flex items-center justify-center text-xs font-bold">
+                              {String.fromCharCode(64 + i)}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="ml-2">
+                          <div className="flex items-center gap-0.5 mb-0.5">
+                            {[1, 2, 3, 4, 5].map((i) => (
+                              <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                          <p className="text-xs text-blue-300">4.9/5 from 500+ reviews</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md rounded-xl p-2.5 border border-white/20">
+                      <div className="flex items-start gap-2">
+                        <Shield className="w-4 h-4 text-[#ff8633] flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-xs text-blue-100 leading-relaxed font-semibold mb-0.5">100% Secure & Confidential</p>
+                          <p className="text-xs text-blue-300 leading-relaxed">
+                            Your information is encrypted and never shared with third parties.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2 bg-gradient-to-r from-[#ff8633]/20 to-orange-600/20 rounded-lg p-2.5 border border-[#ff8633]/30">
+                      <p className="text-xs text-white font-semibold mb-0.5">🎯 Quick Match Guarantee</p>
+                      <p className="text-xs text-blue-100">Get matched with 3-5 perfect payroll providers within 24 hours</p>
                     </div>
                   </div>
                 </div>
