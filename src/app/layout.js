@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import WideDiv from "../components/WideDiv";
 import Footer from "../components/Footer";
+import Chatbot from "../components/Chatbot";
 
 // ✅ Metadata for multiple favicon formats
 export const metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <main className="overflow-x-hidden max-w-full">{children}</main>
         <WideDiv />
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
