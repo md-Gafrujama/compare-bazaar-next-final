@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import TableOfContents from "../../../components/TableOfContents";
+import { useRouter } from 'next/navigation';
 
 import CRMComparison from "../../../components/CRMComparison";
 
@@ -53,6 +54,7 @@ import crmData from "../../../data/crmData";
 import articles from "../../../data/crmArticles";
 
 const BestCRMSoftware = () => {
+  const router = useRouter();
   const [expandedSections, setExpandedSections] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
@@ -62,9 +64,7 @@ const BestCRMSoftware = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const handleCompareQuotes = () => {
-    setTimeout(() => {
-      setIsModalOpen(true);
-    }, 3000);
+    router.push('/Sales/best-crm-software/get-free-quotes');
   };
   
   const toggleSection = (sectionKey, labelKey = null) => {

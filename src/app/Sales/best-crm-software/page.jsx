@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import TableOfContents from "../../../components/TableOfContents";
+import { useRouter } from 'next/navigation';
 
 import CRMComparison from "../../../components/CRMComparison";
 
@@ -53,6 +54,7 @@ import crmData from "../../../data/crmData";
 import articles from "../../../data/crmArticles";
 
 const BestCRMSoftware = () => {
+  const router = useRouter();
   const [expandedSections, setExpandedSections] = useState({});
   const [isMobile, setIsMobile] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
@@ -1157,7 +1159,7 @@ Pipedrive’s visual sales pipeline breathes life into deal progression, streaml
       <CRMHeroSection
         systems={systems}
         createRipple={createRipple}
-        onCompareQuotesClick={() => setIsModalOpen(true)}
+        onCompareQuotesClick={() => router.push('/Sales/best-crm-software/get-free-quotes')}
       />
 
       <div className="min-h-screen bg-gray-50">
