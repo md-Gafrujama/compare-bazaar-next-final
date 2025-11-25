@@ -339,7 +339,7 @@ const BestPayrollSystem = () => {
      const systems = [
       {
         name: "ADP",
-        logo: "/images/adp.jpg",
+        logo: "/images/paylocity.png",
         bestFor: "Best for Large Enterprises",
         price: "$10/user/month + $50 base",
         videoCapacity: "Full-service payroll & tax filing",
@@ -591,7 +591,7 @@ const BestPayrollSystem = () => {
   {
                 id: 1,
                 name: "ADP",
-                image: "/images/adp.jpg",
+                image: "/images/paylocity.png",
                 alt: "ADP",
                 expertScore: 4.8,
                 bestFor: "Best for Large Enterprises",
@@ -908,7 +908,7 @@ const BestPayrollSystem = () => {
     <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
       <div className="flex items-center space-x-4">
         <div className="w-16 h-16 flex-shrink-0">
-          <Image src="/images/adp.jpg" alt="ADP Logo" width={64} height={64} className="w-full h-full object-contain" />
+          <Image src="/images/paylocity.png" alt="ADP Logo" width={64} height={64} className="w-full h-full object-contain" />
         </div>
         <div className="text-xl font-bold text-gray-900">
           ADP
