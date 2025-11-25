@@ -80,6 +80,7 @@ const PhoneSystemCard = ({ system, onCompareQuotesClick }) => {
       {/* Button Section with enhanced interactivity */}
       <div className="mt-auto flex flex-col gap-2 relative z-10">
         <button
+          type="button"
           onClick={onCompareQuotesClick}
           onMouseEnter={() => setIsButtonHovered(true)}
           onMouseLeave={() => setIsButtonHovered(false)}

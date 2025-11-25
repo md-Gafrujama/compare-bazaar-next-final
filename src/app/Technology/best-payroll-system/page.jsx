@@ -775,7 +775,9 @@ const BestPayrollSystem = () => {
               key={index} 
               system={system} 
               createRipple={createRipple} 
-              onCompareQuotesClick={() => router.push('/Technology/best-payroll-system/get-free-quotes')}
+              onCompareQuotesClick={() => {
+                window.location.href = '/Technology/best-payroll-system/get-free-quotes';
+              }}
             />
           ))}
         </div>

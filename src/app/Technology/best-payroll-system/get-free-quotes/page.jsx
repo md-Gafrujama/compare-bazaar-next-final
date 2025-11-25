@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Head from 'next/head';
 import Link from 'next/link';
 import { 
   CheckCircle, 
@@ -13,13 +12,9 @@ import {
   TrendingUp, 
   BarChart3, 
   Clock, 
-  Users, 
-  Building2,
   CreditCard,
   FileText,
-  Calendar,
   ArrowRight,
-  Sparkles,
   Award,
   Star
 } from 'lucide-react';
@@ -35,7 +30,6 @@ const PayrollGetQuotesForm = () => {
     employeeCount: '',
     payrollFrequency: '',
     currentSystem: '',
-    priorityFeatures: [],
     emailUpdates: false
   });
   const [errors, setErrors] = useState({});
@@ -44,10 +38,6 @@ const PayrollGetQuotesForm = () => {
   const [captchaValue, setCaptchaValue] = useState(null);
   const captchaRef = useRef(null);
   const [focusedField, setFocusedField] = useState(null);
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formProgress, setFormProgress] = useState(0);
-
-  const totalSteps = 3;
 
   useEffect(() => {
     let timer;
@@ -63,16 +53,6 @@ const PayrollGetQuotesForm = () => {
     document.title = "Get Payroll System Quotes | Compare-Bazaar";
   }, []);
 
-  // Calculate form progress
-  useEffect(() => {
-    const filledFields = Object.values(formData).filter(value => {
-      if (Array.isArray(value)) return value.length > 0;
-      return value !== '' && value !== false;
-    }).length;
-    const totalFields = Object.keys(formData).length;
-    setFormProgress(Math.round((filledFields / totalFields) * 100));
-  }, [formData]);
-
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -87,88 +67,103 @@ const PayrollGetQuotesForm = () => {
     }
   };
 
-  const handleCheckboxChange = (feature) => {
+  const handleSelectChange = (name, value) => {
     setFormData({
       ...formData,
-      priorityFeatures: formData.priorityFeatures.includes(feature)
-        ? formData.priorityFeatures.filter(f => f !== feature)
-        : [...formData.priorityFeatures, feature]
+      [name]: value
     });
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
-  const validateStep = (step) => {
+  const validateForm = () => {
     const newErrors = {};
     
-    if (step === 1) {
-      if (!formData.firstName.trim()) newErrors.firstName = 'Please complete this required field.';
-      if (!formData.lastName.trim()) newErrors.lastName = 'Please complete this required field.';
-      if (!formData.companyName.trim()) newErrors.companyName = 'Please complete this required field.';
-      if (!formData.email.trim()) {
-        newErrors.email = 'Please complete this required field.';
-      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = 'Please enter a valid email address.';
-      }
-      if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Please complete this required field.';
-      if (!formData.zipCode.trim()) {
-        newErrors.zipCode = 'Please complete this required field.';
-      } else if (!/^\d{5}$/.test(formData.zipCode)) {
-        newErrors.zipCode = 'Please enter a valid 5-digit zip code.';
-      }
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'Please complete this required field.';
     }
-    
-    if (step === 2) {
-      if (!formData.employeeCount) newErrors.employeeCount = 'Please complete this required field.';
-      if (!formData.payrollFrequency) newErrors.payrollFrequency = 'Please complete this required field.';
-      if (!formData.currentSystem) newErrors.currentSystem = 'Please complete this required field.';
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Please complete this required field.';
+    }
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = 'Please complete this required field.';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please complete this required field.';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Please complete this required field.';
+    }
+    if (!formData.zipCode.trim()) {
+      newErrors.zipCode = 'Please complete this required field.';
+    } else if (!/^\d{5}$/.test(formData.zipCode)) {
+      newErrors.zipCode = 'Please enter a valid 5-digit zip code.';
+    }
+    if (!formData.employeeCount) {
+      newErrors.employeeCount = 'Please complete this required field.';
+    }
+    if (!formData.payrollFrequency) {
+      newErrors.payrollFrequency = 'Please complete this required field.';
+    }
+    if (!formData.currentSystem) {
+      newErrors.currentSystem = 'Please complete this required field.';
+    }
+    if (!captchaValue) {
+      newErrors.captcha = 'Please verify that you\'re not a robot.';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const nextStep = () => {
-    if (validateStep(currentStep)) {
-      setCurrentStep(prev => Math.min(prev + 1, totalSteps));
-    }
-  };
-
-  const prevStep = () => {
-    setCurrentStep(prev => Math.max(prev - 1, 1));
-  };
-
-  const validateForm = () => {
-    return validateStep(1) && validateStep(2);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) {
-      setCurrentStep(1);
-      return;
-    }
-
-    if (!captchaValue) {
-      alert('Please complete the CAPTCHA verification.');
+      const firstErrorField = Object.keys(errors)[0];
+      if (firstErrorField) {
+        document.querySelector(`[name="${firstErrorField}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       return;
     }
 
     setIsSubmitting(true);
-
+    
     try {
-      const response = await fetch('/api/submit-form', {
+      const submissionData = {
+        access_key: '2dab837b-bcc7-4b78-825a-21ad5e3b7127',
+        subject: 'Payroll System Quote Request - Compare-Bazaar',
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        company_name: formData.companyName,
+        phone: formData.phoneNumber,
+        zip_code: formData.zipCode,
+        employee_count: formData.employeeCount,
+        payroll_frequency: formData.payrollFrequency,
+        current_system: formData.currentSystem,
+        email_updates: formData.emailUpdates ? 'Yes' : 'No',
+        form_source: 'Payroll System - Get Quotes (Compare-Bazaar)',
+        captcha_token: captchaValue
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          ...formData,
-          formType: 'payroll-system',
-          captcha: captchaValue
-        }),
+        body: JSON.stringify(submissionData)
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setShowSuccess(true);
         setFormData({
           firstName: '',
@@ -180,574 +175,580 @@ const PayrollGetQuotesForm = () => {
           employeeCount: '',
           payrollFrequency: '',
           currentSystem: '',
-          priorityFeatures: [],
           emailUpdates: false
         });
-        setCurrentStep(1);
+        setCaptchaValue(null);
         if (captchaRef.current) {
           captchaRef.current.reset();
         }
-        setCaptchaValue(null);
+        setErrors({});
       } else {
-        alert('There was an error submitting your form. Please try again.');
+        alert('Sorry, there was a problem submitting your information. Please try again later.');
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting your form. Please try again.');
+      console.error('Form submission error:', error);
+      alert('Sorry, there was a problem submitting your information. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const priorityFeatures = [
-    { id: 'automated-payroll', label: 'Automated Payroll Processing', icon: <Zap className="w-5 h-5" /> },
-    { id: 'tax-compliance', label: 'Tax Compliance & Filing', icon: <Shield className="w-5 h-5" /> },
-    { id: 'time-tracking', label: 'Time & Attendance Integration', icon: <Clock className="w-5 h-5" /> },
-    { id: 'benefits', label: 'Benefits Administration', icon: <Award className="w-5 h-5" /> },
-    { id: 'reporting', label: 'Advanced Reporting & Analytics', icon: <BarChart3 className="w-5 h-5" /> },
-    { id: 'mobile-access', label: 'Mobile Access & Employee Self-Service', icon: <TrendingUp className="w-5 h-5" /> }
-  ];
-
   return (
     <>
-      <Head>
-        <title>Get Payroll System Quotes | Compare-Bazaar</title>
-        <meta name="description" content="Get free quotes from top payroll system providers. Compare features, pricing, and find the perfect payroll solution for your business." />
-        <link rel="canonical" href="https://www.compare-bazaar.com/Technology/best-payroll-system/get-free-quotes" />
-      </Head>
-
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
+      {/* Main Content Section - Two Column Layout */}
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-purple-50 py-8 md:py-12 relative overflow-hidden">
         {/* Animated Background Elements */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#ff8633]/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
-
-        <div className="relative z-10">
-          {/* Header Section */}
-          <div className="bg-gradient-to-r from-[#ff8633] to-orange-600 text-white py-8 sm:py-12 shadow-lg">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-center mb-4">
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                  <DollarSign className="w-8 h-8 sm:w-10 sm:h-10" />
-                </div>
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4">
-                Get Free Payroll System Quotes
-              </h1>
-              <p className="text-lg sm:text-xl text-center text-orange-50 max-w-2xl mx-auto">
-                Compare top payroll solutions. Get matched with providers that fit your business needs in minutes.
-              </p>
-            </div>
-          </div>
-
-          {/* Benefits Cards */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 mb-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              {[
-                { icon: <Star className="w-6 h-6" />, text: 'Top-Rated Providers', color: 'from-yellow-400 to-orange-500' },
-                { icon: <Shield className="w-6 h-6" />, text: 'Secure & Compliant', color: 'from-blue-400 to-blue-600' },
-                { icon: <Zap className="w-6 h-6" />, text: 'Fast Matching', color: 'from-purple-400 to-purple-600' }
-              ].map((benefit, index) => (
-                <div 
-                  key={index}
-                  className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-all duration-300 border border-gray-100"
-                >
-                  <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${benefit.color} text-white mb-3`}>
-                    {benefit.icon}
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-stretch">
+            
+            {/* Left Side - Form */}
+            <div className="order-1 lg:order-1 flex">
+              <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 lg:p-10 border border-gray-100 backdrop-blur-sm transform transition-all duration-300 hover:shadow-3xl w-full flex flex-col h-full">
+                {/* Header Section */}
+                <div className="mb-8 pb-6 border-b border-gray-200">
+                  <div className="inline-block mb-4">
+                    <span className="bg-gradient-to-r from-[#ff8633] to-orange-600 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-md">
+                      Get Free Quotes
+                    </span>
                   </div>
-                  <p className="font-semibold text-gray-800">{benefit.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Main Form Container */}
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
-              {/* Progress Bar */}
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-b border-gray-200">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-600">Form Progress</span>
-                  <span className="text-sm font-semibold text-[#ff8633]">{formProgress}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
-                  <div 
-                    className="bg-gradient-to-r from-[#ff8633] to-orange-600 h-2.5 rounded-full transition-all duration-500 ease-out"
-                    style={{ width: `${formProgress}%` }}
-                  ></div>
-                </div>
-                <div className="flex justify-between mt-3">
-                  {[1, 2, 3].map((step) => (
-                    <div 
-                      key={step}
-                      className={`flex items-center gap-2 ${currentStep >= step ? 'text-[#ff8633]' : 'text-gray-400'}`}
-                    >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold ${
-                        currentStep >= step 
-                          ? 'bg-[#ff8633] text-white' 
-                          : 'bg-gray-200 text-gray-400'
-                      }`}>
-                        {step}
-                      </div>
-                      <span className="hidden sm:inline text-xs font-medium">
-                        {step === 1 ? 'Contact Info' : step === 2 ? 'Business Details' : 'Preferences'}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {showSuccess ? (
-                <div className="p-8 sm:p-12 text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
-                    <CheckCircle className="w-12 h-12 text-green-600" />
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                    Thank You!
-                  </h2>
-                  <p className="text-lg text-gray-600 mb-6 max-w-md mx-auto">
-                    Your request has been submitted successfully. Our team will contact you shortly with personalized quotes.
+                  <h1 className="text-2xl md:text-3xl lg:text-2xl font-bold text-gray-900 mb-4 leading-tight bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                    Simplify Your Payroll Process
+                  </h1>
+                  <p className="text-base md:text-base text-gray-600 leading-relaxed">
+                    Get matched with top-rated payroll providers. Compare features, pricing, and find the perfect solution for your business in minutes.
                   </p>
-                  <Link
-                    href="/Technology/best-payroll-system"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#ff8633] hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-300"
-                  >
-                    Return to Payroll Systems
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="p-6 sm:p-8 lg:p-12">
-                  {/* Step 1: Contact Information */}
-                  {currentStep === 1 && (
-                    <div className="space-y-6 animate-fadeIn">
-                      <div className="mb-6">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Contact Information</h2>
-                        <p className="text-gray-600">Let's start with your basic details</p>
-                      </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            First Name <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleInputChange}
-                            onFocus={() => setFocusedField('firstName')}
-                            onBlur={() => setFocusedField(null)}
-                            className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                              errors.firstName 
-                                ? 'border-red-500 focus:border-red-500' 
-                                : focusedField === 'firstName'
-                                ? 'border-[#ff8633] ring-4 ring-orange-100'
-                                : 'border-gray-300 focus:border-[#ff8633]'
-                            } focus:outline-none`}
-                            placeholder="John"
-                          />
-                          {errors.firstName && (
-                            <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>
-                          )}
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Last Name <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleInputChange}
-                            onFocus={() => setFocusedField('lastName')}
-                            onBlur={() => setFocusedField(null)}
-                            className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                              errors.lastName 
-                                ? 'border-red-500 focus:border-red-500' 
-                                : focusedField === 'lastName'
-                                ? 'border-[#ff8633] ring-4 ring-orange-100'
-                                : 'border-gray-300 focus:border-[#ff8633]'
-                            } focus:outline-none`}
-                            placeholder="Doe"
-                          />
-                          {errors.lastName && (
-                            <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>
-                          )}
+                {showSuccess && (
+                  <div className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-xl p-4 shadow-lg animate-fadeIn">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0">
+                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                          <CheckCircle className="h-5 w-5 text-white" />
                         </div>
                       </div>
+                      <div className="ml-3">
+                        <h3 className="text-base font-semibold text-green-800">Thank you!</h3>
+                        <p className="mt-1 text-sm text-green-700">
+                          Your submission has been received. We will get back to you soon with your free quotes.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Company Name <span className="text-red-500">*</span>
-                        </label>
+                <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
+                  {/* First Name and Last Name in One Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="group">
+                      <label htmlFor="firstName" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                        First Name <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
                         <input
                           type="text"
-                          name="companyName"
-                          value={formData.companyName}
+                          id="firstName"
+                          name="firstName"
+                          value={formData.firstName}
                           onChange={handleInputChange}
-                          onFocus={() => setFocusedField('companyName')}
+                          onFocus={() => setFocusedField('firstName')}
                           onBlur={() => setFocusedField(null)}
-                          className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                            errors.companyName 
-                              ? 'border-red-500 focus:border-red-500' 
-                              : focusedField === 'companyName'
-                              ? 'border-[#ff8633] ring-4 ring-orange-100'
-                              : 'border-gray-300 focus:border-[#ff8633]'
-                          } focus:outline-none`}
-                          placeholder="Your Company Inc."
+                          className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                            bg-white transition-all duration-300 ease-in-out
+                            focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                            hover:border-gray-400 hover:shadow-md
+                            ${errors.firstName 
+                              ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                              : 'border-gray-300'
+                            }
+                            ${focusedField === 'firstName' ? 'shadow-lg scale-[1.01]' : ''}
+                          `}
+                          placeholder="John"
                         />
-                        {errors.companyName && (
-                          <p className="mt-1 text-sm text-red-500">{errors.companyName}</p>
+                        {focusedField === 'firstName' && !errors.firstName && (
+                          <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
                         )}
                       </div>
+                      {errors.firstName && (
+                        <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                          <span className="mr-1">⚠</span> {errors.firstName}
+                        </p>
+                      )}
+                    </div>
 
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Email Address <span className="text-red-500">*</span>
-                        </label>
+                    <div className="group">
+                      <label htmlFor="lastName" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                        Last Name <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
                         <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
+                          type="text"
+                          id="lastName"
+                          name="lastName"
+                          value={formData.lastName}
                           onChange={handleInputChange}
-                          onFocus={() => setFocusedField('email')}
+                          onFocus={() => setFocusedField('lastName')}
                           onBlur={() => setFocusedField(null)}
-                          className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                            errors.email 
-                              ? 'border-red-500 focus:border-red-500' 
-                              : focusedField === 'email'
-                              ? 'border-[#ff8633] ring-4 ring-orange-100'
-                              : 'border-gray-300 focus:border-[#ff8633]'
-                          } focus:outline-none`}
-                          placeholder="john.doe@company.com"
+                          className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                            bg-white transition-all duration-300 ease-in-out
+                            focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                            hover:border-gray-400 hover:shadow-md
+                            ${errors.lastName 
+                              ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                              : 'border-gray-300'
+                            }
+                            ${focusedField === 'lastName' ? 'shadow-lg scale-[1.01]' : ''}
+                          `}
+                          placeholder="Doe"
                         />
-                        {errors.email && (
-                          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                        {focusedField === 'lastName' && !errors.lastName && (
+                          <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
                         )}
                       </div>
+                      {errors.lastName && (
+                        <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                          <span className="mr-1">⚠</span> {errors.lastName}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Phone Number <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="tel"
-                            name="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleInputChange}
-                            onFocus={() => setFocusedField('phoneNumber')}
-                            onBlur={() => setFocusedField(null)}
-                            className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                              errors.phoneNumber 
-                                ? 'border-red-500 focus:border-red-500' 
-                                : focusedField === 'phoneNumber'
-                                ? 'border-[#ff8633] ring-4 ring-orange-100'
-                                : 'border-gray-300 focus:border-[#ff8633]'
-                            } focus:outline-none`}
-                            placeholder="(555) 123-4567"
-                          />
-                          {errors.phoneNumber && (
-                            <p className="mt-1 text-sm text-red-500">{errors.phoneNumber}</p>
-                          )}
-                        </div>
+                  {/* Company Name */}
+                  <div className="group">
+                    <label htmlFor="companyName" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                      Company Name <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        id="companyName"
+                        name="companyName"
+                        value={formData.companyName}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('companyName')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                          bg-white transition-all duration-300 ease-in-out
+                          focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                          hover:border-gray-400 hover:shadow-md
+                          ${errors.companyName 
+                            ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                            : 'border-gray-300'
+                          }
+                          ${focusedField === 'companyName' ? 'shadow-lg scale-[1.01]' : ''}
+                        `}
+                        placeholder="Enter your company name"
+                      />
+                      {focusedField === 'companyName' && !errors.companyName && (
+                        <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
+                      )}
+                    </div>
+                    {errors.companyName && (
+                      <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                        <span className="mr-1">⚠</span> {errors.companyName}
+                      </p>
+                    )}
+                  </div>
 
-                        <div>
-                          <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Zip Code <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            name="zipCode"
-                            value={formData.zipCode}
-                            onChange={handleInputChange}
-                            onFocus={() => setFocusedField('zipCode')}
-                            onBlur={() => setFocusedField(null)}
-                            maxLength="5"
-                            className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                              errors.zipCode 
-                                ? 'border-red-500 focus:border-red-500' 
-                                : focusedField === 'zipCode'
-                                ? 'border-[#ff8633] ring-4 ring-orange-100'
-                                : 'border-gray-300 focus:border-[#ff8633]'
-                            } focus:outline-none`}
-                            placeholder="12345"
-                          />
-                          {errors.zipCode && (
-                            <p className="mt-1 text-sm text-red-500">{errors.zipCode}</p>
-                          )}
-                        </div>
+                  {/* Business Email */}
+                  <div className="group">
+                    <label htmlFor="email" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                      Business Email <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('email')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                          bg-white transition-all duration-300 ease-in-out
+                          focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                          hover:border-gray-400 hover:shadow-md
+                          ${errors.email 
+                            ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                            : 'border-gray-300'
+                          }
+                          ${focusedField === 'email' ? 'shadow-lg scale-[1.01]' : ''}
+                        `}
+                        placeholder="john.doe@company.com"
+                      />
+                      {focusedField === 'email' && !errors.email && (
+                        <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
+                      )}
+                    </div>
+                    {errors.email && (
+                      <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                        <span className="mr-1">⚠</span> {errors.email}
+                      </p>
+                    )}
+                    <p className="mt-2 text-xs text-gray-500 leading-relaxed">
+                      By entering your email above, you consent to receive marketing emails from compare-bazaar.com
+                    </p>
+                  </div>
+
+                  {/* Phone Number and Zip Code in One Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="group">
+                      <label htmlFor="phoneNumber" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="tel"
+                          id="phoneNumber"
+                          name="phoneNumber"
+                          value={formData.phoneNumber}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('phoneNumber')}
+                          onBlur={() => setFocusedField(null)}
+                          className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                            bg-white transition-all duration-300 ease-in-out
+                            focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                            hover:border-gray-400 hover:shadow-md
+                            ${errors.phoneNumber 
+                              ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                              : 'border-gray-300'
+                            }
+                            ${focusedField === 'phoneNumber' ? 'shadow-lg scale-[1.01]' : ''}
+                          `}
+                          placeholder="(555) 123-4567"
+                        />
+                        {focusedField === 'phoneNumber' && !errors.phoneNumber && (
+                          <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
+                        )}
                       </div>
+                      {errors.phoneNumber && (
+                        <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                          <span className="mr-1">⚠</span> {errors.phoneNumber}
+                        </p>
+                      )}
+                    </div>
 
-                      <div className="flex justify-end pt-4">
-                        <button
-                          type="button"
-                          onClick={nextStep}
-                          className="px-8 py-3 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-                        >
-                          Next Step
-                          <ArrowRight className="w-5 h-5" />
-                        </button>
+                    <div className="group">
+                      <label htmlFor="zipCode" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                        Business Zip Code <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          id="zipCode"
+                          name="zipCode"
+                          value={formData.zipCode}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('zipCode')}
+                          onBlur={() => setFocusedField(null)}
+                          maxLength="5"
+                          className={`w-full px-4 py-3.5 border-2 rounded-xl text-gray-900 placeholder-gray-400 
+                            bg-white transition-all duration-300 ease-in-out
+                            focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                            hover:border-gray-400 hover:shadow-md
+                            ${errors.zipCode 
+                              ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                              : 'border-gray-300'
+                            }
+                            ${focusedField === 'zipCode' ? 'shadow-lg scale-[1.01]' : ''}
+                          `}
+                          placeholder="12345"
+                        />
+                        {focusedField === 'zipCode' && !errors.zipCode && (
+                          <div className="absolute inset-0 rounded-xl border-2 border-[#ff8633] pointer-events-none animate-pulse-border"></div>
+                        )}
+                      </div>
+                      {errors.zipCode && (
+                        <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                          <span className="mr-1">⚠</span> {errors.zipCode}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Number of Employees */}
+                  <div className="group">
+                    <label htmlFor="employeeCount" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                      Number of Employees <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="employeeCount"
+                        name="employeeCount"
+                        value={formData.employeeCount}
+                        onChange={(e) => handleSelectChange('employeeCount', e.target.value)}
+                        onFocus={() => setFocusedField('employeeCount')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-4 py-3.5 pr-12 border-2 rounded-xl text-gray-900 bg-white 
+                          transition-all duration-300 ease-in-out cursor-pointer
+                          focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                          hover:border-gray-400 hover:shadow-md
+                          appearance-none
+                          ${errors.employeeCount 
+                            ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                            : 'border-gray-300'
+                          }
+                          ${focusedField === 'employeeCount' ? 'shadow-lg scale-[1.01]' : ''}
+                        `}
+                      >
+                        <option value="">Select number of employees</option>
+                        <option value="1 - 10">1 - 10</option>
+                        <option value="11 - 50">11 - 50</option>
+                        <option value="51 - 200">51 - 200</option>
+                        <option value="201 - 500">201 - 500</option>
+                        <option value="500+">500+</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${focusedField === 'employeeCount' ? 'text-[#ff8633] rotate-180' : ''}`} />
                       </div>
                     </div>
-                  )}
+                    {errors.employeeCount && (
+                      <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                        <span className="mr-1">⚠</span> {errors.employeeCount}
+                      </p>
+                    )}
+                  </div>
 
-                  {/* Step 2: Business Details */}
-                  {currentStep === 2 && (
-                    <div className="space-y-6 animate-fadeIn">
-                      <div className="mb-6">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Business Details</h2>
-                        <p className="text-gray-600">Tell us about your payroll needs</p>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Number of Employees <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          name="employeeCount"
-                          value={formData.employeeCount}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField('employeeCount')}
-                          onBlur={() => setFocusedField(null)}
-                          className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                            errors.employeeCount 
-                              ? 'border-red-500 focus:border-red-500' 
-                              : focusedField === 'employeeCount'
-                              ? 'border-[#ff8633] ring-4 ring-orange-100'
-                              : 'border-gray-300 focus:border-[#ff8633]'
-                          } focus:outline-none bg-white`}
-                        >
-                          <option value="">Select employee count</option>
-                          <option value="1-10">1-10 employees</option>
-                          <option value="11-50">11-50 employees</option>
-                          <option value="51-200">51-200 employees</option>
-                          <option value="201-500">201-500 employees</option>
-                          <option value="500+">500+ employees</option>
-                        </select>
-                        {errors.employeeCount && (
-                          <p className="mt-1 text-sm text-red-500">{errors.employeeCount}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Payroll Frequency <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          name="payrollFrequency"
-                          value={formData.payrollFrequency}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField('payrollFrequency')}
-                          onBlur={() => setFocusedField(null)}
-                          className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                            errors.payrollFrequency 
-                              ? 'border-red-500 focus:border-red-500' 
-                              : focusedField === 'payrollFrequency'
-                              ? 'border-[#ff8633] ring-4 ring-orange-100'
-                              : 'border-gray-300 focus:border-[#ff8633]'
-                          } focus:outline-none bg-white`}
-                        >
-                          <option value="">Select payroll frequency</option>
-                          <option value="weekly">Weekly</option>
-                          <option value="bi-weekly">Bi-weekly</option>
-                          <option value="semi-monthly">Semi-monthly</option>
-                          <option value="monthly">Monthly</option>
-                        </select>
-                        {errors.payrollFrequency && (
-                          <p className="mt-1 text-sm text-red-500">{errors.payrollFrequency}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Current Payroll System <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          name="currentSystem"
-                          value={formData.currentSystem}
-                          onChange={handleInputChange}
-                          onFocus={() => setFocusedField('currentSystem')}
-                          onBlur={() => setFocusedField(null)}
-                          className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                            errors.currentSystem 
-                              ? 'border-red-500 focus:border-red-500' 
-                              : focusedField === 'currentSystem'
-                              ? 'border-[#ff8633] ring-4 ring-orange-100'
-                              : 'border-gray-300 focus:border-[#ff8633]'
-                          } focus:outline-none bg-white`}
-                        >
-                          <option value="">Select current system</option>
-                          <option value="manual">Manual/Spreadsheet</option>
-                          <option value="existing-software">Existing Payroll Software</option>
-                          <option value="accountant">Outsourced to Accountant</option>
-                          <option value="none">No current system</option>
-                        </select>
-                        {errors.currentSystem && (
-                          <p className="mt-1 text-sm text-red-500">{errors.currentSystem}</p>
-                        )}
-                      </div>
-
-                      <div className="flex justify-between pt-4">
-                        <button
-                          type="button"
-                          onClick={prevStep}
-                          className="px-8 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300"
-                        >
-                          Previous
-                        </button>
-                        <button
-                          type="button"
-                          onClick={nextStep}
-                          className="px-8 py-3 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-                        >
-                          Next Step
-                          <ArrowRight className="w-5 h-5" />
-                        </button>
+                  {/* Payroll Frequency */}
+                  <div className="group">
+                    <label htmlFor="payrollFrequency" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                      Payroll Frequency <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="payrollFrequency"
+                        name="payrollFrequency"
+                        value={formData.payrollFrequency}
+                        onChange={(e) => handleSelectChange('payrollFrequency', e.target.value)}
+                        onFocus={() => setFocusedField('payrollFrequency')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-4 py-3.5 pr-12 border-2 rounded-xl text-gray-900 bg-white 
+                          transition-all duration-300 ease-in-out cursor-pointer
+                          focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                          hover:border-gray-400 hover:shadow-md
+                          appearance-none
+                          ${errors.payrollFrequency 
+                            ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                            : 'border-gray-300'
+                          }
+                          ${focusedField === 'payrollFrequency' ? 'shadow-lg scale-[1.01]' : ''}
+                        `}
+                      >
+                        <option value="">Select payroll frequency</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="bi-weekly">Bi-weekly</option>
+                        <option value="semi-monthly">Semi-monthly</option>
+                        <option value="monthly">Monthly</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${focusedField === 'payrollFrequency' ? 'text-[#ff8633] rotate-180' : ''}`} />
                       </div>
                     </div>
-                  )}
+                    {errors.payrollFrequency && (
+                      <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                        <span className="mr-1">⚠</span> {errors.payrollFrequency}
+                      </p>
+                    )}
+                  </div>
 
-                  {/* Step 3: Preferences */}
-                  {currentStep === 3 && (
-                    <div className="space-y-6 animate-fadeIn">
-                      <div className="mb-6">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Priority Features</h2>
-                        <p className="text-gray-600">Select the features that matter most to your business</p>
+                  {/* Current Payroll System */}
+                  <div className="group">
+                    <label htmlFor="currentSystem" className="block text-sm font-bold text-gray-800 mb-2 transition-colors group-focus-within:text-[#ff8633]">
+                      Current Payroll System <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="currentSystem"
+                        name="currentSystem"
+                        value={formData.currentSystem}
+                        onChange={(e) => handleSelectChange('currentSystem', e.target.value)}
+                        onFocus={() => setFocusedField('currentSystem')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`w-full px-4 py-3.5 pr-12 border-2 rounded-xl text-gray-900 bg-white 
+                          transition-all duration-300 ease-in-out cursor-pointer
+                          focus:outline-none focus:ring-4 focus:ring-[#ff8633]/20 focus:border-[#ff8633] 
+                          hover:border-gray-400 hover:shadow-md
+                          appearance-none
+                          ${errors.currentSystem 
+                            ? 'border-red-500 bg-red-50 focus:ring-red-200 focus:border-red-500' 
+                            : 'border-gray-300'
+                          }
+                          ${focusedField === 'currentSystem' ? 'shadow-lg scale-[1.01]' : ''}
+                        `}
+                      >
+                        <option value="">Select current system</option>
+                        <option value="manual">Manual/Spreadsheet</option>
+                        <option value="existing-software">Existing Payroll Software</option>
+                        <option value="accountant">Outsourced to Accountant</option>
+                        <option value="none">No current system</option>
+                      </select>
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${focusedField === 'currentSystem' ? 'text-[#ff8633] rotate-180' : ''}`} />
                       </div>
+                    </div>
+                    {errors.currentSystem && (
+                      <p className="mt-1.5 text-sm text-red-600 font-medium animate-slideDown flex items-center">
+                        <span className="mr-1">⚠</span> {errors.currentSystem}
+                      </p>
+                    )}
+                  </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {priorityFeatures.map((feature) => (
-                          <label
-                            key={feature.id}
-                            className={`relative flex items-start p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
-                              formData.priorityFeatures.includes(feature.id)
-                                ? 'border-[#ff8633] bg-orange-50 shadow-md'
-                                : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={formData.priorityFeatures.includes(feature.id)}
-                              onChange={() => handleCheckboxChange(feature.id)}
-                              className="sr-only"
-                            />
-                            <div className={`flex-shrink-0 w-6 h-6 rounded border-2 flex items-center justify-center mr-3 mt-0.5 ${
-                              formData.priorityFeatures.includes(feature.id)
-                                ? 'border-[#ff8633] bg-[#ff8633]'
-                                : 'border-gray-300'
-                            }`}>
-                              {formData.priorityFeatures.includes(feature.id) && (
-                                <CheckCircle className="w-4 h-4 text-white" />
-                              )}
-                            </div>
-                            <div className="flex-1">
-                              <div className={`inline-flex p-2 rounded-lg mb-2 ${
-                                formData.priorityFeatures.includes(feature.id)
-                                  ? 'bg-[#ff8633] text-white'
-                                  : 'bg-gray-100 text-gray-600'
-                              }`}>
-                                {feature.icon}
-                              </div>
-                              <p className={`font-medium ${
-                                formData.priorityFeatures.includes(feature.id)
-                                  ? 'text-gray-900'
-                                  : 'text-gray-700'
-                              }`}>
-                                {feature.label}
-                              </p>
-                            </div>
-                          </label>
+                  {/* Email Updates Checkbox */}
+                  <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <input
+                      type="checkbox"
+                      id="emailUpdates"
+                      name="emailUpdates"
+                      checked={formData.emailUpdates}
+                      onChange={handleInputChange}
+                      className="mt-1 w-5 h-5 text-[#ff8633] border-gray-300 rounded focus:ring-[#ff8633] cursor-pointer"
+                    />
+                    <label htmlFor="emailUpdates" className="text-sm text-gray-700 cursor-pointer">
+                      I'd like to receive email updates about payroll solutions and best practices.
+                    </label>
+                  </div>
+
+                  {/* CAPTCHA */}
+                  <div className="pt-2">
+                    <ReCAPTCHA
+                      ref={captchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                      onChange={(value) => setCaptchaValue(value)}
+                      className="flex justify-center"
+                    />
+                    {errors.captcha && (
+                      <p className="mt-2 text-sm text-red-600 font-medium text-center">{errors.captcha}</p>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 px-6 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-bold text-lg rounded-xl hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Get Free Quotes
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            {/* Right Side - Dashboard/Info Panel */}
+            <div className="order-2 lg:order-2 flex">
+              <div className="bg-gradient-to-br from-[#000e54] via-blue-900 to-[#000e54] rounded-3xl shadow-2xl p-6 md:p-8 lg:p-10 border border-blue-800/30 backdrop-blur-sm w-full flex flex-col h-full text-white relative overflow-hidden">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff8633]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Header */}
+                  <div className="mb-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#ff8633] to-orange-600 rounded-2xl mb-6 shadow-lg">
+                      <DollarSign className="w-8 h-8" />
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                      Why Choose Our Payroll Solutions?
+                    </h2>
+                    <p className="text-blue-200 text-base leading-relaxed">
+                      Get matched with top-rated payroll providers that fit your business needs.
+                    </p>
+                  </div>
+
+                  {/* Stats/Features Grid */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">500+</div>
+                      <div className="text-sm text-blue-200">Companies Served</div>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">24/7</div>
+                      <div className="text-sm text-blue-200">Support Available</div>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">99.9%</div>
+                      <div className="text-sm text-blue-200">Uptime Guarantee</div>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">$50K+</div>
+                      <div className="text-sm text-blue-200">Average Savings</div>
+                    </div>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="space-y-4 mb-8 flex-1">
+                    {[
+                      { icon: <Shield className="w-6 h-6" />, text: 'Tax Compliance & Filing Automated', color: 'from-green-400 to-green-600' },
+                      { icon: <Zap className="w-6 h-6" />, text: 'Automated Payroll Processing', color: 'from-yellow-400 to-orange-500' },
+                      { icon: <BarChart3 className="w-6 h-6" />, text: 'Real-time Reporting & Analytics', color: 'from-blue-400 to-blue-600' },
+                      { icon: <Clock className="w-6 h-6" />, text: 'Time & Attendance Integration', color: 'from-purple-400 to-purple-600' },
+                      { icon: <CreditCard className="w-6 h-6" />, text: 'Direct Deposit & Payment Options', color: 'from-pink-400 to-pink-600' },
+                      { icon: <FileText className="w-6 h-6" />, text: 'Comprehensive Employee Records', color: 'from-indigo-400 to-indigo-600' }
+                    ].map((feature, index) => (
+                      <div 
+                        key={index}
+                        className="flex items-start gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+                      >
+                        <div className={`flex-shrink-0 p-2 rounded-lg bg-gradient-to-r ${feature.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          {feature.icon}
+                        </div>
+                        <p className="text-sm text-blue-100 leading-relaxed pt-1">{feature.text}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Trust Badge */}
+                  <div className="mt-auto pt-6 border-t border-white/20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex -space-x-2">
+                        {[1, 2, 3, 4].map((i) => (
+                          <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff8633] to-orange-600 border-2 border-[#000e54] flex items-center justify-center text-sm font-bold">
+                            {String.fromCharCode(64 + i)}
+                          </div>
                         ))}
                       </div>
-
-                      <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                        <input
-                          type="checkbox"
-                          name="emailUpdates"
-                          checked={formData.emailUpdates}
-                          onChange={handleInputChange}
-                          className="mt-1 w-5 h-5 text-[#ff8633] border-gray-300 rounded focus:ring-[#ff8633]"
-                        />
-                        <label className="text-sm text-gray-700">
-                          I'd like to receive email updates about payroll solutions and best practices.
-                        </label>
-                      </div>
-
-                      {/* CAPTCHA */}
-                      <div className="pt-4">
-                        <ReCAPTCHA
-                          ref={captchaRef}
-                          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
-                          onChange={(value) => setCaptchaValue(value)}
-                          className="flex justify-center"
-                        />
-                      </div>
-
-                      <div className="flex justify-between pt-4">
-                        <button
-                          type="button"
-                          onClick={prevStep}
-                          className="px-8 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-colors duration-300"
-                        >
-                          Previous
-                        </button>
-                        <button
-                          type="submit"
-                          disabled={isSubmitting || !captchaValue}
-                          className="px-8 py-3 bg-gradient-to-r from-[#ff8633] to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                              Submitting...
-                            </>
-                          ) : (
-                            <>
-                              Get Free Quotes
-                              <ArrowRight className="w-5 h-5" />
-                            </>
-                          )}
-                        </button>
+                      <div>
+                        <div className="flex items-center gap-1 mb-1">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          ))}
+                        </div>
+                        <p className="text-xs text-blue-300">4.9/5 from 500+ reviews</p>
                       </div>
                     </div>
-                  )}
-                </form>
-              )}
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+                      <p className="text-xs text-blue-200 leading-relaxed">
+                        <span className="font-semibold text-white">Secure & Confidential:</span> Your information is encrypted and never shared with third parties.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes blob {
-          0%, 100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(10px);
           }
           to {
             opacity: 1;
@@ -757,10 +758,39 @@ const PayrollGetQuotesForm = () => {
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-out;
         }
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+        @keyframes pulse-border {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+        .animate-pulse-border {
+          animation: pulse-border 2s ease-in-out infinite;
+        }
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+        .delay-500 {
+          animation-delay: 0.5s;
+        }
       `}</style>
     </>
   );
 };
 
 export default PayrollGetQuotesForm;
-
