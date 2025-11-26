@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import TableOfContents from "../../../components/TableOfContents";
+import { useRouter } from 'next/navigation';
 
 import CRMComparison from "../../../components/CRMComparison";
 
@@ -41,6 +42,7 @@ import EmailMarketingForm from '../../../components/EmailMarketingForm';
 
 
 const BestEmail = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [filterBy, setFilterBy] = useState("Reviews");
@@ -55,9 +57,7 @@ const BestEmail = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const handleCompareQuotes = () => {
-    setTimeout(() => {
-      setIsModalOpen(true);
-    }, 3000);
+    router.push('/Marketing/best-email-marketing-services/get-free-quotes');
   };
   
   const toggleSection = (sectionKey, labelKey = null) => {
