@@ -4,9 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { sendFormData } from './emailService';
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
 const WebsiteBuildingForm = ({ onClose }) => {
+    const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState({
         emailList: '',
@@ -581,11 +580,17 @@ const WebsiteBuildingForm = ({ onClose }) => {
                                 <span className="text-green-600 font-semibold">Verified</span>
                             </div>
                         ) : (
-                            <ReCAPTCHA
-                                ref={captchaRef}
-                                siteKey={RECAPTCHA_SITE_KEY}
-                                onChange={(value) => setCaptchaValue(value)}
-                            />
+                            RECAPTCHA_SITE_KEY ? (
+                                <ReCAPTCHA
+                                    ref={captchaRef}
+                                    sitekey={RECAPTCHA_SITE_KEY}
+                                    onChange={(value) => setCaptchaValue(value)}
+                                />
+                            ) : (
+                                <div className="text-red-500 text-sm">
+                                    reCAPTCHA is not configured. Please contact support.
+                                </div>
+                            )
                         )}
                     </div>
                 );
