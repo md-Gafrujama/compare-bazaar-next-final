@@ -86,7 +86,7 @@ const DonotSellMyInfo = () => {
       subject: "New Do Not Sell/Share My Personal Information - Compare-Bazaar",
       from_name: `${formData.firstName} ${formData.lastName}`,
       email: formData.email,
-      form_source: 'Do Not Sell My Info Form'
+      form_source: 'Do Not Sell My Info Form',
       request_type: formData.requestType,
       information_types: formData.informationType.join(', '),
       phone: formData.phone,

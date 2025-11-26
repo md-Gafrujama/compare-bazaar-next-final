@@ -86,7 +86,7 @@ const LimitTheUse = () => {
       subject: "New Limit the Use of My Sensitive Personal Information Request - Compare-Bazaar",
       from_name: `${formData.firstName} ${formData.lastName}`,
       email: formData.email,
-      form_source: 'Limit The Use Form'
+      form_source: 'Limit The Use Form',
       request_type: formData.requestType,
       information_types: formData.informationType.join(', '),
       phone: formData.phone,
