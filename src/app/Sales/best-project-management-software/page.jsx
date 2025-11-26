@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
+import { useRouter } from 'next/navigation';
  
 // import Feedback from './Feedback';
 import {
@@ -33,6 +33,7 @@ import Article from "../../../components/ArticleLayoutCommon";
 import Head from "next/head";
 
 const BestProjectManagement = () => {
+  const router = useRouter();
   //   const [showMore, setShowMore] = useState(false);
    const [progress, setProgress] = useState(0);
 const [windowWidth, setWindowWidth] = useState(0);
@@ -48,6 +49,10 @@ const [windowWidth, setWindowWidth] = useState(0);
   const [openItems, setOpenItems] = useState({});
   const [showMore, setShowMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const handleCompareQuotes = () => {
+    router.push('/Sales/best-project-management-software/get-free-quotes');
+  };
   
 
 
