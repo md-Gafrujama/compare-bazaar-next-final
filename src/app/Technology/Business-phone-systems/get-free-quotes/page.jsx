@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Head from 'next/head';
 import Link from 'next/link';
 import { CheckCircle, Phone, Shield, Zap, TrendingUp, Users, BarChart3, PhoneCall, MessageSquare, Video, DollarSign } from 'lucide-react';
 
@@ -35,9 +34,19 @@ const BusinessPhoneSystemGetQuotesForm = () => {
     return () => clearTimeout(timer);
   }, [showSuccess]);
 
-  // Update document title
+  // Update document title and metadata
   useEffect(() => {
     document.title = "Get Business Phone System Quotes | Compare-Bazaar";
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Get free, no-obligation quotes from top business phone system providers. Compare VoIP solutions and find the best fit for your business.');
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = 'Get free, no-obligation quotes from top business phone system providers. Compare VoIP solutions and find the best fit for your business.';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+    }
   }, []);
 
   const handleInputChange = (e) => {
@@ -196,12 +205,6 @@ const BusinessPhoneSystemGetQuotesForm = () => {
 
   return (
     <>
-      <Head>
-        <title>Get Business Phone System Quotes | Compare-Bazaar</title>
-        <meta name="description" content="Get free, no-obligation quotes from top business phone system providers. Compare VoIP solutions and find the best fit for your business." />
-        <link rel="canonical" href="https://www.compare-bazaar.com/Technology/business-phone-systems/get-free-quotes" />
-      </Head>
-      
       {/* Main Content Section - Two Column Layout */}
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 py-8 md:py-12 relative overflow-hidden">
         {/* Animated Background Elements */}

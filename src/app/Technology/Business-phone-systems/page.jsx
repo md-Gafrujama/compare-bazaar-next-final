@@ -1,6 +1,6 @@
 "use client";
 
- import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PhoneSystemCardCommon from "../../../components/PhoneSystemCardCommon";
 import Advice from "../../../components/Advice ";
 import Modal from "../../../components/Modal";
@@ -74,6 +74,7 @@ const PhoneSystemsPage = () => {
    };
  
    useEffect(() => {
+     if (typeof window === 'undefined') return;
      const checkMobile = () => {
        setIsMobile(window.innerWidth < 768);
      };
@@ -1860,9 +1861,9 @@ const PhoneSystemsPage = () => {
                     })}
                 </div>
               ))}
- </section>
-         <section id="features" className="mt-8 max-w-7xl mx-auto">
-           <div className="max-w-none">
+              </section>
+              <section id="features" className="mt-8 max-w-7xl mx-auto">
+                <div className="max-w-none">
              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-8 sm:mb-10 md:mb-12 lg:mb-16">
                Key Features of Best Phone System Management
              </h1>
@@ -1916,9 +1917,9 @@ const PhoneSystemsPage = () => {
                    <li>Mobile apps with full system functionality</li>
                  </ul>
                </div>
-             </div>
-           </div>
-         </section>
+                </div>
+              </div>
+              </section>
 
 <section id="best-systems" className="mt-8 max-w-7xl mx-auto">
   <div className="max-w-none">
