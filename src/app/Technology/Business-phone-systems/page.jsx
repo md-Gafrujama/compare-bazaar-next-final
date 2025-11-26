@@ -1120,6 +1120,7 @@ const PhoneSystemsPage = () => {
   // ];
 
   const createRipple = (event) => {
+    if (typeof document === 'undefined' || typeof window === 'undefined') return;
     const button = event.currentTarget;
     const ripple = document.createElement("span");
     const rect = button.getBoundingClientRect();
@@ -1153,8 +1154,10 @@ const PhoneSystemsPage = () => {
               href="https://www.buyerzone.com/telecom-equipment/business-phone-systems/rfqz/"
               onClick={(e) => {
                 e.preventDefault();
-                document.location.href =
-                  "https://www.buyerzone.com/telecom-equipment/business-phone-systems/rfqz/?publisherId=59578&publisherTypeId=1788";
+                if (typeof document !== 'undefined' && document.location) {
+                  document.location.href =
+                    "https://www.buyerzone.com/telecom-equipment/business-phone-systems/rfqz/?publisherId=59578&publisherTypeId=1788";
+                }
               }}
               rel="nofollow"
               className="text-[#000e54] hover:text-[#ff8633] hover:underline font-medium transition-colors duration-200"
@@ -1194,7 +1197,9 @@ const PhoneSystemsPage = () => {
               system={system}
               createRipple={createRipple}
               onCompareQuotesClick={() => {
-                window.location.href = '/Technology/business-phone-systems/get-free-quotes';
+                if (typeof window !== 'undefined' && window.location) {
+                  window.location.href = '/Technology/business-phone-systems/get-free-quotes';
+                }
               }}
             />
           ))}
