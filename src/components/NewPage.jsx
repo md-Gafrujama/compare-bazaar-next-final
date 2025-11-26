@@ -56,7 +56,17 @@ const NewPage = () => {
         .join(', ');
   
     // Create form data object for submission
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setFormStatus({
+        submitted: true,
+        submitting: false,
+        error: 'Form submission is not configured. Please contact support.',
+        success: false
+      });
+      return;
+    }
+    
     const submissionData = {
       access_key: accessKey,
       subject: 'Services Inquiry - Compare-Bazaar',

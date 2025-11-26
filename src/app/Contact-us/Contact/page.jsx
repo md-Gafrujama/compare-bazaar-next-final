@@ -118,7 +118,12 @@ const ContactPage = () => {
         e.preventDefault();
 
         try {
-            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+            if (!accessKey) {
+                alert('Form submission is not configured. Please contact support.');
+                return;
+            }
+            
             const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
@@ -323,7 +328,7 @@ const ContactPage = () => {
                                         <input
                                             type="hidden"
                                             name="access_key"
-                                            value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127'}
+                                            value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ''}
                                         />
                                         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                                             <div className="relative bg-gray-50 rounded-xl p-4 shadow-md transform hover:translate-y-[-3px] hover:shadow-lg transition-all duration-300 border-l-4 border-[#ff8633]">

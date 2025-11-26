@@ -8,7 +8,11 @@
 export const sendFormData = async (formData, formSource = 'Form Submission', captchaToken = null) => {
   try {
     // Get access key from environment variable
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    
+    if (!accessKey) {
+      throw new Error('Web3Forms access key is not configured. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY in your environment variables.');
+    }
     
     // Prepare submission data for Web3Forms
     const submissionData = {

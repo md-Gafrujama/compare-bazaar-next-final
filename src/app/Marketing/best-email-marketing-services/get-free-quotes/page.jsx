@@ -173,8 +173,15 @@ const EmailMarketingGetQuotesForm = () => {
     setIsSubmitting(true);
     
     try {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) {
+        alert('Form submission is not configured. Please contact support.');
+        setIsSubmitting(false);
+        return;
+      }
+      
       const submissionData = {
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127',
+        access_key: accessKey,
         subject: 'Email Marketing Service Quote Request - Compare-Bazaar',
         from_name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,

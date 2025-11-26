@@ -8,7 +8,7 @@ import { useRef} from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
    const Advertise = () => {
-   const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+   const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
    const captchaRef = useRef(null);
    const [captchaValue, setCaptchaValue] = useState(null);
    const [formData, setFormData] = useState({
@@ -38,12 +38,18 @@ import ReCAPTCHA from 'react-google-recaptcha';
     e.preventDefault();
     setIsSubmitting(true);
     setFormError(null);
+    
     if (!captchaValue) {
-    setSubmitError("Please complete the CAPTCHA verification");
+      setSubmitError("Please complete the CAPTCHA verification");
+      setIsSubmitting(false);
       return;
     }
     
-    setIsSubmitting(true);
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setFormError('Form submission is not configured. Please contact support.');
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       // Prepare data for Web3Forms

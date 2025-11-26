@@ -29,7 +29,13 @@ const Home = () => {
 
     setLoading(true);
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      alert('Form submission is not configured. Please contact support.');
+      setLoading(false);
+      return;
+    }
+    
     const formData = new FormData();
     formData.append("access_key", accessKey);
     formData.append("subject", "New Subscription - Compare-Bazaar");

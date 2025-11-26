@@ -149,7 +149,13 @@ const WhitepaperForm = ({ paper, onClose }) => {
     
     try {
       // Submit to Web3Forms
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) {
+        alert('Form submission is not configured. Please contact support.');
+        setIsLoading(false);
+        return;
+      }
+      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
