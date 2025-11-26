@@ -155,6 +155,15 @@ const CallCenterGetQuotesForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Explicit check: If reCAPTCHA is enabled, it must be completed
+    if (enableRecaptcha && !captchaValue) {
+      setErrors({
+        ...errors,
+        captcha: 'Please verify that you\'re not a robot.'
+      });
+      return;
+    }
+    
     if (!validateForm()) {
       const firstErrorField = Object.keys(errors)[0];
       if (firstErrorField) {

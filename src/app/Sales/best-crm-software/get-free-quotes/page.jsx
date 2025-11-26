@@ -43,6 +43,7 @@ const CRMGetQuotesForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [captchaValue, setCaptchaValue] = useState(null);
+  const [enableRecaptcha, setEnableRecaptcha] = useState(false);
   const captchaRef = useRef(null);
   const [focusedField, setFocusedField] = useState(null);
 
@@ -130,7 +131,8 @@ const CRMGetQuotesForm = () => {
     if (!formData.industry) {
       newErrors.industry = 'Please complete this required field.';
     }
-    if (!captchaValue) {
+    // Only validate reCAPTCHA if it's enabled
+    if (enableRecaptcha && !captchaValue) {
       newErrors.captcha = 'Please verify that you\'re not a robot.';
     }
 
@@ -140,6 +142,15 @@ const CRMGetQuotesForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Explicit check: If reCAPTCHA is enabled, it must be completed
+    if (enableRecaptcha && !captchaValue) {
+      setErrors({
+        ...errors,
+        captcha: 'Please verify that you\'re not a robot.'
+      });
+      return;
+    }
     
     if (!validateForm()) {
       const firstErrorField = Object.keys(errors)[0];
@@ -165,9 +176,13 @@ const CRMGetQuotesForm = () => {
         important_features: formData.importantFeatures.join(', '),
         industry: formData.industry,
         email_updates: formData.emailUpdates ? 'Yes' : 'No',
-        form_source: 'CRM Software - Get Quotes (Compare-Bazaar)',
-        captcha_token: captchaValue
+        form_source: 'CRM Software - Get Quotes (Compare-Bazaar)'
       };
+
+      // Only include captcha_token if reCAPTCHA is enabled and token exists
+      if (enableRecaptcha && captchaValue) {
+        submissionData.captcha_token = captchaValue;
+      }
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -196,6 +211,7 @@ const CRMGetQuotesForm = () => {
           emailUpdates: false
         });
         setCaptchaValue(null);
+        setEnableRecaptcha(false);
         if (captchaRef.current) {
           captchaRef.current.reset();
         }
@@ -695,19 +711,50 @@ const CRMGetQuotesForm = () => {
                     </label>
                   </div>
 
-                  {/* CAPTCHA */}
-                  <div className="pt-1 flex flex-col items-start w-full">
-                    <div className="flex justify-start w-full">
-                      <ReCAPTCHA
-                        ref={captchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
-                        onChange={(value) => setCaptchaValue(value)}
-                      />
-                    </div>
-                    {errors.captcha && (
-                      <p className="mt-2 text-sm text-red-600 font-medium text-left w-full">{errors.captcha}</p>
-                    )}
+                  {/* reCAPTCHA Enable Checkbox */}
+                  <div className="flex items-start gap-3 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-200">
+                    <input
+                      type="checkbox"
+                      id="enableRecaptcha"
+                      name="enableRecaptcha"
+                      checked={enableRecaptcha}
+                      onChange={(e) => {
+                        setEnableRecaptcha(e.target.checked);
+                        if (!e.target.checked) {
+                          setCaptchaValue(null);
+                          if (captchaRef.current) {
+                            captchaRef.current.reset();
+                          }
+                          if (errors.captcha) {
+                            setErrors({
+                              ...errors,
+                              captcha: ''
+                            });
+                          }
+                        }
+                      }}
+                      className="mt-1 w-5 h-5 text-[#ff8633] border-gray-300 rounded focus:ring-[#ff8633] cursor-pointer"
+                    />
+                    <label htmlFor="enableRecaptcha" className="text-sm text-gray-700 cursor-pointer">
+                      Enable reCAPTCHA verification
+                    </label>
                   </div>
+
+                  {/* CAPTCHA - Only show if enabled */}
+                  {enableRecaptcha && (
+                    <div className="pt-1 flex flex-col items-start w-full">
+                      <div className="flex justify-start w-full">
+                        <ReCAPTCHA
+                          ref={captchaRef}
+                          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                          onChange={(value) => setCaptchaValue(value)}
+                        />
+                      </div>
+                      {errors.captcha && (
+                        <p className="mt-2 text-sm text-red-600 font-medium text-left w-full">{errors.captcha}</p>
+                      )}
+                    </div>
+                  )}
 
                   {/* Consent Text */}
                   <div className="pt-2">
