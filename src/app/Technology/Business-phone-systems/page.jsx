@@ -93,7 +93,9 @@ const PhoneSystemsPage = () => {
 
    // Update document title
    useEffect(() => {
-     document.title = "Business Phone Systems | Compare-Bazaar";
+     if (typeof document !== 'undefined') {
+       document.title = "Business Phone Systems | Compare-Bazaar";
+     }
    }, []);
    const toolsContent = {
      
