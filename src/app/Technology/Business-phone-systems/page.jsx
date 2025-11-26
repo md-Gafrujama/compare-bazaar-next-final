@@ -1191,7 +1191,7 @@ const PhoneSystemsPage = () => {
 
         {/* Responsive Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-6">
-          {systems.map((system, index) => (
+          {systems && Array.isArray(systems) && systems.map((system, index) => (
             <PhoneSystemCardCommon
               key={index}
               system={system}
@@ -1646,7 +1646,7 @@ const PhoneSystemsPage = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {crmData.map((crm, index) => (
+                          {crmData && Array.isArray(crmData) && crmData.map((crm, index) => (
                             <tr
                               key={crm.id}
                               className={`border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200 ${
@@ -1747,7 +1747,7 @@ const PhoneSystemsPage = () => {
                 </div>
               
  
-              {toolsArray.map((tool) => (
+              {toolsArray && Array.isArray(toolsArray) && toolsArray.map((tool) => (
                 <div
                   key={tool.id}
                   className="bg-white rounded-2xl sm:rounded-3xl border mt-4  border-gray-200  p-6 mb-8"
