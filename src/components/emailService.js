@@ -103,6 +103,8 @@ export const sendFormData = async (formData, formSource = 'Form Submission', cap
     if (formData.customService) messageParts.push(`Custom service: ${formData.customService}`);
 
     // Prepare submission data for Web3Forms
+    // Only send essential fields to prevent Web3Forms from auto-including all fields in email
+    // All form data is already in the message field above
     const submissionData = {
       access_key: accessKey,
       subject: `${formSource} - Compare-Bazaar`,
@@ -112,65 +114,21 @@ export const sendFormData = async (formData, formSource = 'Form Submission', cap
       form_source: formSource,
     };
 
-    // Add individual fields for Web3Forms processing (but message will be used for email body)
-    if (formData.companyName || formData.company) {
-      submissionData.company_name = formData.companyName || formData.company;
-    }
-    if (formData.phoneNumber || formData.phone) {
-      submissionData.phone = formData.phoneNumber || formData.phone;
-    }
-    if (formData.zipCode) {
-      submissionData.zip_code = formData.zipCode;
-    }
-
-    // Add optional fields for Web3Forms metadata (not shown in email)
-    if (formData.phoneSystemNeeds) submissionData.phone_system_needs = formData.phoneSystemNeeds;
-    if (formData.phonesNeeded) submissionData.phones_needed = formData.phonesNeeded;
-    if (formData.fleetSize) submissionData.fleet_size = formData.fleetSize;
-    if (formData.vehicleTypes) submissionData.vehicle_types = formData.vehicleTypes;
-    if (formData.importantFeatures) {
-      submissionData.important_features = Array.isArray(formData.importantFeatures) 
-        ? formData.importantFeatures.join(', ') 
-        : formData.importantFeatures;
-    }
-    if (formData.emailList) submissionData.email_list = formData.emailList;
-    if (formData.emailVolume) submissionData.email_volume = formData.emailVolume;
-    if (formData.emailCampaign) submissionData.email_campaign = formData.emailCampaign;
-    if (formData.otherServices) submissionData.other_services = formData.otherServices;
-    if (formData.buyingTime) submissionData.buying_time = formData.buyingTime;
-    if (formData.featureswithEmail) submissionData.features_with_email = formData.featureswithEmail;
-    if (formData.employeeCount) submissionData.employee_count = formData.employeeCount;
-    if (formData.desiredFeatures) submissionData.desired_features = formData.desiredFeatures;
-    if (formData.otherFeatureText) submissionData.other_feature_text = formData.otherFeatureText;
-    if (formData.usingCRM) submissionData.using_crm = formData.usingCRM;
-    if (formData.employeeCountcrm) submissionData.employee_count_crm = formData.employeeCountcrm;
-    if (formData.importantFeaturescrm) {
-      submissionData.important_features_crm = Array.isArray(formData.importantFeaturescrm)
-        ? formData.importantFeaturescrm.join(', ')
-        : formData.importantFeaturescrm;
-    }
-    if (formData.industrycrm) submissionData.industry_crm = formData.industrycrm;
-    if (formData.otherIndustry) submissionData.other_industry = formData.otherIndustry;
-    if (formData.customService) submissionData.custom_service = formData.customService;
-    if (formData.importantFeature) submissionData.important_feature = formData.importantFeature;
-    if (formData.inboundCalls) submissionData.inbound_calls = formData.inboundCalls;
-    if (formData.wdtypeofwebsite) submissionData.wd_typeof_website = formData.wdtypeofwebsite;
-    if (formData.wdtypeofdesign) submissionData.wd_typeof_design = formData.wdtypeofdesign;
-    if (formData.wdregistered) submissionData.wd_registered = formData.wdregistered;
-    if (formData.wdbusiness) submissionData.wd_business = formData.wdbusiness;
-    if (formData.wdbudget) submissionData.wd_budget = formData.wdbudget;
-    if (formData.wddecision) submissionData.wd_decision = formData.wddecision;
-    if (formData.wdadditionalFeatures) submissionData.wd_additional_features = formData.wdadditionalFeatures;
-    if (formData.streetAddress) submissionData.street_address = formData.streetAddress;
-    if (formData.wdstate) submissionData.wd_state = formData.wdstate;
-    if (formData.wdcity) submissionData.wd_city = formData.wdcity;
-    if (formData.payrollSolution) submissionData.payroll_solution = formData.payrollSolution;
-    if (formData.payrollEmployee) submissionData.payroll_employee = formData.payrollEmployee;
-
-    // Add reCAPTCHA token if provided (sent to API but NOT included in message/email)
+    // Add reCAPTCHA token if provided
+    // IMPORTANT: Web3Forms may still include this field in the email even though we don't want it.
+    // To completely exclude captcha_token from emails, you need to:
+    // 1. Go to Web3Forms dashboard (web3forms.com)
+    // 2. Navigate to your access key settings
+    // 3. Configure the email template to exclude 'captcha_token' field
+    // 4. Or use a custom email template that only shows the 'message' field
     if (captchaToken) {
       submissionData.captcha_token = captchaToken;
     }
+    
+    // Note: We're NOT sending individual form fields as separate properties
+    // because Web3Forms will auto-include them in the email.
+    // All form data is consolidated in the 'message' field above.
+    // The 'message' field contains all form data in a formatted way, excluding captcha_token.
 
     // Add timeout promise to handle cases where Web3Forms doesn't respond
     const timeoutPromise = new Promise((_, reject) => {
