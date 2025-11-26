@@ -57,10 +57,9 @@ const PhoneSystemsPage = () => {
        [sectionKey]: !prev[sectionKey],
      }));
  
-     if (labelKey) {
-       setActiveSection((prev) => (prev === sectionKey ? null : sectionKey));
-       setOpenSection((prev) => (prev === labelKey ? null : labelKey));
-     }
+    if (labelKey) {
+      setActiveSection((prev) => (prev === sectionKey ? null : sectionKey));
+    }
  
      setOpenSections((prev) => ({
        ...prev,
