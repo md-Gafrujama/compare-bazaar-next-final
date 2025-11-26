@@ -29,13 +29,15 @@ const Home = () => {
 
     setLoading(true);
 
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
     const formData = new FormData();
-    formData.append("access_key", "a8fe8c95-167c-41a6-bd53-987b128dff69");
-    formData.append("subject", "New Subscription");
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New Subscription - Compare-Bazaar");
     formData.append("from_name", "Subscription Form");
+    formData.append("email", email);
     formData.append("message", `New user subscribed: ${email}`);
     formData.append("reply_to", email);
-    formData.append("redirect", "");
+    formData.append("form_source", "Homepage Footer Subscription");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

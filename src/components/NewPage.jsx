@@ -55,14 +55,17 @@ const NewPage = () => {
         .filter(key => formData.services[key])
         .join(', ');
   
-      // Create form data object for submission
-      const submissionData = {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        services: selectedServices,
-        access_key: '2c1b7668-e873-404a-9759-f85af53e550b' // Replace with your actual Web3Forms access key
-      };
+    // Create form data object for submission
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
+    const submissionData = {
+      access_key: accessKey,
+      subject: 'Services Inquiry - Compare-Bazaar',
+      from_name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      services: selectedServices,
+      form_source: 'Services Contact Form'
+    };
   
       try {
         const response = await fetch('https://api.web3forms.com/submit', {

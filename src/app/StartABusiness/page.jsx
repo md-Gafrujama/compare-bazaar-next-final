@@ -12,7 +12,6 @@ const StartABusiness = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // Replace with your actual web3forms access key
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +20,13 @@ const StartABusiness = () => {
 
     try {
       // Prepare form data for web3forms
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
       const formData = {
-        access_key: "547b251c-6d1b-454f-9dd7-4c8894814ea5",
+        access_key: accessKey,
         email: email,
-        subject: 'New Business Toolkit Subscriber',
+        subject: 'New Business Toolkit Subscriber - Compare-Bazaar',
         from_name: 'Business Toolkit Subscription',
+        form_source: 'Start A Business Form'
         message: `New subscriber for business toolkit: ${email}`,
       };
 

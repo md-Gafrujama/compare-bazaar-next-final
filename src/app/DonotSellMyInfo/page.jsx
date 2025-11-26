@@ -74,11 +74,13 @@ const DonotSellMyInfo = () => {
     
     setIsSubmitting(true);
     
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
     const submissionData = {
-      access_key: "4e9faa02-cb51-4253-98e6-b5794f4ece3a", // replace this with your actual key
-      subject: "New Do Not Sell/Share My Personal Information",
+      access_key: accessKey,
+      subject: "New Do Not Sell/Share My Personal Information - Compare-Bazaar",
       from_name: `${formData.firstName} ${formData.lastName}`,
       email: formData.email,
+      form_source: 'Do Not Sell My Info Form'
       request_type: formData.requestType,
       information_types: formData.informationType.join(', '),
       phone: formData.phone,

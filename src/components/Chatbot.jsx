@@ -576,18 +576,20 @@ You are not just a bot - you are a powerful smart assistant that helps users wit
     setIsSubmitting(true);
 
     try {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '4e9faa02-cb51-4253-98e6-b5794f4ece3a',
-          name: contactFormData.name,
+          access_key: accessKey,
+          subject: 'Contact Form Submission from Chatbot - Compare-Bazaar',
+          from_name: contactFormData.name,
           email: contactFormData.email,
           phone: contactFormData.phone || 'Not provided',
           message: contactFormData.message,
-          subject: 'Contact Form Submission from Chatbot'
+          form_source: 'Chatbot Contact Form'
         })
       });
 

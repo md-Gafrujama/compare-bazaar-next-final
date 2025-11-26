@@ -8,7 +8,7 @@ import { useRef} from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
    const Advertise = () => {
-   const WEB3FORMS_ACCESS_KEY = "4e9faa02-cb51-4253-98e6-b5794f4ece3a";
+   const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
    const captchaRef = useRef(null);
    const [captchaValue, setCaptchaValue] = useState(null);
    const [formData, setFormData] = useState({
