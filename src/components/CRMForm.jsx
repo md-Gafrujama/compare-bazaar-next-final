@@ -590,11 +590,20 @@ const CRMForm = ({ onClose }) => {
           <div>
             <h2 className="text-base font-semibold mb-3">Verify you're not a robot</h2>
             <div className="flex justify-center mb-4">
-              <ReCAPTCHA
-                ref={captchaRef}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                onChange={(value) => setCaptchaValue(value)}
-              />
+              {captchaValue ? (
+                <div className="flex items-center justify-center gap-2 p-4 bg-green-50 border border-green-200 rounded-md">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-green-600 font-semibold">Verified</span>
+                </div>
+              ) : (
+                <ReCAPTCHA
+                  ref={captchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                  onChange={(value) => setCaptchaValue(value)}
+                />
+              )}
             </div>
           </div>
         );
