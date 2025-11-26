@@ -305,3 +305,4 @@ const StaticComponent = ({ data }) => {
 **Previous**: [Architecture](./02-architecture.md) | **Next**: [Page Structure](./04-pages.md)
 
 
+

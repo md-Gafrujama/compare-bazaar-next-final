@@ -92,8 +92,8 @@ const BestPayrollSystem = () => {
        document.title = "Best Payroll System | Compare-Bazaar";
      }, []);
       const toolsContent = {
-  ADP: {
-    title: "ADP – Best Overall Payroll Solution",
+  Paylocity: {
+    title: "Paylocity – Best Overall Payroll Solution",
     logo: "/images/paylocity.png",
     button: {
       text: "Visit Website",
@@ -116,12 +116,12 @@ const BestPayrollSystem = () => {
       "May be overwhelming for small businesses",
     ],
     why: {
-      intro: `ADP is a market leader in payroll and HR services, offering end-to-end solutions suitable for businesses of all sizes.`,
+      intro: `Paylocity is a market leader in payroll and HR services, offering end-to-end solutions suitable for businesses of all sizes.`,
       bullets: [
         "Automates payroll processing, tax filing, and year-end reporting.",
         "Integrates with time tracking, HR, benefits, and recruiting tools.",
       ],
-      outro: `ADP's combination of reliability, scalability, and advanced features makes it a top-tier payroll provider for businesses looking for an all-in-one solution.`,
+      outro: `Paylocity's combination of reliability, scalability, and advanced features makes it a top-tier payroll provider for businesses looking for an all-in-one solution.`,
       extras: {
         "Key Features": (
           <>
@@ -135,7 +135,7 @@ const BestPayrollSystem = () => {
         ),
         Pricing: (
           <>
-            <p className="text-black">Custom pricing based on company size and features selected. Contact ADP for a quote.</p>
+            <p className="text-black">Custom pricing based on company size and features selected. Contact Paylocity for a quote.</p>
           </>
         )
       },
@@ -340,7 +340,7 @@ const BestPayrollSystem = () => {
    
      const systems = [
       {
-        name: "ADP",
+        name: "Paylocity",
         logo: "/images/paylocity.png",
         bestFor: "Best for Large Enterprises",
         price: "$10/user/month + $50 base",
@@ -592,12 +592,12 @@ const BestPayrollSystem = () => {
         
   {
                 id: 1,
-                name: "ADP",
+                name: "Paylocity",
                 image: "/images/paylocity.png",
-                alt: "ADP",
+                alt: "Paylocity",
                 expertScore: 4.8,
                 bestFor: "Best for Large Enterprises",
-                visitUrl: "https://www.adp.com",
+                visitUrl: "https://www.paylocity.com",
                 keyFeatures: [
                   "$10/user/month + $50 base",
                   "Full-service payroll & tax filing",
@@ -807,7 +807,7 @@ const BestPayrollSystem = () => {
 
         {/* Payroll System Cards (Summarized) */}
         <div className="space-y-3 mb-8">
-          {/* ADP */}
+          {/* Paylocity */}
           <div className="flex items-start space-x-3">
             <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
               <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -819,7 +819,7 @@ const BestPayrollSystem = () => {
               </svg>
             </div>
             <p className="text-gray-700">
-              <span className="font-semibold text-green-700">ADP:</span> Best for large enterprises — 
+              <span className="font-semibold text-green-700">Paylocity:</span> Best for large enterprises — 
               $10/user/month + $50 base. Full-service payroll & tax filing with a dedicated specialist.
             </p>
           </div>
@@ -907,15 +907,15 @@ const BestPayrollSystem = () => {
     </div>
   </div>
 
-  {/* ADP */}
+  {/* Paylocity */}
   <div className="bg-gray-50 rounded-lg p-6 mb-6">
     <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
       <div className="flex items-center space-x-4">
         <div className="w-16 h-16 flex-shrink-0">
-          <Image src="/images/paylocity.png" alt="ADP Logo" width={64} height={64} className="w-full h-full object-contain" />
+          <Image src="/images/paylocity.png" alt="Paylocity Logo" width={64} height={64} className="w-full h-full object-contain" />
         </div>
         <div className="text-xl font-bold text-gray-900">
-          ADP
+          Paylocity
           <br />
           <span className="text-lg">Enterprise Payroll Solutions</span>
         </div>

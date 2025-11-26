@@ -119,3 +119,4 @@ The project uses Next.js 15 App Router, which provides:
 **Previous**: [Overview](./01-overview.md) | **Next**: [Component Structure](./03-components.md)
 
 
+

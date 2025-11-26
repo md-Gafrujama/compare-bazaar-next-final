@@ -835,6 +835,28 @@ const CRMGetQuotesForm = () => {
                     </div>
                   </div>
 
+                  {/* How It Works */}
+                  <div className="mb-4">
+                    <h3 className="text-base font-bold mb-2 text-white flex items-center gap-2">
+                      <ArrowRight className="w-4 h-4 text-[#ff8633]" />
+                      How It Works
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2 p-2 bg-gradient-to-r from-[#ff8633]/10 to-orange-600/10 rounded-lg border border-[#ff8633]/20">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-[#ff8633] to-orange-600 flex items-center justify-center text-[10px] font-bold">1</div>
+                        <p className="text-xs text-blue-100"><span className="font-semibold text-white">Submit Form:</span> Tell us about your business needs and CRM requirements</p>
+                      </div>
+                      <div className="flex items-start gap-2 p-2 bg-gradient-to-r from-blue-600/10 to-blue-500/10 rounded-lg border border-blue-500/20">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-[10px] font-bold">2</div>
+                        <p className="text-xs text-blue-100"><span className="font-semibold text-white">Get Matched:</span> We'll connect you with 3-5 perfect CRM providers within 24 hours</p>
+                      </div>
+                      <div className="flex items-start gap-2 p-2 bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-lg border border-green-500/20">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center text-[10px] font-bold">3</div>
+                        <p className="text-xs text-blue-100"><span className="font-semibold text-white">Compare & Select:</span> Review free quotes and choose the best CRM for your team</p>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Success Stories */}
                   <div className="mb-4">
                     <h3 className="text-base font-bold mb-2 text-white">Success Stories</h3>
@@ -846,6 +868,32 @@ const CRMGetQuotesForm = () => {
                       <div className="bg-white/5 rounded-lg p-2 border border-white/10">
                         <p className="text-xs text-blue-200 italic mb-1">"The comparison tool helped us identify the best features for our team size. Highly recommend!"</p>
                         <p className="text-xs text-[#ff8633] font-semibold">- Mike T., Sales Manager</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quick Tips */}
+                  <div className="mb-4 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-lg p-3 border border-purple-500/30">
+                    <h3 className="text-sm font-bold mb-2 text-white flex items-center gap-1.5">
+                      <TrendingUp className="w-4 h-4 text-[#ff8633]" />
+                      Quick Tips for Choosing a CRM
+                    </h3>
+                    <div className="space-y-1.5">
+                      <div className="flex items-start gap-1.5">
+                        <div className="w-1 h-1 rounded-full bg-[#ff8633] mt-1.5 flex-shrink-0"></div>
+                        <p className="text-xs text-blue-100">Consider your team size and growth plans for scalability</p>
+                      </div>
+                      <div className="flex items-start gap-1.5">
+                        <div className="w-1 h-1 rounded-full bg-[#ff8633] mt-1.5 flex-shrink-0"></div>
+                        <p className="text-xs text-blue-100">Look for mobile access if your team works remotely</p>
+                      </div>
+                      <div className="flex items-start gap-1.5">
+                        <div className="w-1 h-1 rounded-full bg-[#ff8633] mt-1.5 flex-shrink-0"></div>
+                        <p className="text-xs text-blue-100">Check integration capabilities with your existing tools</p>
+                      </div>
+                      <div className="flex items-start gap-1.5">
+                        <div className="w-1 h-1 rounded-full bg-[#ff8633] mt-1.5 flex-shrink-0"></div>
+                        <p className="text-xs text-blue-100">Evaluate customer support quality and response times</p>
                       </div>
                     </div>
                   </div>
