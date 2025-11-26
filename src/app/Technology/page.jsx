@@ -65,7 +65,7 @@ const Technology = () => {
           description: "Modern VoIP solutions that provide crystal-clear call quality, advanced features, and seamless integration with your business applications.",
           features: ["Cloud-based PBX", "Auto-attendant", "Call routing", "Conference calling", "Mobile integration"],
           icon: Smartphone,
-          link: "/Technology/Business-phone-systems"
+          link: "/Technology/business-phone-systems"
         },
         {
           title: "GPS Fleet Management",

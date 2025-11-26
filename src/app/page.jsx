@@ -252,7 +252,7 @@ const Home = () => {
     { 
       name: "Business Phone Systems", 
       icon: <Phone />, 
-      link: "/Technology/Business-phone-systems",
+      link: "/Technology/business-phone-systems",
       image: "/images/BPS.webp"
     },
     { 

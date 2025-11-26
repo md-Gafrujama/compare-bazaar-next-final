@@ -1,5 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
+import BusinessPhoneSystemForm from '../../components/BusinessPhoneSystemForm';
+import Link from 'next/link';
+import { Phone, Shield, Zap, TrendingUp, Users, BarChart3, Call, MessageSquare, Video, CheckCircle } from 'lucide-react';
 
 const BusinessPhoneSystem = () => {
   const [widgetLoaded, setWidgetLoaded] = useState(false);
@@ -239,109 +242,114 @@ const BusinessPhoneSystem = () => {
       
       {/* Main content container with enhanced glass effect and padding */}
       <div className="relative z-10 w-full flex flex-col items-center py-10 px-4">
-  <div className="w-full max-w-[1200px] mx-auto">
-    {/* Responsive banner - shows only on medium/small screens */}
-<div className="w-full max-w-[480px] lg:hidden flex justify-center mb-8 relative group mx-auto">
-  <div className="absolute -inset-1 bg-gradient-to-r from-[#0026b6] to-[#104fff] opacity-75 rounded-xl blur transition-all duration-300 group-hover:opacity-90"></div>
-  <a href="http://www.buyerzone.com/telecom-equipment/business-phone-systems/rfqz/?publisherId=59578&publisherTypeId=1789"
-    target="_self" className="relative block w-full">
-    <div className="relative">
-      <img 
-        src="http://www.buyerzone.com/telecom-equipment/business-phone-systems/banners/468x60.gif" 
-        className="rounded-lg h-[60px] w-full max-w-[468px] object-cover shadow-2xl shadow-blue-900/50 transition-all duration-500 group-hover:shadow-[#104fff]/40 group-hover:shadow-2xl mx-auto"
-        alt="Phone system comparison" 
-      />
-      <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-[#000e54]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-[#104fff] rounded-full opacity-30 blur-xl group-hover:opacity-70 transition-opacity duration-500"></div>
-    </div>
-  </a>
-</div>
+        <div className="w-full max-w-7xl mx-auto">
+          {/* Two Column Layout - Form Left, Design Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            
+            {/* Left Side - Form */}
+            <div className="order-2 lg:order-1 flex">
+              <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 lg:p-10 border border-gray-100 w-full flex flex-col">
+                {/* Header Section */}
+                <div className="mb-6 pb-6 border-b border-gray-200">
+                  <div className="inline-block mb-4">
+                    <span className="bg-gradient-to-r from-[#ff8633] to-orange-600 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-md">
+                      Get Free Quotes
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 leading-tight">
+                    Compare Business Phone Systems
+                  </h2>
+                  <p className="text-base text-gray-600 leading-relaxed">
+                    Fill out the form to get customized quotes from top business phone system providers.
+                  </p>
+                </div>
 
-    {/* Enhanced layout with improved spacing and padding */}
-    <div className="w-full flex flex-col  lg:flex-row items-start justify-center gap-8">
-      <div className="hidden lg:block relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-[#0026b6] to-[#104fff] opacity-75 rounded-xl blur transition-all duration-300 group-hover:opacity-90"></div>
-        <a href="http://www.buyerzone.com/telecom-equipment/business-phone-systems/rfqz/?publisherId=59578&publisherTypeId=1789"
-          target="_self" className="relative block">
-          <div className="relative">
-            <img 
-              src="https://www.buyerzone.com/telecom-equipment/business-phone-systems/banners/160x600.gif" 
-              className="rounded-lg h-[680px] w-[160px] object-cover shadow-2xl shadow-blue-900/50 transition-all duration-500 group-hover:shadow-[#104fff]/40 group-hover:shadow-2xl"
-              alt="Phone system comparison" 
-            />
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-[#000e54]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-[#104fff] rounded-full opacity-30 blur-xl group-hover:opacity-70 transition-opacity duration-500"></div>
-          </div>
-        </a>
-      </div>
+                {/* Form Component */}
+                <div className="flex-1">
+                  <BusinessPhoneSystemForm />
+                </div>
 
-      {/* Enhanced promotional content with better padding and effects */}
-      <div className="w-full px-4 mx-auto max-w-[480px] relative group">
-  <div className="absolute -inset-1 bg-gradient-to-r from-[#104fff] to-[#0026b6] opacity-60 rounded-2xl blur-md transition-all duration-300 group-hover:opacity-75 group-hover:blur-lg"></div>
-  <div className="relative backdrop-blur-xl bg-gradient-to-br from-[#000a42]/40 via-[#000e54]/40 to-[#001470]/40 rounded-2xl shadow-2xl overflow-hidden border border-[#104fff]/30">
-    <div className="absolute top-0 right-0 w-40 h-40 bg-[#104fff] rounded-full opacity-10 blur-2xl"></div>
-    <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-[#104fff] rounded-full opacity-10 blur-2xl"></div>
-    
-    {/* Enhanced content with better padding */}
-    <div className="relative p-10 z-10 h-[680px]">
-      <h2 className="text-3xl font-semibold text-white mb-4">Compare Business Communication Solutions- 100% Free</h2>
-      <div className="w-20 h-1.5 bg-gradient-to-r from-[#104fff] to-[#3c8fff] mb-8"></div>
-      <h3 className="text-xl font-semibold text-blue-100 mb-7">Looking for the best phone system or communication tools for your business?</h3>
-      
-      <div className="mb-10 space-y-6">
-        <p className="text-blue-50 leading-relaxed text-lg">
-          Just answer a few quick questions and get customized quotes from top providers - all in under a minute.
-        </p>
-        
-        <div className="space-y-5">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#104fff]/40 flex items-center justify-center mr-4 group-hover:bg-[#104fff]/50 transition-colors duration-300">
-              <svg className="w-4 h-4 text-[#adc6ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
-              </svg>
+                {/* Backup Link */}
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <p className="text-sm text-gray-600 mb-3 text-center">
+                    Prefer a different format?
+                  </p>
+                  <Link 
+                    href="/Technology/business-phone-systems/get-free-quotes"
+                    className="block w-full text-center py-3 px-6 bg-gradient-to-r from-[#000e54] to-[#001470] text-white rounded-xl font-semibold hover:from-[#001470] hover:to-[#000e54] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                  >
+                    Get Free Quotes (Alternative Form)
+                  </Link>
+                </div>
+              </div>
             </div>
-            <span className="font-medium text-blue-50 text-lg">Fast & Easy</span>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#104fff]/40 flex items-center justify-center mr-4 group-hover:bg-[#104fff]/50 transition-colors duration-300">
-              <svg className="w-4 h-4 text-[#adc6ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
-              </svg>
+
+            {/* Right Side - Professional Content */}
+            <div className="order-1 lg:order-2 flex">
+              <div className="bg-gradient-to-br from-[#000e54] via-[#001470] to-[#000e54] rounded-3xl shadow-2xl p-6 md:p-8 lg:p-10 text-white w-full flex flex-col relative overflow-hidden">
+                {/* Background decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff8633]/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                
+                <div className="relative z-10 flex flex-col flex-1">
+                  {/* Header */}
+                  <div className="mb-6">
+                    <div className="inline-block mb-3">
+                      <span className="bg-gradient-to-r from-[#ff8633] to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">
+                        Why Choose Us
+                      </span>
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                      Modern Business Communication Solutions
+                    </h2>
+                    <p className="text-gray-300 text-base leading-relaxed">
+                      Connect your team with enterprise-grade phone systems designed for today's businesses.
+                    </p>
+                  </div>
+
+                  {/* Key Features */}
+                  <div className="mb-6 space-y-4 flex-grow">
+                    {[
+                      { icon: Phone, title: 'VoIP & Cloud PBX', desc: 'Scalable cloud-based phone systems' },
+                      { icon: Video, title: 'Video Conferencing', desc: 'HD video calls and screen sharing' },
+                      { icon: MessageSquare, title: 'Unified Messaging', desc: 'SMS, voicemail, and chat in one place' },
+                      { icon: Shield, title: 'Enterprise Security', desc: 'Bank-level encryption and compliance' },
+                      { icon: BarChart3, title: 'Call Analytics', desc: 'Real-time insights and reporting' }
+                    ].map((feature, index) => (
+                      <div 
+                        key={index}
+                        className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-[1.02]"
+                      >
+                        <div className="flex items-start space-x-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#ff8633] to-orange-600 rounded-lg flex items-center justify-center">
+                            <feature.icon className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
+                            <p className="text-sm text-gray-300">{feature.desc}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stats Section */}
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20 mt-auto">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">99.9%</div>
+                      <div className="text-xs text-gray-300 uppercase tracking-wide">Uptime</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-[#ff8633] mb-1">24/7</div>
+                      <div className="text-xs text-gray-300 uppercase tracking-wide">Support</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span className="font-medium text-blue-50 text-lg">100% Free</span>
-          </div>
-          <div className="flex items-start">
-            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#104fff]/40 flex items-center justify-center mr-4 group-hover:bg-[#104fff]/50 transition-colors duration-300">
-              <svg className="w-4 h-4 text-[#adc6ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-            <span className="font-medium text-blue-50 text-lg">No Obligation to Buy</span>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-      
-      {/* Enhanced widget container with better shadows and effects */}
-      <div className="w-full px-4 mx-auto max-w-[500px] relative group">
-  <div className="absolute -inset-1 bg-gradient-to-r from-[#0026b6] to-[#104fff] opacity-60 rounded-2xl blur-md transition-all duration-300 group-hover:opacity-75 group-hover:blur-lg"></div>
-  <div className="relative backdrop-blur-xl bg-gradient-to-br from-[#000a42]/40 via-[#000e54]/40 to-[#001470]/40 rounded-2xl shadow-2xl overflow-hidden border border-[#104fff]/30">
-    <div className="relative p-5 bg-gradient-to-r from-[#000835] to-[#001470] text-white overflow-hidden">
-      <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 w-20 h-20 bg-[#104fff] rounded-full opacity-25 blur-xl"></div>
-      <h3 className="text-2xl font-semibold text-center relative z-10">Compare Phone Systems</h3>
-    </div>
-    <div 
-      id="buyerzone-widget-container" 
-      className="w-full h-full bg-white rounded-b-2xl overflow-hidden"
-      style={{ overflow: 'hidden' }}
-    ></div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
       
     </div>
     </>

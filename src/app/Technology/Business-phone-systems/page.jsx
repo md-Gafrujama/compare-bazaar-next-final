@@ -84,13 +84,13 @@ const PhoneSystemsPage = () => {
      return () => window.removeEventListener("resize", checkMobile);
    }, []);
 
-   // Auto-open modal after 3 seconds when page loads
-   useEffect(() => {
-     const timer = setTimeout(() => {
-       setIsModalOpen(true);
-     }, 3000);
-     return () => clearTimeout(timer);
-   }, []);
+  // Auto-open modal after 3 seconds when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
    // Update document title
    useEffect(() => {
@@ -1204,7 +1204,9 @@ const PhoneSystemsPage = () => {
               key={index}
               system={system}
               createRipple={createRipple}
-              onCompareQuotesClick={() => setIsModalOpen(true)}
+              onCompareQuotesClick={() => {
+                window.location.href = '/Technology/business-phone-systems/get-free-quotes';
+              }}
             />
           ))}
         </div>

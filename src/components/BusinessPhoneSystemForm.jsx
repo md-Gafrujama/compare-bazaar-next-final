@@ -576,7 +576,14 @@ const BusinessPhoneSystemForm = ({ onClose }) => {
             
             <button
               type="button"
-              onClick={currentStep === 6 ? handleSubmit : nextStep}
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentStep === 6) {
+                  window.open('/Technology/business-phone-systems/get-free-quotes', '_blank');
+                } else {
+                  nextStep();
+                }
+              }}
               className={`ml-auto px-6 py-2 rounded-md font-medium text-sm ${
                 isStepValid() 
                   ? 'bg-orange-400 hover:bg-orange-500 text-white' 
@@ -587,7 +594,7 @@ const BusinessPhoneSystemForm = ({ onClose }) => {
               {isSubmitting 
                 ? 'Processing...' 
                 : currentStep === 6 
-                  ? 'FINISH' 
+                  ? 'Compare Quotes' 
                   : 'NEXT'
               }
             </button>
