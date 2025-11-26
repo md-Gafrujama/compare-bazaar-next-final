@@ -767,10 +767,12 @@ const PhoneSystemsPage = () => {
    };
  
    // Convert toolsContent object to array for mapping
-   const toolsArray = Object.entries(toolsContent).map(([key, value]) => ({
-     id: key,
-     ...value,
-   }));
+   const toolsArray = toolsContent && typeof toolsContent === 'object' 
+     ? Object.entries(toolsContent).map(([key, value]) => ({
+         id: key,
+         ...value,
+       }))
+     : [];
  
    const systems = [
     {
