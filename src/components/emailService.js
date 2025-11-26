@@ -115,15 +115,22 @@ export const sendFormData = async (formData, formSource = 'Form Submission', cap
     };
 
     // Add reCAPTCHA token if provided
-    // IMPORTANT: Web3Forms may still include this field in the email even though we don't want it.
-    // To completely exclude captcha_token from emails, you need to:
-    // 1. Go to Web3Forms dashboard (web3forms.com)
-    // 2. Navigate to your access key settings
-    // 3. Configure the email template to exclude 'captcha_token' field
-    // 4. Or use a custom email template that only shows the 'message' field
+    // NOTE: Web3Forms will include ALL fields in the email by default.
+    // The only way to completely exclude captcha_token from emails is to:
+    // 1. Configure Web3Forms dashboard email template to exclude 'captcha_token'
+    // 2. Or use a custom email template that only displays the 'message' field
+    // 
+    // We're sending captcha_token for API verification, but it will appear in emails
+    // unless you configure the Web3Forms dashboard settings.
     if (captchaToken) {
       submissionData.captcha_token = captchaToken;
     }
+    
+    // Alternative: If you want to try excluding it, you can send it with underscore prefix
+    // and verify captcha on your backend instead of relying on Web3Forms verification
+    // if (captchaToken) {
+    //   submissionData._captcha_token = captchaToken; // Won't appear in email but won't be verified by Web3Forms
+    // }
     
     // Note: We're NOT sending individual form fields as separate properties
     // because Web3Forms will auto-include them in the email.
