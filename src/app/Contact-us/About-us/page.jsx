@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import bgImage2 from "../../../assets/images/bg2.webp";
 import WorkWithGreatPeople from '../../../components/WorkWithGreatPeople';
+import NewPage from '../../../components/NewPage';
 
 
 const CompareBazaarHomepage = () => {
@@ -163,350 +164,274 @@ const CompareBazaarHomepage = () => {
   return (
     <>
 
-      <div className="min-h-screen bg-white font-sans">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white font-sans">
         {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row items-center py-16 md:py-24 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
           {/* Left Content */}
-          <div className="w-full md:w-1/2 p-8 md:p-16">
-            <h1 className="text-3xl font-semibold leading-tight mb-4">
+          <div className="w-full md:w-1/2 p-8 md:p-12">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-[#ff8633]/10 text-[#ff8633] rounded-full text-sm font-semibold mb-4 border border-[#ff8633]/20">
+                About Compare Bazaar
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               We are a creative <br />
-              <span className="text-gray-900">B2B</span>{" "}
+              <span className="text-[#000e54]">B2B</span>{" "}
               <span className="text-[#ff8633]">Marketing <br />Solutions Company</span>
             </h1>
-            <div className="w-16 h-1 bg-[#ff8633] my-6"></div>
-            <p className="text-gray-800 mb-8 leading-relaxed text-base">
-            Welcome to Compare Bazaar — where passion meets purpose. We are dedicated to providing exceptional marketing solutions tailored to the unique needs of businesses across a wide range of industries. At the heart of our work is a commitment to innovation, customer-focused strategies, and delivering measurable, impactful results.
-
-Our team believes in building lasting partnerships by understanding your goals and aligning our efforts to support your long-term growth and success. Whether you're a startup or an established brand, we’re here to help you stand out, connect with your audience, and achieve meaningful progress in a constantly evolving market.
-
-
+            <div className="w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full my-8"></div>
+            <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+              Welcome to Compare Bazaar — where passion meets purpose. We are dedicated to providing exceptional marketing solutions tailored to the unique needs of businesses across a wide range of industries. At the heart of our work is a commitment to innovation, customer-focused strategies, and delivering measurable, impactful results.
             </p>
-            {/* <button className="px-8 py-3 rounded-full text-white font-medium transition-transform hover:scale-105 bg-[#ff8633]">
-              READ MORE
-            </button> */}
+            <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+              Our team believes in building lasting partnerships by understanding your goals and aligning our efforts to support your long-term growth and success. Whether you're a startup or an established brand, we're here to help you stand out, connect with your audience, and achieve meaningful progress in a constantly evolving market.
+            </p>
+            <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex items-center gap-2">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-[#000e54]">500+</div>
+                  <div className="text-sm text-gray-600">Happy Clients</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-[#000e54]">50+</div>
+                  <div className="text-sm text-gray-600">Team Members</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Content - Image */}
-          <div className="w-auto md:w-1/2 p-5">
-            <Image
-              src={bgImage2}
-              alt="Person working on laptop "
-              className="w-auto h-[400px] md:h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105"
-            />
+          <div className="w-full md:w-1/2 p-5">
+            <div className="relative">
+              <div className="absolute -top-6 -right-6 w-full h-full bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-2xl opacity-20 blur-2xl"></div>
+              <Image
+                src={bgImage2}
+                alt="Person working on laptop"
+                className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-2xl shadow-2xl transform transition-transform duration-300 hover:scale-105 border-4 border-white"
+              />
+            </div>
           </div>
         </div>
 
         <WorkWithGreatPeople />
 
         {/* Services Section */}
-        <div className="py-16 px-8 md:px-16 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-semibold text-center mb-2 text-gray-900">Our Services</h2>
-            <p className="text-center text-gray-800 mb-12 max-w-4xl mx-auto text-base ">
-              Discover how Compare Bazaar can transform your business with our comprehensive solutions.
-            </p>
+        <div className="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#000e54]">Our Services</h2>
+              <div className="w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full mx-auto mb-6"></div>
+              <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Discover how Compare Bazaar can transform your business with our comprehensive solutions.
+              </p>
+            </div>
 
             {/* Service Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Card 1 - Unbiased Comparisons */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 group">
-                <div className="h-3 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:bg-[#ff8633] transition-colors"></div>
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-[#C6D2FF] rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
-                    <svg className="w-8 h-8 text-[#000e54] group-hover:text-[#ff8633] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group border-2 border-gray-100">
+                <div className="h-2 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300"></div>
+                <div className="p-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#000e54] to-[#001e74] rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300 shadow-lg group-hover:scale-110">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff8633] transition-colors">Unbiased Comparisons</h3>
-                  <p className="text-gray-800 text-base">Our team of experts curates detailed, unbiased comparisons to help you find the best options tailored to your needs.</p>
-                  {/* <a href="#" className="mt-4 inline-block text-[#000e54] font-medium group-hover:text-[#ff8633] transition-colors">Learn More →</a> */}
+                  <h3 className="text-xl font-bold mb-3 text-[#000e54] group-hover:text-[#ff8633] transition-colors">Unbiased Comparisons</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">Our team of experts curates detailed, unbiased comparisons to help you find the best options tailored to your needs.</p>
                 </div>
               </div>
 
               {/* Card 2 - Lead Generation */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 group">
-                <div className="h-3 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:bg-[#ff8633] transition-colors"></div>
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-[#C6D2FF] rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
-                    <svg className="w-8 h-8 text-[#000e54] group-hover:text-[#ff8633] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group border-2 border-gray-100">
+                <div className="h-2 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300"></div>
+                <div className="p-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#000e54] to-[#001e74] rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300 shadow-lg group-hover:scale-110">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff8633] transition-colors">Lead Generation</h3>
-                  <p className="text-gray-800 text-base">We bridge the gap between consumers and businesses by connecting you with trusted providers and services.</p>
-                  {/* <a href="#" className="mt-4 inline-block text-[#000e54] font-medium group-hover:text-[#ff8633] transition-colors">Learn More →</a> */}
+                  <h3 className="text-xl font-bold mb-3 text-[#000e54] group-hover:text-[#ff8633] transition-colors">Lead Generation</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">We bridge the gap between consumers and businesses by connecting you with trusted providers and services.</p>
                 </div>
               </div>
 
               {/* Card 3 - Advertising Solutions */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 group">
-                <div className="h-3 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:bg-[#ff8633] transition-colors"></div>
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-[#C6D2FF] rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
-                    <svg className="w-8 h-8 text-[#000e54] group-hover:text-[#ff8633] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group border-2 border-gray-100">
+                <div className="h-2 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300"></div>
+                <div className="p-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#000e54] to-[#001e74] rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300 shadow-lg group-hover:scale-110">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff8633] transition-colors">Advertising Solutions</h3>
-                  <p className="text-gray-800 text-base">For businesses, we offer innovative advertising opportunities to reach your target audience effectively.</p>
-                  {/* <a href="#" className="mt-4 inline-block text-[#000e54] font-medium group-hover:text-[#ff8633] transition-colors">Learn More →</a> */}
+                  <h3 className="text-xl font-bold mb-3 text-[#000e54] group-hover:text-[#ff8633] transition-colors">Advertising Solutions</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">For businesses, we offer innovative advertising opportunities to reach your target audience effectively.</p>
                 </div>
               </div>
 
               {/* Card 4 - Engaging Content */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 group">
-                <div className="h-3 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:bg-[#ff8633] transition-colors"></div>
-                <div className="p-6">
-                  <div className="w-16 h-16 bg-[#C6D2FF] rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
-                    <svg className="w-8 h-8 text-[#000e54] group-hover:text-[#ff8633] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl group border-2 border-gray-100">
+                <div className="h-2 bg-gradient-to-r from-[#000e54] to-[#203299] group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300"></div>
+                <div className="p-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#000e54] to-[#001e74] rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#ff8633] group-hover:to-[#ff9a57] transition-all duration-300 shadow-lg group-hover:scale-110">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff8633] transition-colors">Engaging Content</h3>
-                  <p className="text-gray-800 text-base">From informative articles to in-depth guides, our content is designed to educate, inspire, and guide you every step of the way.</p>
-                  {/* <a href="#" className="mt-4 inline-block text-[#000e54] font-medium group-hover:text-[#ff8633] transition-colors">Learn More →</a> */}
+                  <h3 className="text-xl font-bold mb-3 text-[#000e54] group-hover:text-[#ff8633] transition-colors">Engaging Content</h3>
+                  <p className="text-gray-600 text-base leading-relaxed">From informative articles to in-depth guides, our content is designed to educate, inspire, and guide you every step of the way.</p>
                 </div>
               </div>
-            </div>
-
-            {/* Services Contact Form with Web3Forms */}
-            <div className="mt-16 bg-gray-50 rounded-lg shadow-lg p-8">
-              <h3 className="text-4xl font-semibold mb-6 text-center text-gray-900">Interested in Our Services?</h3>
-
-              {formStatus.success ? (
-                <div className="bg-[#000e54] border border-[#000e54] text-white px-4 py-3 rounded relative max-w-2xl mx-auto mb-6" role="alert">
-                  <strong className="font-bold ">Thank you!</strong>
-                  <span className="block sm:inline"> Your message has been sent successfully. We'll get back to you soon.</span>
-                </div>
-              ) : null}
-
-              {formStatus.error ? (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-2xl mx-auto mb-6" role="alert">
-                  <strong className="font-bold">Error:</strong>
-                  <span className="block sm:inline"> {formStatus.error}</span>
-                </div>
-              ) : null}
-
-              <form className="max-w-2xl mx-auto" onSubmit={handleSubmit}>
-                {/* Web3Forms honeypot field to prevent spam */}
-                <input type="hidden" name="botcheck" style={{ display: 'none' }} />
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label className="block text-gray-900 mb-2 text-base" htmlFor="name">Your Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-800 mb-2 text-base" htmlFor="email">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block text-gray-800 mb-2 text-base">Services You're Interested In</label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="unbiased-comparisons"
-                        name="unbiasedComparisons"
-                        checked={formData.services.unbiasedComparisons}
-                        onChange={handleCheckboxChange}
-                        className="w-4 h-4 text-emerald-600"
-                      />
-                      <label htmlFor="unbiased-comparisons" className="ml-2 text-gray-700">Unbiased Comparisons</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="lead-generation"
-                        name="leadGeneration"
-                        checked={formData.services.leadGeneration}
-                        onChange={handleCheckboxChange}
-                        className="w-4 h-4 text-emerald-600"
-                      />
-                      <label htmlFor="lead-generation" className="ml-2 text-gray-700">Lead Generation</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="advertising-solutions"
-                        name="advertisingSolutions"
-                        checked={formData.services.advertisingSolutions}
-                        onChange={handleCheckboxChange}
-                        className="w-4 h-4 text-emerald-600"
-                      />
-                      <label htmlFor="advertising-solutions" className="ml-2 text-gray-700">Advertising Solutions</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="engaging-content"
-                        name="engagingContent"
-                        checked={formData.services.engagingContent}
-                        onChange={handleCheckboxChange}
-                        className="w-4 h-4 text-emerald-600"
-                      />
-                      <label htmlFor="engaging-content" className="ml-2 text-gray-700">Engaging Content</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block text-gray-800 mb-2 text-base" htmlFor="message">Your Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows="4"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    placeholder="Tell us about your project"
-                    required
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-[#ff8633] text-white font-medium rounded-md shadow-md hover:bg-[#000e54] transition-colors flex justify-center items-center"
-                  disabled={formStatus.submitting}
-                >
-                  {formStatus.submitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Submitting...
-                    </>
-                  ) : "Submit Inquiry"}
-                </button>
-              </form>
             </div>
           </div>
         </div>
 
+        {/* Services Contact Form Section */}
+        <NewPage />
+
         {/* About Us Section */}
-        <div className="py-16 px-8 md:px-16 max-w-6xl mx-auto bg-white">
-          <h2 className="text-4xl font-semibold text-center mb-2">About Us - Compare Bazaar</h2>
-          <p className="text-center text-gray-800 mb-12 max-w-6xl mx-auto text-base">
-            Welcome to Compare Bazaar, your ultimate destination for smart decision-making!
-          </p>
+        <div className="py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto bg-gradient-to-b from-gray-50 to-white">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#000e54]">About Us - Compare Bazaar</h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Welcome to Compare Bazaar, your ultimate destination for smart decision-making!
+            </p>
+          </div>
 
           <div className="max-w-6xl mx-auto">
-            <p className="mb-6 text-gray-800 leading-relaxed text-base">
-              We are a dynamic content marketing, lead generation, and advertising platform dedicated to helping consumers and businesses connect seamlessly. Our mission is to simplify your choices by providing comprehensive comparisons, expert insights, and tailored recommendations across a wide range of products and services.
-            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              <div className="lg:col-span-2">
+                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                  We are a dynamic content marketing, lead generation, and advertising platform dedicated to helping consumers and businesses connect seamlessly. Our mission is to simplify your choices by providing comprehensive comparisons, expert insights, and tailored recommendations across a wide range of products and services.
+                </p>
 
-            <p className="mb-6 text-gray-800 leading-relaxed text-base">
-              At Compare Bazaar, we understand that navigating the ever-expanding marketplace can be overwhelming. That's why we've created a user-friendly platform that empowers you to make informed decisions with confidence. Whether you're searching for the best deals, exploring new trends, or seeking trusted advice, we've got you covered.
-            </p>
+                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                  At Compare Bazaar, we understand that navigating the ever-expanding marketplace can be overwhelming. That's why we've created a user-friendly platform that empowers you to make informed decisions with confidence. Whether you're searching for the best deals, exploring new trends, or seeking trusted advice, we've got you covered.
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-[#000e54] to-[#001e74] rounded-2xl p-8 text-white shadow-2xl">
+                <h4 className="text-2xl font-bold mb-4 text-[#ff8633]">Our Mission</h4>
+                <p className="text-white/90 leading-relaxed">
+                  To empower businesses and consumers with transparent, data-driven insights that enable smarter decision-making in an ever-evolving marketplace.
+                </p>
+              </div>
+            </div>
 
-            <h3 className="text-xl font-semibold mb-4 text-gray-900">What We Offer:</h3>
-            <ul className="mb-8 space-y-2 text-base text-gray-800">
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Unbiased Comparisons:</span> Our team of experts curates detailed, unbiased comparisons to help you find the best options tailored to your needs.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Lead Generation:</span> We bridge the gap between consumers and businesses by connecting you with trusted providers and services.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Advertising Solutions:</span> For businesses, we offer innovative advertising opportunities to reach your target audience effectively.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Engaging Content:</span> From informative articles to in-depth guides, our content is designed to educate, inspire, and guide you every step of the way.
-                </span>
-              </li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100">
+                <h3 className="text-2xl font-bold mb-6 text-[#000e54] flex items-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  What We Offer
+                </h3>
+                <ul className="space-y-4 text-base text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Unbiased Comparisons:</span> Our team of experts curates detailed, unbiased comparisons to help you find the best options tailored to your needs.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Lead Generation:</span> We bridge the gap between consumers and businesses by connecting you with trusted providers and services.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Advertising Solutions:</span> For businesses, we offer innovative advertising opportunities to reach your target audience effectively.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Engaging Content:</span> From informative articles to in-depth guides, our content is designed to educate, inspire, and guide you every step of the way.</span>
+                  </li>
+                </ul>
+              </div>
 
-            <h3 className="text-xl font-semibold mb-4 text-gary-900">Why Choose Compare Bazaar?</h3>
-            <ul className="mb-10 space-y-2 text-gray-800 text-base">
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Trustworthy:</span> We prioritize transparency and integrity in everything we do.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">Comprehensive:</span> Our platform covers a wide array of categories, ensuring you find what you're looking for.
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#000e54] mr-2">•</span>
-                <span className="text-gray-800 group">
-                  <span className="font-medium group-hover:text-orange-500 transition-colors">User-Centric:</span> Your satisfaction is at the heart of our operations, and we strive to deliver exceptional value with every interaction.
-                </span>
-              </li>
-            </ul>
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100">
+                <h3 className="text-2xl font-bold mb-6 text-[#000e54] flex items-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  Why Choose Us
+                </h3>
+                <ul className="space-y-4 text-base text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Trustworthy:</span> We prioritize transparency and integrity in everything we do.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">Comprehensive:</span> Our platform covers a wide array of categories, ensuring you find what you're looking for.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#ff8633] mr-3 font-bold">✓</span>
+                    <span><span className="font-semibold text-[#000e54]">User-Centric:</span> Your satisfaction is at the heart of our operations, and we strive to deliver exceptional value with every interaction.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-            <p className="text-gray-800 leading-relaxed text-base">
-              Join the Compare Bazaar community today and experience a smarter way to shop, compare, and connect. Let us help you make the best choices for your lifestyle and business needs. Together, we'll navigate the bazaar of possibilities!
-            </p>
+            <div className="bg-gradient-to-br from-[#ff8633]/10 to-[#ff9a57]/10 rounded-2xl p-8 md:p-12 border-2 border-[#ff8633]/20">
+              <p className="text-gray-800 leading-relaxed text-lg text-center max-w-4xl mx-auto">
+                Join the Compare Bazaar community today and experience a smarter way to shop, compare, and connect. Let us help you make the best choices for your lifestyle and business needs. Together, we'll navigate the bazaar of possibilities!
+              </p>
+            </div>
           </div>
         </div>
  
         {/* Values Section */}
         <div
           ref={valuesRef}
-          className={`py-16 px-4 text-center bg-white transition-all duration-700 ${valuesInView ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+          className={`py-20 px-4 md:px-8 lg:px-16 text-center bg-gradient-to-b from-white to-gray-50 transition-all duration-700 ${valuesInView ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
         >
-          <h2 className="text-4xl font-semibold mb-6 text-gray-900 relative inline-block pb-3 after:content-[''] after:absolute after:w-3/5 after:h-1 after:bottom-0 after:left-1/5 hover:after:w-full hover:after:left-0 after:transition-all after:duration-300">
-            Our Values
-          </h2>
-          <p className="text-gray-800 max-w-3xl mx-auto mb-12 text-base">
-  At CompareBazaar, we are guided by six core values that shape our decisions, drive our interactions, and reflect our commitment to excellence. These principles serve as a foundation for how we engage with our clients, collaborate with colleagues, work with service providers, and represent our company. Our values are not just ideals—they are the standards we live by every day.
-</p>
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#000e54] relative inline-block pb-4">
+              <span className="relative z-10">Our Values</span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full"></span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-16 leading-relaxed">
+              At CompareBazaar, we are guided by six core values that shape our decisions, drive our interactions, and reflect our commitment to excellence. These principles serve as a foundation for how we engage with our clients, collaborate with colleagues, work with service providers, and represent our company. Our values are not just ideals—they are the standards we live by every day.
+            </p>
 
-          <div className="flex flex-wrap justify-center max-w-6xl mx-auto">
-            {[
-              { icon: "📈", title: "Do what it takes to deliver excellent results" },
-              { icon: "🚀", title: "Bring a proactive, solution-oriented attitude to everything you do" },
-              { icon: "🤝", title: "Act with integrity and respect" },
-              { icon: "💬", title: "Communicate directly and honestly" },
-              { icon: "🎯", title: "Do what you say you are going to do" },
-              { icon: "🧠", title: "Always learn and try new things" }
-            ].map((value, index) => (
-              <div key={index} className="w-full sm:w-1/2 md:w-1/3 p-4">
-                <div className="transform transition-transform duration-300 hover:-translate-y-3">
-                  <div className="w-24 h-24 bg-[#000e54] rounded-full flex items-center justify-center text-4xl text-white mx-auto mb-4 shadow-lg transform transition-all duration-300 hover:rotate-12 hover:scale-110">
-                    {value.icon}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                { icon: "📈", title: "Do what it takes to deliver excellent results", color: "from-blue-500 to-blue-600" },
+                { icon: "🚀", title: "Bring a proactive, solution-oriented attitude to everything you do", color: "from-purple-500 to-purple-600" },
+                { icon: "🤝", title: "Act with integrity and respect", color: "from-green-500 to-green-600" },
+                { icon: "💬", title: "Communicate directly and honestly", color: "from-orange-500 to-orange-600" },
+                { icon: "🎯", title: "Do what you say you are going to do", color: "from-red-500 to-red-600" },
+                { icon: "🧠", title: "Always learn and try new things", color: "from-indigo-500 to-indigo-600" }
+              ].map((value, index) => (
+                <div key={index} className="group">
+                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-gray-100 h-full relative overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
+                        {value.icon}
+                      </div>
+                      <h3 className="font-bold text-lg text-[#000e54] leading-tight text-center group-hover:text-[#ff8633] transition-colors">{value.title}</h3>
+                    </div>
                   </div>
-                  <div className="font-semibold text-base text-gray-800">{value.title}</div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 

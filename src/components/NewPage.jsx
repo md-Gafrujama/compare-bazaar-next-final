@@ -545,84 +545,104 @@ const NewPage = () => {
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff8633]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#ff8633]/10 rounded-full blur-3xl -ml-24 -mb-24"></div>
                   
-                  <div className="relative z-10 mb-8">
-                    <h4 className="text-3xl md:text-4xl font-bold mb-4">
+                  <div className="relative z-10 mb-6">
+                    <h4 className="text-2xl md:text-3xl font-bold mb-3">
                       Why Choose <span className="text-[#ff8633]">Compare Bazaar?</span>
                     </h4>
-                    <div className="w-20 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full mb-6"></div>
-                    <p className="text-lg text-white/90 leading-relaxed mb-8">
-                      We're committed to helping businesses find the perfect solutions. Our expert team provides comprehensive comparisons and personalized recommendations to drive your success.
+                    <div className="w-20 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full mb-4"></div>
+                    <p className="text-base text-white/90 leading-relaxed">
+                      We're committed to helping businesses find the perfect solutions. Our expert team provides comprehensive comparisons and personalized recommendations.
                     </p>
                   </div>
 
-                  {/* Features List */}
-                  <div className="space-y-6 mb-8 flex-grow relative z-10">
-                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10">
-                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {/* Features List - Optimized spacing */}
+                  <div className="space-y-4 mb-6 flex-grow relative z-10">
+                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 border border-white/10">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-bold mb-2 text-white">Expert Analysis</h5>
+                        <h5 className="text-lg font-bold mb-1.5 text-white">Expert Analysis</h5>
                         <p className="text-white/80 leading-relaxed text-sm">
                           Our team of industry experts conducts thorough research and analysis to provide you with accurate, unbiased comparisons.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10">
-                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 border border-white/10">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-bold mb-2 text-white">Fast Response</h5>
+                        <h5 className="text-lg font-bold mb-1.5 text-white">Fast Response</h5>
                         <p className="text-white/80 leading-relaxed text-sm">
                           Get quick responses to your inquiries. We understand that time is valuable and strive to respond within 24 hours.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10">
-                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 border border-white/10">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-3 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <h5 className="text-xl font-bold mb-2 text-white">Personalized Service</h5>
+                        <h5 className="text-lg font-bold mb-1.5 text-white">Personalized Service</h5>
                         <p className="text-white/80 leading-relaxed text-sm">
                           Every business is unique. We tailor our recommendations to match your specific needs and goals.
                         </p>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex items-start group bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-all duration-300 border border-white/10">
-                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
+                  {/* Process Steps - Compact and optimized */}
+                  <div className="mb-6 relative z-10">
+                    <h5 className="text-lg font-bold mb-4 text-white">How It Works</h5>
+                    <div className="space-y-3">
+                      <div className="flex items-center group bg-white/5 backdrop-blur-sm rounded-lg p-3.5 hover:bg-white/10 transition-all border border-white/10">
+                        <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-lg flex items-center justify-center mr-3 font-bold text-white shadow-lg group-hover:scale-110 transition-transform text-sm">
+                          1
+                        </div>
+                        <div className="flex-1">
+                          <h6 className="font-semibold text-white text-sm mb-0.5">Submit Your Inquiry</h6>
+                          <p className="text-white/70 text-xs">Fill out the form with your details</p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h5 className="text-xl font-bold mb-2 text-white">Trusted & Secure</h5>
-                        <p className="text-white/80 leading-relaxed text-sm">
-                          Your information is safe with us. We use industry-standard security measures to protect your data.
-                        </p>
+                      <div className="flex items-center group bg-white/5 backdrop-blur-sm rounded-lg p-3.5 hover:bg-white/10 transition-all border border-white/10">
+                        <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-lg flex items-center justify-center mr-3 font-bold text-white shadow-lg group-hover:scale-110 transition-transform text-sm">
+                          2
+                        </div>
+                        <div className="flex-1">
+                          <h6 className="font-semibold text-white text-sm mb-0.5">Expert Review</h6>
+                          <p className="text-white/70 text-xs">Our team analyzes your needs</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center group bg-white/5 backdrop-blur-sm rounded-lg p-3.5 hover:bg-white/10 transition-all border border-white/10">
+                        <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-lg flex items-center justify-center mr-3 font-bold text-white shadow-lg group-hover:scale-110 transition-transform text-sm">
+                          3
+                        </div>
+                        <div className="flex-1">
+                          <h6 className="font-semibold text-white text-sm mb-0.5">Get Customized Solutions</h6>
+                          <p className="text-white/70 text-xs">Receive tailored solutions for your goals</p>
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Stats Section */}
-                  <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/20 mt-auto relative z-10">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20 mt-auto relative z-10">
                     <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all">
-                      <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">500+</div>
-                      <div className="text-sm text-white/80 font-medium">Happy Clients</div>
+                      <div className="text-2xl md:text-3xl font-bold text-[#ff8633] mb-1.5">500+</div>
+                      <div className="text-xs text-white/80 font-medium">Happy Clients</div>
                     </div>
                     <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all">
-                      <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">24/7</div>
-                      <div className="text-sm text-white/80 font-medium">Support Available</div>
+                      <div className="text-2xl md:text-3xl font-bold text-[#ff8633] mb-1.5">24/7</div>
+                      <div className="text-xs text-white/80 font-medium">Support Available</div>
                     </div>
                   </div>
                 </div>

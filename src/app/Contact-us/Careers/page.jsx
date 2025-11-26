@@ -206,44 +206,83 @@ function CareersPage() {
         {/* Hero Banner */}
         <div 
           ref={heroRef}
-          className={`relative h-[500px] md:h-[600px] bg-cover bg-center flex items-center justify-center overflow-hidden transition-all duration-700 ${heroInView ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+          className={`relative h-[550px] md:h-[650px] bg-cover bg-center flex items-center justify-center overflow-hidden transition-all duration-700 ${heroInView ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
           style={{ 
-            backgroundImage: 'linear-gradient(135deg, rgba(0, 14, 84, 0.85), rgba(255, 134, 51, 0.75)), url(https://www.swg.com/usa/wp-content/uploads/sites/34/2014/09/Careers-banner.jpg)'
+            backgroundImage: 'linear-gradient(135deg, rgba(0, 14, 84, 0.88), rgba(255, 134, 51, 0.78)), url(https://www.swg.com/usa/wp-content/uploads/sites/34/2014/09/Careers-banner.jpg)'
           }}
         >
-          <div className="text-center px-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
-              Join Our Team!
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-[#ff8633]/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#000e54]/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+          
+          <div className="text-center px-4 max-w-5xl mx-auto relative z-10">
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-4 border border-white/30">
+                🚀 We're Hiring
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl leading-tight">
+              Join Our <span className="text-[#ff8633]">Team!</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 font-light">
-              Build your career with a company that values innovation, growth, and excellence
+            <p className="text-xl md:text-2xl text-white/95 mb-10 font-light max-w-3xl mx-auto leading-relaxed">
+              Build your career with a company that values innovation, growth, and excellence. Work with passionate people and make an impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => positionsRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-[#ff8633] hover:bg-[#ff9a57] text-white font-semibold px-8 py-4 rounded-full shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-lg"
+                className="bg-gradient-to-r from-[#ff8633] to-[#ff9a57] hover:from-[#ff9a57] hover:to-[#ff8633] text-white font-bold px-10 py-5 rounded-full shadow-2xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-3xl text-lg flex items-center justify-center gap-2"
               >
-                View Open Positions
+                <span>View Open Positions</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
               <button 
                 onClick={() => valuesRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-full border-2 border-white/30 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-lg"
+                className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold px-10 py-5 rounded-full border-2 border-white/40 shadow-2xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-3xl text-lg flex items-center justify-center gap-2"
               >
-                Our Values
+                <span>Our Values</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </button>
             </div>
           </div>
         </div>
 
         {/* Work with Great People Section */}
-        <div className="text-center py-20 px-4 max-w-4xl mx-auto bg-white">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 relative inline-block pb-4 mb-6">
-            <span className="relative z-10">Work with Great People</span>
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full"></span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We have a diverse team of hard-working and fun-loving individuals who are passionate about making a difference
-          </p>
+        <div className="text-center py-24 px-4 max-w-6xl mx-auto bg-gradient-to-b from-white to-gray-50">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#000e54] relative inline-block pb-4 mb-6">
+              <span className="relative z-10">Work with Great People</span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full"></span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              We have a diverse team of hard-working and fun-loving individuals who are passionate about making a difference
+            </p>
+          </div>
+          
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
+            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">50+</div>
+              <div className="text-sm text-gray-600 font-medium">Team Members</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">15+</div>
+              <div className="text-sm text-gray-600 font-medium">Countries</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">100%</div>
+              <div className="text-sm text-gray-600 font-medium">Remote Friendly</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="text-3xl md:text-4xl font-bold text-[#ff8633] mb-2">24/7</div>
+              <div className="text-sm text-gray-600 font-medium">Support</div>
+            </div>
+          </div>
         </div>
 
         {/* Features Section */}
@@ -343,31 +382,43 @@ function CareersPage() {
               Explore exciting career opportunities and join our growing team
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {Object.entries(jobDescriptions).map(([title, job]) => (
                 <div 
                   key={title} 
-                  className="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 group"
+                  className="bg-white rounded-2xl shadow-xl p-8 flex flex-col justify-between hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-gray-100 group relative overflow-hidden"
                 >
-                  <div className="text-left mb-6">
-                    <h3 className="text-2xl font-bold text-[#000e54] mb-3 group-hover:text-[#ff8633] transition-colors">{title}</h3>
-                    <div className="flex items-center text-gray-600 mb-4">
-                      <svg className="w-5 h-5 mr-2 text-[#ff8633]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <span className="text-base">{job.location}</span>
+                  {/* Decorative gradient on hover */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#ff8633]/10 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="text-left mb-6 relative z-10">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-[#000e54] mb-2 group-hover:text-[#ff8633] transition-colors">{title}</h3>
+                        <div className="flex items-center text-gray-600">
+                          <svg className="w-5 h-5 mr-2 text-[#ff8633]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span className="text-base font-medium">{job.location}</span>
+                        </div>
+                      </div>
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Join our dynamic team and make an impact in your career
+                      Join our dynamic team and make an impact in your career. We're looking for passionate individuals ready to grow.
                     </p>
                   </div>
                   <button 
-                  onClick={() => handleJobSelect(title)}
-                  className="bg-gradient-to-r from-[#ff8633] to-[#ff9a57] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#ff8633] focus:ring-opacity-50 w-full md:w-auto"
-                >
-                  View Details
-                </button>
+                    onClick={() => handleJobSelect(title)}
+                    className="bg-gradient-to-r from-[#ff8633] to-[#ff9a57] text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#ff8633] focus:ring-opacity-50 w-full relative z-10 group-hover:from-[#000e54] group-hover:to-[#001e74]"
+                  >
+                    View Details
+                  </button>
                 </div>
               ))}
             </div>
@@ -378,26 +429,36 @@ function CareersPage() {
         {selectedJob && (
           <div 
             ref={jobDescriptionRef}
-            className="py-16 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white"
+            className="py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white"
           >
-            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-8 md:p-12 border border-gray-100">
-              <div className="mb-8 pb-6 border-b-2 border-gray-100">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#000e54]">{selectedJob}</h2>
-                <div className="flex items-center text-gray-600">
-                  <svg className="w-5 h-5 mr-2 text-[#ff8633]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span className="text-lg">{jobDescriptions[selectedJob]?.location}</span>
+            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-gray-100 relative overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#ff8633]/5 to-transparent rounded-full blur-3xl -mr-32 -mt-32"></div>
+              
+              <div className="mb-10 pb-8 border-b-2 border-gray-100 relative z-10">
+                <div className="flex items-start justify-between flex-wrap gap-4">
+                  <div className="flex-1">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#000e54]">{selectedJob}</h2>
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-6 h-6 mr-2 text-[#ff8633]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <span className="text-lg font-medium">{jobDescriptions[selectedJob]?.location}</span>
+                    </div>
+                  </div>
+                  <div className="px-4 py-2 bg-gradient-to-r from-[#ff8633] to-[#ff9a57] rounded-full text-white font-semibold text-sm">
+                    Full Time
+                  </div>
                 </div>
               </div>
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-lg max-w-none relative z-10">
                 {jobDescriptions[selectedJob]?.description}
               </div>
-              <div className="mt-10 text-center">
+              <div className="mt-12 text-center relative z-10">
                 <button 
                   onClick={() => applicationFormRef.current.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-gradient-to-r from-[#ff8633] to-[#ff9a57] text-white font-bold py-4 px-10 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-[#ff8633] focus:ring-opacity-50 text-lg"
+                  className="bg-gradient-to-r from-[#ff8633] to-[#ff9a57] hover:from-[#000e54] hover:to-[#001e74] text-white font-bold py-4 px-12 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-[#ff8633] focus:ring-opacity-50 text-lg"
                 >
                   Apply Now
                 </button>
@@ -422,19 +483,24 @@ function CareersPage() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
-                { icon: "📈", title: "Do what it takes to deliver excellent results" },
-                { icon: "🚀", title: "Bring a proactive, solution-oriented attitude to everything you do" },
-                { icon: "🤝", title: "Act with integrity and respect" },
-                { icon: "💬", title: "Communicate directly and honestly" },
-                { icon: "🎯", title: "Do what you say you are going to do" },
-                { icon: "🧠", title: "Always learn and try new things" }
+                { icon: "📈", title: "Do what it takes to deliver excellent results", color: "from-blue-500 to-blue-600" },
+                { icon: "🚀", title: "Bring a proactive, solution-oriented attitude to everything you do", color: "from-purple-500 to-purple-600" },
+                { icon: "🤝", title: "Act with integrity and respect", color: "from-green-500 to-green-600" },
+                { icon: "💬", title: "Communicate directly and honestly", color: "from-orange-500 to-orange-600" },
+                { icon: "🎯", title: "Do what you say you are going to do", color: "from-red-500 to-red-600" },
+                { icon: "🧠", title: "Always learn and try new things", color: "from-indigo-500 to-indigo-600" }
               ].map((value, index) => (
                 <div key={index} className="group">
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 h-full">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-full flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
-                      {value.icon}
+                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-gray-100 h-full relative overflow-hidden">
+                    {/* Gradient background on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                    
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 bg-gradient-to-br from-[#ff8633] to-[#ff9a57] rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
+                        {value.icon}
+                      </div>
+                      <h3 className="font-bold text-lg text-[#000e54] leading-tight text-center group-hover:text-[#ff8633] transition-colors">{value.title}</h3>
                     </div>
-                    <h3 className="font-bold text-lg text-[#000e54] leading-tight">{value.title}</h3>
                   </div>
                 </div>
               ))}
