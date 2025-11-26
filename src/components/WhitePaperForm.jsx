@@ -149,22 +149,24 @@ const WhitepaperForm = ({ paper, onClose }) => {
     
     try {
       // Submit to Web3Forms
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '2dab837b-bcc7-4b78-825a-21ad5e3b7127';
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "4e9faa02-cb51-4253-98e6-b5794f4ece3a",
-          firstName: formData.firstName,
-          lastName: formData.lastName,
+          access_key: accessKey,
+          subject: `Whitepaper Download - ${paper.title} - Compare-Bazaar`,
+          from_name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
-          companyName: formData.companyName,
+          company_name: formData.companyName,
           phone: formData.phone,
-          workAddress: formData.workAddress,
-          zipCode: formData.zipCode,
+          work_address: formData.workAddress,
+          zip_code: formData.zipCode,
           whitepaper: paper.title,
-          subscribe: formData.subscribe ? "Yes" : "No"
+          subscribe: formData.subscribe ? "Yes" : "No",
+          form_source: 'Whitepaper Download Form'
         }),
       });
       

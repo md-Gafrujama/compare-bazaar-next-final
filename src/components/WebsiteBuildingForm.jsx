@@ -130,17 +130,23 @@ const WebsiteBuildingForm = ({ onClose }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Check if reCAPTCHA is completed
+        if (!captchaValue) {
+            alert('Please complete the reCAPTCHA verification.');
+            return;
+        }
+        
         setIsSubmitting(true);
 
         try {
-            const TEMPLATE_ID = 'template_0h77k1d';
-            // Use the emailService to send the email with timeout
-            const response = await sendFormData(formData, TEMPLATE_ID);
-            console.log('Email sent successfully:', response);
+            // Use the emailService to send the form data with Web3Forms
+            const response = await sendFormData(formData, 'Website Building Form', captchaValue);
+            console.log('Form submitted successfully:', response);
             setShowSuccess(true);
             resetForm();
         } catch (error) {
-            console.error('Email sending failed:', error);
+            console.error('Form submission failed:', error);
             alert('Sorry, there was a problem submitting your information. Please try again later.');
         } finally {
             setIsSubmitting(false);

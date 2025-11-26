@@ -193,18 +193,24 @@ const CRMForm = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
+    
+    // Check if reCAPTCHA is completed
+    if (!captchaValue) {
+      alert('Please complete the reCAPTCHA verification.');
+      return;
+    }
+    
     setIsSubmitting(true);
      try {
-      const TEMPLATE_ID = 'template_rk2suh3';
                 // Prepare the data to send - combine the desired feature with the "Other" text if needed
                 let dataToSend = {...formData};
                 if (formData.importantFeaturescrm === 'Other') {
                     dataToSend.importantFeaturescrm =`Other: ${formData.otherFeatureText}`;
                 }
                 
-                // Use the emailService to send the email with timeout
-                const response = await sendFormData(dataToSend, TEMPLATE_ID);
-                console.log('Email sent successfully:', response);
+                // Use the emailService to send the form data with Web3Forms
+                const response = await sendFormData(dataToSend, 'CRM Form', captchaValue);
+                console.log('Form submitted successfully:', response);
                 setShowSuccess(true);
                 resetForm();
             } catch (error) {
