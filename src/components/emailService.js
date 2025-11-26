@@ -17,90 +17,108 @@ export const sendFormData = async (formData, formSource = 'Form Submission', cap
     // Build a comprehensive message with all form fields (excluding captcha_token)
     let messageParts = [];
     
+    // Helper function to check if a value is meaningful (not empty, null, or undefined)
+    const hasValue = (value) => {
+      if (value === null || value === undefined) return false;
+      if (typeof value === 'string') return value.trim() !== '';
+      if (Array.isArray(value)) return value.length > 0;
+      return true;
+    };
+    
     // Basic contact information
     if (formData.firstName || formData.lastName) {
       const fullName = `${(formData.firstName || '')} ${(formData.lastName || '')}`.trim();
       if (fullName) messageParts.push(`Name: ${fullName}`);
     }
-    if (formData.fullName) {
+    if (hasValue(formData.fullName)) {
       messageParts.push(`Name: ${formData.fullName}`);
     }
-    if (formData.email) {
+    if (hasValue(formData.email)) {
       messageParts.push(`Email: ${formData.email}`);
     }
-    if (formData.companyName || formData.company) {
+    if (hasValue(formData.companyName) || hasValue(formData.company)) {
       messageParts.push(`Company name: ${formData.companyName || formData.company}`);
     }
-    if (formData.phoneNumber || formData.phone) {
+    if (hasValue(formData.phoneNumber) || hasValue(formData.phone)) {
       messageParts.push(`Phone: ${formData.phoneNumber || formData.phone}`);
     }
-    if (formData.zipCode) {
+    if (hasValue(formData.zipCode)) {
       messageParts.push(`Zip code: ${formData.zipCode}`);
     }
     
     // Form-specific fields - Employee Management
-    if (formData.employeeCount) messageParts.push(`Employee count: ${formData.employeeCount}`);
-    if (formData.desiredFeatures) messageParts.push(`Desired features: ${formData.desiredFeatures}`);
-    if (formData.otherFeatureText) messageParts.push(`Other feature: ${formData.otherFeatureText}`);
+    if (hasValue(formData.employeeCount)) messageParts.push(`Employee count: ${formData.employeeCount}`);
+    if (hasValue(formData.desiredFeatures)) messageParts.push(`Desired features: ${formData.desiredFeatures}`);
+    if (hasValue(formData.otherFeatureText)) messageParts.push(`Other feature: ${formData.otherFeatureText}`);
     
     // Call Center Form fields
-    if (formData.importantFeature) messageParts.push(`Important feature: ${formData.importantFeature}`);
-    if (formData.inboundCalls) messageParts.push(`Inbound calls: ${formData.inboundCalls}`);
+    if (hasValue(formData.importantFeature)) messageParts.push(`Important feature: ${formData.importantFeature}`);
+    if (hasValue(formData.inboundCalls)) messageParts.push(`Inbound calls: ${formData.inboundCalls}`);
     
     // Business Phone System fields
-    if (formData.phoneSystemNeeds) messageParts.push(`Phone system needs: ${formData.phoneSystemNeeds}`);
-    if (formData.phonesNeeded) messageParts.push(`Phones needed: ${formData.phonesNeeded}`);
+    if (hasValue(formData.phoneSystemNeeds)) messageParts.push(`Phone system needs: ${formData.phoneSystemNeeds}`);
+    if (hasValue(formData.phonesNeeded)) messageParts.push(`Phones needed: ${formData.phonesNeeded}`);
     
     // GPS Fleet Management fields
-    if (formData.fleetSize) messageParts.push(`Fleet size: ${formData.fleetSize}`);
-    if (formData.vehicleTypes) messageParts.push(`Vehicle types: ${formData.vehicleTypes}`);
+    if (hasValue(formData.fleetSize)) messageParts.push(`Fleet size: ${formData.fleetSize}`);
+    if (formData.vehicleTypes) {
+      const vehicleTypes = Array.isArray(formData.vehicleTypes)
+        ? formData.vehicleTypes.join(', ')
+        : formData.vehicleTypes;
+      if (hasValue(vehicleTypes)) messageParts.push(`Vehicle types: ${vehicleTypes}`);
+    }
     
     // General important features (array or string)
     if (formData.importantFeatures) {
       const features = Array.isArray(formData.importantFeatures) 
         ? formData.importantFeatures.join(', ') 
         : formData.importantFeatures;
-      messageParts.push(`Important features: ${features}`);
+      if (hasValue(features)) messageParts.push(`Important features: ${features}`);
     }
     
     // Email Marketing fields
-    if (formData.emailList) messageParts.push(`Email list: ${formData.emailList}`);
-    if (formData.emailVolume) messageParts.push(`Email volume: ${formData.emailVolume}`);
-    if (formData.emailCampaign) messageParts.push(`Email campaign: ${formData.emailCampaign}`);
-    if (formData.otherServices) messageParts.push(`Other services: ${formData.otherServices}`);
-    if (formData.buyingTime) messageParts.push(`Buying time: ${formData.buyingTime}`);
-    if (formData.featureswithEmail) messageParts.push(`Features with email: ${formData.featureswithEmail}`);
+    if (hasValue(formData.emailList)) messageParts.push(`Email list: ${formData.emailList}`);
+    if (hasValue(formData.emailVolume)) messageParts.push(`Email volume: ${formData.emailVolume}`);
+    if (hasValue(formData.emailCampaign)) messageParts.push(`Email campaign: ${formData.emailCampaign}`);
+    if (hasValue(formData.otherServices)) messageParts.push(`Other services: ${formData.otherServices}`);
+    if (hasValue(formData.buyingTime)) messageParts.push(`Buying time: ${formData.buyingTime}`);
+    if (formData.featureswithEmail) {
+      const features = Array.isArray(formData.featureswithEmail)
+        ? formData.featureswithEmail.join(', ')
+        : formData.featureswithEmail;
+      if (hasValue(features)) messageParts.push(`Features with email: ${features}`);
+    }
     
     // CRM Form fields
-    if (formData.usingCRM) messageParts.push(`Using CRM: ${formData.usingCRM}`);
-    if (formData.employeeCountcrm) messageParts.push(`Employee count (CRM): ${formData.employeeCountcrm}`);
+    if (hasValue(formData.usingCRM)) messageParts.push(`Using CRM: ${formData.usingCRM}`);
+    if (hasValue(formData.employeeCountcrm)) messageParts.push(`Employee count (CRM): ${formData.employeeCountcrm}`);
     if (formData.importantFeaturescrm) {
       const features = Array.isArray(formData.importantFeaturescrm)
         ? formData.importantFeaturescrm.join(', ')
         : formData.importantFeaturescrm;
-      messageParts.push(`Important features (CRM): ${features}`);
+      if (hasValue(features)) messageParts.push(`Important features (CRM): ${features}`);
     }
-    if (formData.industrycrm) messageParts.push(`Industry (CRM): ${formData.industrycrm}`);
-    if (formData.otherIndustry) messageParts.push(`Other industry: ${formData.otherIndustry}`);
+    if (hasValue(formData.industrycrm)) messageParts.push(`Industry (CRM): ${formData.industrycrm}`);
+    if (hasValue(formData.otherIndustry)) messageParts.push(`Other industry: ${formData.otherIndustry}`);
     
     // Website Building fields
-    if (formData.wdtypeofwebsite) messageParts.push(`Type of website: ${formData.wdtypeofwebsite}`);
-    if (formData.wdtypeofdesign) messageParts.push(`Type of design: ${formData.wdtypeofdesign}`);
-    if (formData.wdregistered) messageParts.push(`Registered: ${formData.wdregistered}`);
-    if (formData.wdbusiness) messageParts.push(`Business: ${formData.wdbusiness}`);
-    if (formData.wdbudget) messageParts.push(`Budget: ${formData.wdbudget}`);
-    if (formData.wddecision) messageParts.push(`Decision: ${formData.wddecision}`);
-    if (formData.wdadditionalFeatures) messageParts.push(`Additional features: ${formData.wdadditionalFeatures}`);
-    if (formData.streetAddress) messageParts.push(`Street address: ${formData.streetAddress}`);
-    if (formData.wdstate) messageParts.push(`State: ${formData.wdstate}`);
-    if (formData.wdcity) messageParts.push(`City: ${formData.wdcity}`);
+    if (hasValue(formData.wdtypeofwebsite)) messageParts.push(`Type of website: ${formData.wdtypeofwebsite}`);
+    if (hasValue(formData.wdtypeofdesign)) messageParts.push(`Type of design: ${formData.wdtypeofdesign}`);
+    if (hasValue(formData.wdregistered)) messageParts.push(`Registered: ${formData.wdregistered}`);
+    if (hasValue(formData.wdbusiness)) messageParts.push(`Business: ${formData.wdbusiness}`);
+    if (hasValue(formData.wdbudget)) messageParts.push(`Budget: ${formData.wdbudget}`);
+    if (hasValue(formData.wddecision)) messageParts.push(`Decision: ${formData.wddecision}`);
+    if (hasValue(formData.wdadditionalFeatures)) messageParts.push(`Additional features: ${formData.wdadditionalFeatures}`);
+    if (hasValue(formData.streetAddress)) messageParts.push(`Street address: ${formData.streetAddress}`);
+    if (hasValue(formData.wdstate)) messageParts.push(`State: ${formData.wdstate}`);
+    if (hasValue(formData.wdcity)) messageParts.push(`City: ${formData.wdcity}`);
     
     // Payroll fields
-    if (formData.payrollSolution) messageParts.push(`Payroll solution: ${formData.payrollSolution}`);
-    if (formData.payrollEmployee) messageParts.push(`Payroll employee: ${formData.payrollEmployee}`);
+    if (hasValue(formData.payrollSolution)) messageParts.push(`Payroll solution: ${formData.payrollSolution}`);
+    if (hasValue(formData.payrollEmployee)) messageParts.push(`Payroll employee: ${formData.payrollEmployee}`);
     
     // Custom service field
-    if (formData.customService) messageParts.push(`Custom service: ${formData.customService}`);
+    if (hasValue(formData.customService)) messageParts.push(`Custom service: ${formData.customService}`);
 
     // Prepare submission data for Web3Forms
     // Only send essential fields to prevent Web3Forms from auto-including all fields in email
