@@ -22,6 +22,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import { useRouter } from 'next/navigation';
 import PhoneSystemCardCommon from '../../../components/PhoneSystemCardCommon';
 //  import Feedback from './Feedback';
 import WebsiteBuildingForm from '../../../components/WebsiteBuildingForm';
@@ -33,6 +34,7 @@ import Modal from '../../../components/Modal';
 // import WebsiteBuilderComparison from '../../../components/WebsiteBuilderComparison';
 
 const BestWebsiteBuildingPlatform= () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [filterBy, setFilterBy] = useState("Reviews");
@@ -48,9 +50,7 @@ const BestWebsiteBuildingPlatform= () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const handleCompareQuotes = () => {
-    setTimeout(() => {
-      setIsModalOpen(true);
-    }, 3000);
+    router.push('/Marketing/best-website-building-platform/get-free-quotes');
   };
   
   const homeTestimonials = [

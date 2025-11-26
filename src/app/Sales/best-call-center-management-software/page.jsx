@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 import PhoneSystemCardCommon from "../../../components/PhoneSystemCardCommon";
 // import Feedback from './Feedback';
 import {
@@ -34,6 +35,7 @@ import Article from "../../../components/ArticleLayoutCommon";
 import Head from "next/head";
 
 const BestCallSoftware = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [filterBy, setFilterBy] = useState("Reviews");
@@ -46,6 +48,10 @@ const BestCallSoftware = () => {
   const [openItems, setOpenItems] = useState({});
   const [showMore, setShowMore] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const handleCompareQuotes = () => {
+    router.push('/Sales/best-call-center-management-software/get-free-quotes');
+  };
   const toggleSection = (sectionKey, labelKey = null) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -624,7 +630,7 @@ const BestCallSoftware = () => {
             key={index} 
             system={system} 
             createRipple={createRipple} 
-            onCompareQuotesClick={() => setIsModalOpen(true)}
+            onCompareQuotesClick={handleCompareQuotes}
           />
         ))}
       </div>
